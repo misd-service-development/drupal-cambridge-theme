@@ -13,3 +13,13 @@
     list-style: none;
     padding: 0;
 }
+
+/* Prevent conflict with vertical breadcrumb navigation lists and Drupal lists */
+.campl-vertical-breadcrumb-navigation li.leaf, .campl-vertical-breadcrumb-navigation li.expanded, .campl-vertical-breadcrumb-navigation li.collapsed {
+    padding: 10px 0;
+}
+
+/* Prevent conflict with vertical breadcrumb children lists and Drupal lists */
+.campl-vertical-breadcrumb-children li.leaf {
+    padding: 5px 5px 5px 0;
+}

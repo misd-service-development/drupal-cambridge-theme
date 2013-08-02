@@ -17,6 +17,14 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
       'function' => 'cambridge_theme_local_dropdown_menu',
       'render element' => 'tree',
     ),
+    'cambridge_theme_left_navigation_block' => array(
+      'function' => 'cambridge_theme_left_navigation_block',
+      'render element' => 'tree',
+    ),
+    'cambridge_theme_left_navigation_link' => array(
+      'function' => 'cambridge_theme_left_navigation_link',
+      'render element' => 'element',
+    ),
     'cambridge_easy_breadcrumb' => array(
       'function' => 'theme_cambridge_easy_breadcrumb',
       'variables' => array(
@@ -105,12 +113,51 @@ function cambridge_theme_local_dropdown_menu($variables) {
 }
 
 /**
+ * Left navigation menu block themer.
+ */
+function cambridge_theme_left_navigation_block($variables) {
+  return $variables['tree']['#children'];
+}
+
+/**
+ * Left navigation menu block link themer.
+ */
+function cambridge_theme_left_navigation_link($variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  if ($element['#below']) {
+    $element['#attributes']['class'][] = 'campl-selected';
+    $sub_menu = '<ul class="campl-unstyled-list campl-vertical-breadcrumb-children">' .
+      drupal_render($element['#below']) . '</ul>';
+  }
+  $list_menu = '';
+
+  if ($element['#title'] != t('Home')) {
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    $list_menu = '<li' . drupal_attributes($element['#attributes']) . ' >' . $output . $sub_menu . "</li>\n";
+  }
+
+  return $list_menu;
+}
+
+/**
  * Implements template_preprocess_block().
  */
 function cambridge_theme_preprocess_block(&$variables) {
   if (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     $variables['classes_array'][] = 'campl-content-container campl-navigation-list';
   }
+}
+
+/**
+ * Implements template_preprocess_menu_block_wrapper().
+ */
+function cambridge_theme_preprocess_menu_block_wrapper(&$variables) {
+  // Let the template know if this is the left_navigation region or not.
+  $variables['config']['in_left_navigation'] = in_array(
+    'cambridge_theme_left_navigation_block',
+    $variables['content']['#theme_wrappers']
+  );
 }
 
 /**
@@ -210,6 +257,24 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     else {
       $data['content'] = $content;
     }
+  }
+  elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
+    require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+
+    $object = new RecursiveArrayObject($data['content']['#content']);
+
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($object), RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($iterator as $key => $value) {
+      if ($key === '#theme') {
+        $iterator->getInnerIterator()->offsetSet($key, array('cambridge_theme_left_navigation_link'));
+      }
+      if ($key === '#theme_wrappers') {
+        $iterator->getInnerIterator()->offsetSet($key, array('cambridge_theme_left_navigation_block'));
+      }
+    }
+
+    $data['content']['#content'] = $object->getArrayCopy();
   }
 }
 
