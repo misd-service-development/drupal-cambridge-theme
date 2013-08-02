@@ -37,7 +37,7 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implement template_preprocess_html().
+ * Implements template_preprocess_html().
  */
 function cambridge_theme_preprocess_html(&$variables) {
   $variables['attributes_array']['class'][] = 'campl-theme-' . theme_get_setting('colour_theme');
