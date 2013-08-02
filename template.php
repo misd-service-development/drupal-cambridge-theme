@@ -146,6 +146,7 @@ function cambridge_theme_left_navigation_link($variables) {
 function cambridge_theme_preprocess_block(&$variables) {
   if (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     $variables['classes_array'][] = 'campl-content-container campl-navigation-list';
+    $variables['theme_hook_suggestions'][] = 'block__footer_x';
   }
 }
 
