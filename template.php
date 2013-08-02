@@ -260,6 +260,10 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     }
   }
   elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
+    // We need to add references to the cambridge_theme_left_navigation_link and cambridge_theme_left_navigation_block
+    // functions so that the left navigation menu renders correctly, but there isn't a way to do this with arrays as it
+    // can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
+
     require_once __DIR__ . '/includes/recursive_array_object.class.inc';
 
     $object = new RecursiveArrayObject($data['content']['#content']);
