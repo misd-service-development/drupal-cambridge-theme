@@ -1,0 +1,15 @@
+/* Stop active link in the local navigation appearing black */
+.campl-page-header a.active {
+    color: #fff;
+}
+
+/* Correct footer header colour as the header might not be a link */
+.campl-local-footer h3 {
+    color: #91b9a4;
+}
+
+/* Prevent conflict with unstyled lists and Drupal lists */
+.campl-unstyled-list .leaf, .campl-unstyled-list .expanded, .campl-unstyled-list .collapsed {
+    list-style: none;
+    padding: 0;
+}

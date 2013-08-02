@@ -1,0 +1,494 @@
+<?php
+
+$base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
+
+$has_page_title = isset($page['page_title']) && count($page['page_title']);
+$has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
+$has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
+
+?>
+
+<div class="campl-row campl-global-header">
+  <div class="campl-wrap clearfix">
+    <div class="campl-header-container campl-column8" id="global-header-controls">
+      <a href="http://www.cam.ac.uk" class="campl-main-logo">
+        <img alt="University of Cambridge" src="<?php print $base_theme_path; ?>/images/interface/main-logo-small.png"/>
+      </a>
+
+      <ul class="campl-unstyled-list campl-horizontal-navigation campl-global-navigation clearfix">
+        <li>
+          <a href="#study-with-us">Study at Cambridge</a>
+        </li>
+        <li>
+          <a href="#about-the-university">About the University</a>
+        </li>
+        <li>
+          <a href="http://www.cam.ac.uk/research" class="campl-no-drawer">Research at Cambridge</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="campl-column2">
+      <div class="campl-quicklinks">
+      </div>
+    </div>
+
+    <div class="campl-column2">
+
+      <div class="campl-site-search" id="site-search-btn">
+
+        <label for="header-search" class="hidden">Search site</label>
+
+        <div class="campl-search-input">
+          <form action="http://search.cam.ac.uk/web" method="get">
+            <input id="header-search" type="text" name="query" value="" placeholder="Search"/>
+
+            <input type="image" class="campl-search-submit"
+                   src="<?php print $base_theme_path; ?>/images/interface/btn-search-header.png"/>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="campl-row campl-global-header campl-search-drawer">
+  <div class="campl-wrap clearfix">
+    <form class="campl-site-search-form" id="site-search-container" action="">
+      <div class="campl-search-form-wrapper clearfix">
+        <input type="text" class="text" placeholder="Search"/>
+        <input type="image" class="campl-search-submit"
+               src="<?php print $base_theme_path; ?>/images/interface/btn-search.png"/>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="campl-row campl-global-navigation-drawer">
+
+  <div class="campl-wrap clearfix">
+    <div class="campl-column12 campl-home-link-container">
+      <a href="">Home</a>
+    </div>
+  </div>
+  <div class="campl-wrap clearfix">
+    <div class="campl-column12 campl-global-navigation-mobile-list campl-global-navigation-list">
+      <div class="campl-global-navigation-outer clearfix" id="study-with-us">
+        <ul class="campl-unstyled-list campl-global-navigation-header-container ">
+          <li><a href="http://www.cam.ac.uk/study-at-cambridge">Study at Cambridge</a></li>
+        </ul>
+        <div class="campl-column4">
+          <ul
+            class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
+            <li>
+              <a href="http://www.study.cam.ac.uk/undergraduate/">Undergraduate</a>
+              <ul class="campl-global-navigation-tertiary campl-unstyled-list">
+                <li>
+                  <a href="http://www.study.cam.ac.uk/undergraduate/courses/">Courses</a>
+                </li>
+                <li>
+                  <a href="http://www.study.cam.ac.uk/undergraduate/apply/">Applying</a>
+                </li>
+                <li>
+                  <a href="http://www.study.cam.ac.uk/undergraduate/events/">Events and open days</a>
+                </li>
+                <li>
+                  <a href="http://www.study.cam.ac.uk/undergraduate/finance/">Fees and finance</a>
+                </li>
+                <li>
+                  <a href="http://www.becambridge.com/">Student blogs and videos</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="campl-column4">
+          <ul
+            class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
+            <li>
+              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+              <ul class="campl-global-navigation-tertiary campl-unstyled-list">
+                <li>
+                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/whycam/">Why Cambridge</a>
+                </li>
+                <li>
+                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/studying/qualifdir/">Qualifications
+                    directory</a>
+                </li>
+                <li>
+                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/apply/">How to apply</a></li>
+                <li><a href="http://www.admin.cam.ac.uk/students/studentregistry/fees/">Fees and funding</a></li>
+                <li><a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/faq/index.html">Frequently asked
+                    questions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="campl-column4">
+          <ul class="campl-global-navigation-container campl-unstyled-list last">
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/international-cambridge/studying-at-cambridge">International
+                students</a>
+            </li>
+            <li>
+              <a href="http://www.ice.cam.ac.uk">Continuing education</a>
+            </li>
+            <li>
+              <a href="http://www.admin.cam.ac.uk/offices/education/epe/">Executive and professional education</a>
+            </li>
+            <li>
+              <a href="http://www.educ.cam.ac.uk">Courses in education</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="campl-global-navigation-outer clearfix" id="about-the-university">
+        <ul class="campl-global-navigation-header-container campl-unstyled-list">
+          <li><a href="http://www.cam.ac.uk/about-the-university">About the University</a></li>
+        </ul>
+        <div class="campl-column4">
+          <ul class="campl-global-navigation-container campl-unstyled-list">
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work">How the
+                University and Colleges work</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/history">History</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/visiting-the-university">Visiting the University</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/term-dates-and-calendars">Term dates and calendars</a>
+            </li>
+            <li class="last">
+              <a href="http://map.cam.ac.uk">Map</a>
+            </li>
+          </ul>
+        </div>
+        <div class="campl-column4">
+          <ul class="campl-global-navigation-container campl-unstyled-list">
+            <li>
+              <a href="http://www.cam.ac.uk/for-media">For media</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/video-and-audio">Video and audio</a>
+            </li>
+            <li>
+              <a href="http://webservices.admin.cam.ac.uk/faesearch/map.cgi">Find an expert</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/publications">Publications</a>
+            </li>
+            <li class="last">
+              <a href="http://www.cam.ac.uk/about-the-university/international-cambridge">International Cambridge</a>
+            </li>
+          </ul>
+        </div>
+        <div class="campl-column4">
+          <ul class="campl-global-navigation-container campl-unstyled-list">
+            <li>
+              <a href="http://www.cam.ac.uk/news">News</a>
+            </li>
+            <li>
+              <a href="http://www.admin.cam.ac.uk/whatson">Events</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/public-engagement">Public engagement</a>
+            </li>
+            <li>
+              <a href="http://www.jobs.cam.ac.uk">Jobs</a>
+            </li>
+            <li class="last">
+              <a href="http://www.philanthropy.cam.ac.uk">Giving to Cambridge</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="campl-global-navigation-outer clearfix" id="our-research">
+        <ul class="campl-global-navigation-header-container campl-unstyled-list">
+          <li><a href="">Research at Cambridge</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="campl-unstyled-list campl-quicklinks-list campl-global-navigation-container ">
+      <li>
+        <a href="http://www.cam.ac.uk/for-staff">For staff</a>
+      </li>
+      <li>
+        <a href="http://www.admin.cam.ac.uk/students/gateway">For current students</a>
+      </li>
+      <li>
+        <a href="http://www.alumni.cam.ac.uk">For alumni</a>
+      </li>
+      <li>
+        <a href="http://www.cam.ac.uk/for-business">For business</a>
+      </li>
+      <li>
+        <a href="http://www.cam.ac.uk/colleges-and-departments">Colleges &amp; departments</a>
+      </li>
+      <li>
+        <a href="http://www.cam.ac.uk/libraries-and-facilities">Libraries &amp; facilities</a>
+      </li>
+      <li>
+        <a href="http://www.cam.ac.uk/museums-and-collections">Museums &amp; collections</a>
+      </li>
+      <li class="last">
+        <a href="http://www.cam.ac.uk/email-and-phone-search">Email &amp; phone search</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="campl-row campl-page-header campl-section-page">
+  <div class="campl-wrap clearfix">
+    <div class="campl-column12">
+      <div class="campl-content-container <?php if ($logo): ?>campl-co-branding-container<?php endif; ?>">
+
+        <?php print $breadcrumb; ?>
+
+        <?php if (isset($page['breadcrumb'])) : ?>
+          <?php print render($page['breadcrumb']); ?>
+        <?php endif; ?>
+
+        <?php if ($logo): ?>
+        <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
+        <?php endif; ?>
+
+        <h1 class="campl-page-title"><?php print $site_name; ?></h1>
+
+        <!-- TODO
+           <p class="campl-mobile-parent"><a href=""><span class="campl-back-btn campl-menu-indicator"></span>Department A-Z</a></p>
+           -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php if (isset($page['horizontal_navigation'])) : ?>
+  <div class="campl-row campl-page-header">
+    <?php print render($page['horizontal_navigation']); ?>
+  </div>
+<?php endif; ?>
+
+<?php if ($has_page_title): ?>
+<div class="campl-row campl-page-header">
+  <div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
+    <?php if ($has_left_navigation): ?>
+    <div class="campl-column3 campl-spacing-column">
+      &nbsp;
+    </div>
+    <div class="campl-column9">
+      <?php else: ?>
+      <div class="campl-column12">
+        <?php endif; ?>
+        <div class="campl-content-container">
+          <?php print render($page['page_title']); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if ($has_left_navigation || isset($page['content']) || $messages || $has_sidebar) : ?>
+    <div class="campl-row campl-content <?php if ($has_page_title): print 'campl-recessed-content';
+    endif; ?>">
+      <div class="campl-wrap clearfix">
+        <?php if ($has_left_navigation) : ?>
+          <div class="campl-column3">
+            <div class="campl-tertiary-navigation">
+              <div class="campl-tertiary-navigation-structure">
+                <?php print render($page['left_navigation']); ?>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
+        <?php if (isset($page['content'])) : ?>
+          <?php
+          $columns = 12;
+          if ($has_left_navigation) {
+            $columns = $columns - 3;
+          }
+          if ($has_sidebar) {
+            $columns = $columns - 3;
+          }
+          ?>
+          <div class="campl-column<?php print $columns; ?>">
+
+            <?php if ($messages): ?>
+              <?php print $messages; ?>
+            <?php endif; ?>
+
+            <?php if ($tabs): ?>
+                <?php print render($tabs); ?>
+            <?php endif; ?>
+
+            <div class="campl-content-container" id="#page-content">
+              <?php print render($page['content']); ?>
+            </div>
+
+          </div>
+        <?php endif; ?>
+
+        <?php if ($has_sidebar) : ?>
+          <div class="campl-column3 campl-secondary-content">
+            <div class="campl-content-container">
+              <?php print render($page['sidebar']); ?>
+            </div>
+          </div>
+        <?php endif; ?>
+
+      </div>
+
+    </div>
+  <?php endif; ?>
+
+  <?php if (isset($page['footer'])) : ?>
+    <?php print render($page['footer']); ?>
+  <?php endif; ?>
+</div>
+
+<?php if (
+  (isset($page['footer_1']) && count($page['footer_1'])) ||
+  (isset($page['footer_2']) && count($page['footer_2'])) ||
+  (isset($page['footer_3']) && count($page['footer_3'])) ||
+  (isset($page['footer_4']) && count($page['footer_4']))
+) : ?>
+  <div class="campl-row campl-local-footer">
+    <div class="campl-wrap clearfix">
+      <div class="campl-column3 campl-footer-navigation">
+        <?php if (isset($page['footer_1'])) : ?>
+          <?php print render($page['footer_1']); ?>
+        <?php endif; ?>
+      </div>
+      <div class="campl-column3 campl-footer-navigation">
+        <?php if (isset($page['footer_2'])) : ?>
+          <?php print render($page['footer_2']); ?>
+        <?php endif; ?>
+      </div>
+      <div class="campl-column3 campl-footer-navigation">
+        <?php if (isset($page['footer_3'])) : ?>
+          <?php print render($page['footer_3']); ?>
+        <?php endif; ?>
+      </div>
+      <div class="campl-column3 campl-footer-navigation last">
+        <?php if (isset($page['footer_4'])) : ?>
+          <?php print render($page['footer_4']); ?>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
+
+<div class="campl-row campl-global-footer">
+  <div class="campl-wrap clearfix">
+    <div class="campl-column3 campl-footer-navigation">
+      <div class="campl-content-container campl-footer-logo">
+        <img alt="University of Cambridge" src="<?php print $base_theme_path; ?>/images/interface/main-logo-small.png"
+             class="campl-scale-with-grid"/>
+
+        <p>&#169; <?php print date('Y'); ?> University of Cambridge</p>
+        <ul class="campl-unstyled-list campl-global-footer-links">
+          <li>
+            <a href="http://www.cam.ac.uk/university-a-z">University A-Z</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/contact-the-university">Contact the University</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/about-this-site/accessibility">Accessibility</a>
+          </li>
+          <li>
+            <a href="http://www.admin.cam.ac.uk/univ/information/foi/">Freedom of information</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/about-this-site/terms-and-conditions">Terms and conditions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="campl-column3 campl-footer-navigation">
+      <div class="campl-content-container campl-navigation-list">
+
+        <div class="link-list">
+          <h3><a href="http://www.cam.ac.uk/study-at-cambridge">Study at Cambridge</a></h3>
+          <ul class="campl-unstyled-list">
+            <li>
+              <a href="http://www.study.cam.ac.uk/undergraduate/">Undergraduate</a>
+            </li>
+            <li>
+              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+            </li>
+            <li>
+              <a href="http://www.cam.ac.uk/about-the-university/international-cambridge/studying-at-cambridge">International
+                students</a>
+            </li>
+            <li>
+              <a href="http://www.ice.cam.ac.uk">Continuing education</a>
+            </li>
+            <li>
+              <a href="http://www.admin.cam.ac.uk/offices/education/epe/">Executive and professional education</a>
+            </li>
+            <li>
+              <a href="http://www.educ.cam.ac.uk">Courses in education</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="campl-column3 campl-footer-navigation">
+      <div class="campl-content-container campl-navigation-list">
+        <h3><a href="http://www.cam.ac.uk/about-the-university">About the University</a></h3>
+        <ul class="campl-unstyled-list campl-page-children">
+          <li>
+            <a href="http://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work">How the University
+              and Colleges work</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/about-the-university/visiting-the-university">Visiting the University</a>
+          </li>
+          <li>
+            <a href="http://map.cam.ac.uk">Map</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/news">News</a>
+          </li>
+          <li>
+            <a href="http://www.admin.cam.ac.uk/whatson">Events</a>
+          </li>
+          <li>
+            <a href="http://www.jobs.cam.ac.uk">Jobs</a>
+          </li>
+          <li>
+            <a href="http://www.philanthropy.cam.ac.uk">Giving to Cambridge</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="campl-column3 campl-footer-navigation last">
+      <div class="campl-content-container campl-navigation-list">
+        <h3><a href="http://www.cam.ac.uk/research">Research at Cambridge</a></h3>
+        <ul class="campl-unstyled-list">
+          <li>
+            <a href="http://www.cam.ac.uk/research/news">News</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/research/features">Features</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/research/discussion">Discussion</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/research/spotlight-on">Spotlight on...</a>
+          </li>
+          <li>
+            <a href="http://www.cam.ac.uk/research/research-at-cambridge">About research at Cambridge</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
