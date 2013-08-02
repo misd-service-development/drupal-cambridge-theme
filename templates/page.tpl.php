@@ -255,7 +255,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
         <?php endif; ?>
 
         <?php if ($logo): ?>
-        <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
+          <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
         <?php endif; ?>
 
         <h1 class="campl-page-title"><?php print $site_name; ?></h1>
@@ -319,7 +319,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
             <?php endif; ?>
 
             <?php if ($tabs): ?>
-                <?php print render($tabs); ?>
+              <?php print render($tabs); ?>
             <?php endif; ?>
 
             <div class="campl-content-container" id="#page-content">
