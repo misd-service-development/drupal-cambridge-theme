@@ -222,7 +222,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
   if (in_array($block->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     // Add wrapper to blocks in the local footer column regions.
-    if (is_array($data['content'])) {
+    if (array_key_exists('content', $data) && is_array($data['content'])) {
       $data['content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
     }
   }
