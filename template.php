@@ -205,6 +205,16 @@ function cambridge_theme_status_messages($variables) {
 }
 
 /**
+ * Implements theme_image().
+ */
+function cambridge_theme_image($variables) {
+  // Make sure class is added to all images.
+  $variables['attributes']['class'][] = 'campl-scale-with-grid';
+
+  return theme_image($variables);
+}
+
+/**
  * Implements hook_block_view_alter().
  */
 function cambridge_theme_block_view_alter(&$data, $block) {
