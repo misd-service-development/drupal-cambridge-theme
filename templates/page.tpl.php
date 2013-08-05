@@ -258,7 +258,9 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
           <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
         <?php endif; ?>
 
-        <h1 class="campl-page-title"><?php print $site_name; ?></h1>
+        <?php if ($site_name): ?>
+          <h1 class="campl-page-title"><?php print $site_name; ?></h1>
+        <?php endif; ?>
 
         <!-- TODO
            <p class="campl-mobile-parent"><a href=""><span class="campl-back-btn campl-menu-indicator"></span>Department A-Z</a></p>
