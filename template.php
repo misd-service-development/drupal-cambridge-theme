@@ -41,6 +41,16 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
  */
 function cambridge_theme_preprocess_html(&$variables) {
   $variables['attributes_array']['class'][] = 'campl-theme-' . theme_get_setting('colour_theme');
+
+  if (FALSE === module_exists('touch_icons')) {
+    drupal_add_html_head_link(
+      array(
+        'rel' => 'apple-touch-icon',
+        'href' => file_create_url(drupal_get_path('theme', 'cambridge_theme') . '/apple-touch-icon.png'),
+        'type' => 'image/png',
+      )
+    );
+  }
 }
 
 /**
