@@ -24,6 +24,7 @@ regions[footer_4] = 'Footer 4'
 
 features[] = logo
 features[] = name
+features[] = favicon
 
 settings[toggle_logo] = 0
 
