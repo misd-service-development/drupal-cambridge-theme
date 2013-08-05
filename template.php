@@ -54,17 +54,6 @@ function cambridge_theme_preprocess_html(&$variables) {
 }
 
 /**
- * Implements template_process_page().
- */
-function cambridge_theme_process_page(&$variables) {
-  // There isn't a default logo, so stop Drupal trying to display it.
-  $needle = drupal_get_path('theme', 'cambridge_theme') . '/logo.png';
-  if (substr($variables['logo'], -strlen($needle)) == $needle) {
-    $variables['logo'] = NULL;
-  }
-}
-
-/**
  * Implements theme_menu_local_tasks().
  */
 function cambridge_theme_menu_local_tasks(&$variables) {

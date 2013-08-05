@@ -24,5 +24,10 @@ function cambridge_theme_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('colour_scheme'),
   );
 
-  unset($form['logo']['default_logo']);
+  // Hide reference to non-existent default logo.
+  $form['logo']['default_logo']['#type'] = 'hidden';
+  $form['logo']['default_logo']['#default_value'] = 0;
+  unset($form['logo']['settings']['#states']);
+  $form['logo']['settings']['logo_path']['#description'] =
+    t('The path to the file you would like to use as your logo file.');
 }
