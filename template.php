@@ -258,47 +258,23 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       $data['content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
     }
   }
-  elseif (
+  elseif ($block->module === 'menu_block' && $block->region === 'horizontal_navigation') {
     // Add wrappers to the horizontal navigation regions.
-    (
-      in_array($block->module, array('menu', 'menu_block')) ||
-      (
-        $block->module === 'system' &&
-        in_array($block->delta, array('main-menu', 'management', 'navigation', 'user-menu'))
-      )
-    ) && $block->region === 'horizontal_navigation'
-  ) {
     $data['subject'] = NULL;
 
-    // Blocks from the menu block module have their content nested slightly, so detach it temporarily to make the array
-    // easier to handle.
-    if ($block->module === 'menu_block') {
-      $content = $data['content']['#content'];
-    }
-    else {
-      $content = $data['content'];
-    }
-
-    $content['#theme_wrappers'] = array('cambridge_theme_horizontal_navigation');
-    foreach ($content as $id => $item) {
-      if (isset($content[$id]['#below']) && count($content[$id]['#below'])) {
-        $content[$id]['#below']['#theme_wrappers'] = array('cambridge_theme_local_dropdown_menu');
-        foreach ($content[$id]['#below'] as $belowId => $below) {
+    $data['content']['#content']['#theme_wrappers'] = array('cambridge_theme_horizontal_navigation');
+    foreach ($data['content']['#content'] as $id => $item) {
+      if (isset($data['content']['#content'][$id]['#below']) && count($data['content']['#content'][$id]['#below'])) {
+        $data['content']['#content'][$id]['#below']['#theme_wrappers'] = array('cambridge_theme_local_dropdown_menu');
+        foreach ($data['content']['#content'][$id]['#below'] as $belowId => $below) {
           if ('#' === substr($belowId, 0, 1)) {
             continue;
           }
-          if (count($content[$id]['#below'][$belowId]['#below'])) {
-            $content[$id]['#below'][$belowId]['#below']['#theme_wrappers'] = array('cambridge_theme_local_dropdown_menu');
+          if (count($data['content']['#content'][$id]['#below'][$belowId]['#below'])) {
+            $data['content']['#content'][$id]['#below'][$belowId]['#below']['#theme_wrappers'] = array('cambridge_theme_local_dropdown_menu');
           }
         }
       }
-    }
-
-    if ($block->module === 'menu_block') {
-      $data['content']['#content'] = $content;
-    }
-    else {
-      $data['content'] = $content;
     }
   }
   elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
