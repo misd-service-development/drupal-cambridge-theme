@@ -295,16 +295,23 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     $object = new RecursiveArrayObject($data['content']['#content']);
 
-    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($object), RecursiveIteratorIterator::SELF_FIRST);
+    $replace_wrappers = function ($objects) use (&$replace_wrappers) {
+      foreach ($objects as $key => $object) {
+        if ('#' === substr($key, 0, 1)) {
+          continue;
+        }
 
-    foreach ($iterator as $key => $value) {
-      if ($key === '#theme') {
-        $iterator->getInnerIterator()->offsetSet($key, array('cambridge_theme_left_navigation_link'));
+        $object['#theme'] = array('cambridge_theme_left_navigation_link');
+
+        if (count($object['#below'])) {
+          $replace_wrappers($object['#below']);
+        }
       }
-      if ($key === '#theme_wrappers') {
-        $iterator->getInnerIterator()->offsetSet($key, array('cambridge_theme_left_navigation_block'));
-      }
-    }
+
+      $objects['#theme_wrappers'] = array('cambridge_theme_left_navigation_block');
+    };
+
+    $replace_wrappers($object);
 
     $data['content']['#content'] = $object->getArrayCopy();
   }
