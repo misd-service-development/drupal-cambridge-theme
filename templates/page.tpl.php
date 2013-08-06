@@ -316,7 +316,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
             $columns = $columns - 3;
           }
           ?>
-          <div class="campl-column<?php print $columns; ?> campl-main-content">
+          <div class="campl-column<?php print $columns; ?> campl-main-content" id="#page-content">
 
             <?php if ($messages): ?>
               <?php print $messages; ?>
@@ -326,9 +326,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
               <?php print render($tabs); ?>
             <?php endif; ?>
 
-            <div class="campl-content-container" id="#page-content">
-              <?php print render($page['content']); ?>
-            </div>
+            <?php print render($page['content']); ?>
 
           </div>
         <?php endif; ?>

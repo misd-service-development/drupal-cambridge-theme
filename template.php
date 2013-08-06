@@ -37,6 +37,15 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements template_preprocess_node().
+ */
+function cambridge_theme_preprocess_node(&$variables) {
+  if ($variables['teaser']) {
+    $variables['classes_array'][] = 'campl-content-container';
+  }
+}
+
+/**
  * Implements template_preprocess_html().
  */
 function cambridge_theme_preprocess_html(&$variables) {
@@ -50,6 +59,16 @@ function cambridge_theme_preprocess_html(&$variables) {
         'type' => 'image/png',
       )
     );
+  }
+}
+
+/**
+ * Implements theme_preprocess_field().
+ */
+function cambridge_theme_preprocess_field(&$variables, $hook) {
+  // Give container class to text fields.
+  if (in_array($variables['field_type_css'], array('text', 'text-long', 'text-with-summary', 'link-field'))) {
+    $variables['classes_array'][] = 'campl-content-container';
   }
 }
 
@@ -143,7 +162,21 @@ function cambridge_theme_left_navigation_link($variables) {
  * Implements template_preprocess_block().
  */
 function cambridge_theme_preprocess_block(&$variables) {
-  if (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
+  if ($variables['block']->region === 'content' &&
+    (
+      // it's not normal content
+      ($variables['block']->module !== 'system' || $variables['block']->delta !== 'main')
+      ||
+      // but it can be a form
+      isset($variables['elements']['#form_id'])
+      ||
+      // or a user profile
+      (isset($variables['elements']['#theme']) && $variables['elements']['#theme'] === 'user_profile')
+    )
+  ) {
+    $variables['classes_array'][] = 'campl-content-container';
+  }
+  elseif (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     $variables['classes_array'][] = 'campl-content-container campl-navigation-list';
     $variables['theme_hook_suggestions'][] = 'block__footer_x';
   }
