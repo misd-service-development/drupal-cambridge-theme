@@ -289,6 +289,10 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     require_once __DIR__ . '/includes/recursive_array_object.class.inc';
 
+    if (FALSE === isset($data['content']['#content'])) {
+      return;
+    }
+
     $object = new RecursiveArrayObject($data['content']['#content']);
 
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($object), RecursiveIteratorIterator::SELF_FIRST);
