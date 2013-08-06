@@ -49,7 +49,7 @@ function cambridge_theme_preprocess_node(&$variables) {
  * Implements template_preprocess_html().
  */
 function cambridge_theme_preprocess_html(&$variables) {
-  $variables['attributes_array']['class'][] = 'campl-theme-' . theme_get_setting('colour_scheme');
+  $variables['classes_array'][] = 'campl-theme-' . theme_get_setting('colour_scheme');
 
   if (FALSE === module_exists('touch_icons')) {
     drupal_add_html_head_link(

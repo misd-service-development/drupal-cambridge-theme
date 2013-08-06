@@ -31,7 +31,7 @@
     }</script>
 
 </head>
-<body<?php print $attributes; ?>>
+<body class="<?php print $classes; ?>" <?php print $attributes; ?>>
 
 <a href="#page-content" class="campl-skipTo"><?php print t('skip to content'); ?></a>
 
