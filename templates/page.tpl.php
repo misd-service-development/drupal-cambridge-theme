@@ -301,7 +301,9 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
       <div class="campl-wrap clearfix">
         <?php if ($has_left_navigation) : ?>
           <div class="campl-column3">
-            <?php print render($page['left_navigation']); ?>
+            <div class="campl-tertiary-navigation">
+              <?php print render($page['left_navigation']); ?>
+            </div>
           </div>
         <?php endif; ?>
         <?php if (isset($page['content'])) : ?>
@@ -314,7 +316,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
             $columns = $columns - 3;
           }
           ?>
-          <div class="campl-column<?php print $columns; ?>">
+          <div class="campl-column<?php print $columns; ?> campl-main-content">
 
             <?php if ($messages): ?>
               <?php print $messages; ?>
