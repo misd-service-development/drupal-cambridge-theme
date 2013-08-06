@@ -259,7 +259,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
         <?php endif; ?>
 
         <?php if ($site_name): ?>
-          <h1 class="campl-page-title"><?php print $site_name; ?></h1>
+          <h1 class="campl-page-title"><?php print !empty($section_title) ? $section_title : $site_name; ?></h1>
         <?php endif; ?>
 
         <!-- TODO
