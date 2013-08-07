@@ -13,6 +13,9 @@
           $parents_item_left = count($menu_trail_left) - 1;
           for ($i = 1; $i < $parents_item_left; $i++) {
             $menu_trail_url = drupal_lookup_path('alias', $menu_trail_left[$i]['link_path']);
+            if (FALSE === $menu_trail_url) {
+              $menu_trail_url = $menu_trail_left[$i]['link_path'];
+            }
             $url_path = base_path() . $menu_trail_url;
             print '<li><a href="' . $url_path . '">' . $menu_trail_left[$i]['title'] . '<span class="campl-vertical-breadcrumb-indicator"></span></a></li>';
           }
