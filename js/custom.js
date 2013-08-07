@@ -1,3 +1,5 @@
+(function($) {
+
 //create singleton to namespace js
 if (!projectlight) {
   var projectlight = {};
@@ -5,7 +7,7 @@ if (!projectlight) {
 
 //set up initial page variables - cached Jquery variables
 projectlight.init = function(){
-    var $=jQuery.noConflict();
+	
 	//temporary debugging element to allow developer to see exact screen width during development
 	$("body").append("<p style='color:red;z-index:100;position:absolute;top:5px;left:5px' id='pagewidth'></p>")
 	
@@ -180,8 +182,6 @@ projectlight.init = function(){
 
 
 projectlight.setGlobalNavigationColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	//for each section, get children, measure height of each, set height of each child
 	$(".campl-global-navigation-outer").each(function(){
 		var $childrenOfList = $(this).find(".campl-global-navigation-container");
@@ -195,14 +195,10 @@ projectlight.setGlobalNavigationColumnHeight = function(){
 }
 
 projectlight.removeGlobalNavigationColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	$('.campl-global-navigation-container').removeAttr("style");
 }
 
 projectlight.setSectionListChildrenColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	//for each section list, get section-list-children, measure height of each, set height of each child
 	$(".campl-section-list-row").each(function(){
 		var $childrenOfList = $(this).find(".campl-section-list-children");
@@ -212,14 +208,10 @@ projectlight.setSectionListChildrenColumnHeight = function(){
 }
 
 projectlight.removeSectionListChildrenColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	$('.campl-section-list-children').removeAttr("style");
 }
 
 projectlight.setNavigationColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	//reset all values to begin with to ensure layout is changing on ipad orientation change
 	$('.campl-global-navigation li a').removeAttr("style");
 
@@ -229,8 +221,7 @@ projectlight.setNavigationColumnHeight = function(){
 
 //force main content column min-height to the same height as the navigation column	
 projectlight.setContentColumnHeight = function(){
-    var $=jQuery.noConflict();
-
+	
 	//reset before adding further height
 	$('.campl-tertiary-navigation, .campl-secondary-content, .campl-main-content').removeAttr("style");
 	var maxColumnHeight = Math.max($('.campl-secondary-content').height(), $('.campl-tertiary-navigation').height(), $(".campl-main-content").height());
@@ -256,15 +247,11 @@ projectlight.setContentColumnHeight = function(){
 };
 
 projectlight.removeNavigationColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	//had to remove style attribute, as setting height back to auto would not work
 	$('.campl-global-navigation li a').removeAttr("style");
 };
 
 projectlight.removeContentColumnHeight = function(){
-    var $=jQuery.noConflict();
-
 	//had to remove style attribute, as setting height back to auto would not work
 	$('.campl-tertiary-navigation, .campl-secondary-content, .campl-main-content').removeAttr("style");
 	$('.campl-secondary-content, .campl-main-content').show();
@@ -288,8 +275,6 @@ projectlight.removeFooterColumnsHeight = function(){
 
 
 projectlight.initTables = function(){
-    var $=jQuery.noConflict();
-
 	/* FULLY EXPANDED RESPONSIVE TABLE SOLUTION */
 	//responsive table solution
 	var $tableContainer = $(".campl-responsive-table");
@@ -374,8 +359,6 @@ projectlight.initTables = function(){
 /**  LOCAL NAVIGATION CONTROLS updated code taken from sony.com **/
 //this controls both the dropdowns and graphical style of the desktop navigation and the sliding panels of the mobile navigation
 projectlight.localNav=(function(){
-    var $=jQuery.noConflict();
-
 	var $openMenu,$navigation,$navContainer,$topUL,$topListItems,$allListItems,$links,$secondLevelListitems,$allMenuLists,n,$allNavLinks,menuPosition=0,m;
 	return{
 		init:function(u){
@@ -429,7 +412,8 @@ projectlight.localNav=(function(){
 		}
 	};
 	function setupNavigation(){
-		$navContainer = $navigation.find(".campl-local-navigation-container");
+		
+		$navContainer = $navigation.children(".campl-local-navigation-container"),
 		$topUL = $navContainer.children("ul");
 		$topListItems = $topUL.children("li");
 		$allListItems = $topUL.find("li");
@@ -446,7 +430,7 @@ projectlight.localNav=(function(){
 		
 		//need to dynamically append sub class to elements that have children
 		$allListItems.has('ul').addClass("campl-sub")
-
+		
 		//this needs to be added to browsers with media queries only to prevent IE7 adding gap above items with children in desktop layout
 		//for all the list items that have children append forward indicator arrow
 		if(Modernizr.mq('only all')){
@@ -979,8 +963,6 @@ projectlight.createCarousel = function(){
 
 //only mark external links inside of the main content area as denoted by the campl-skipTo ID
 projectlight.markExternalLinks = function(){
-    var $=jQuery.noConflict();
-
 	if (jQuery.browser.msie) {
 		$("#content a[href*='cam.ac.uk']").not(".campl-carousel a[href*='http://']").addClass("campl-external").attr({
 			"title": $(this).attr("title")+" (Link to an external website)"
@@ -995,7 +977,8 @@ projectlight.markExternalLinks = function(){
 }
 
 //DOM ready 
-jQuery(document).ready(function ($) {
+$(function() {
+
 	//instantiate all the DOM elements which require javascript rendering
 	projectlight.init();
 	projectlight.initTables();
@@ -1166,7 +1149,7 @@ jQuery(document).ready(function ($) {
 	
 })
 
-
+})(jQuery);
 
 
 
