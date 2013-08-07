@@ -3,6 +3,7 @@
 $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
 
 $has_page_title = isset($page['page_title']) && count($page['page_title']);
+$has_carousel = isset($page['carousel']) && count($page['carousel']);
 $has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
 $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
 
@@ -276,6 +277,16 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
   </div>
 <?php endif; ?>
 
+<?php if ($has_carousel) : ?>
+  <div class="campl-row campl-page-header">
+    <div class="campl-wrap clearfix">
+      <div class="campl-column9 campl-recessed-carousel">
+        <?php print render($page['carousel']); ?>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
+
 <?php if ($has_page_title): ?>
 <div class="campl-row campl-page-header">
   <div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
@@ -296,7 +307,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
   <?php endif; ?>
 
   <?php if ($has_left_navigation || isset($page['content']) || $messages || $has_sidebar) : ?>
-    <div class="campl-row campl-content <?php if ($has_page_title): print 'campl-recessed-content';
+    <div class="campl-row campl-content  <?php if ($has_page_title || $has_carousel): print 'campl-recessed-content';
     endif; ?>">
       <div class="campl-wrap clearfix">
         <?php if ($has_left_navigation) : ?>
@@ -332,7 +343,8 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
         <?php endif; ?>
 
         <?php if ($has_sidebar) : ?>
-          <div class="campl-column3 campl-secondary-content">
+          <div class="campl-column3 campl-secondary-content <?php if ($has_carousel):
+            print 'campl-recessed-secondary-content'; endif; ?>">
             <div class="campl-content-container">
               <?php print render($page['sidebar']); ?>
             </div>
