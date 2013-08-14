@@ -29,6 +29,7 @@
       Typekit.load();
     } catch (e) {
     }</script>
+  <script type="text/javascript">document.documentElement.className += " js";</script>
 
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
