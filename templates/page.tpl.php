@@ -345,9 +345,7 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
         <?php if ($has_sidebar) : ?>
           <div class="campl-column3 campl-secondary-content <?php if ($has_carousel):
             print 'campl-recessed-secondary-content'; endif; ?>">
-            <div class="campl-content-container">
-              <?php print render($page['sidebar']); ?>
-            </div>
+            <?php print render($page['sidebar']); ?>
           </div>
         <?php endif; ?>
 

@@ -23,13 +23,3 @@
 .campl-vertical-breadcrumb-children li.leaf {
     padding: 5px 5px 5px 0;
 }
-
-/* In case a child doesn't know that it's already in a content container. */
-.campl-content-container .campl-content-container {
-    padding: 0;
-}
-
-/* Reduce padding when content containers are next to each other. */
-.campl-content-container + .campl-content-container {
-    padding-top: 0;
-}
