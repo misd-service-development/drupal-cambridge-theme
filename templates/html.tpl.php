@@ -20,7 +20,7 @@
 
   <title><?php print $head_title; ?></title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <?php print $styles; ?>
 
@@ -32,6 +32,7 @@
   <script type="text/javascript">document.documentElement.className += " js";</script>
 
 </head>
+
 <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
 
 <a href="#page-content" class="campl-skipTo"><?php print t('skip to content'); ?></a>
