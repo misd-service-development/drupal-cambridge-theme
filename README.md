@@ -32,7 +32,7 @@ Using the theme
 - Uncheck the 'Expand all children of this tree' option.
 - Check the 'Sort menu tree by the active menu item's trail' option.
 - Set the region to 'Left Navigation' for the University of Cambridge theme.
-- Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings.
+- Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
 
 ### Adding the page title
@@ -43,7 +43,7 @@ Using the theme
 - Set the 'Block description' to something descriptive (eg 'Page title').
 - Set the text format to 'PHP Code'.
 - Set the region to 'Page Title' for the University of Cambridge theme.
-- Add '&lt;front&gt;' to the 'Show block on specific pages' settings.
+- Add '&lt;front&gt;' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
 
 Optional module integration
