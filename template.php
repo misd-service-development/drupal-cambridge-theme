@@ -160,6 +160,9 @@ function cambridge_theme_preprocess_block(&$variables) {
       ||
       // or a user profile
       (isset($variables['elements']['#theme']) && $variables['elements']['#theme'] === 'user_profile')
+      ||
+      // or an empty front page
+      isset($variables['elements']['default_message'])
     )
     &&
     // it's not a view block
