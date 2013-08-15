@@ -29,6 +29,6 @@ features[] = favicon
 
 settings[toggle_logo] = 0
 
-settings[colour_theme] = 1
+settings[colour_scheme] = 1
 
 files[] = template.php
