@@ -32,7 +32,7 @@ Using the theme
 - Uncheck the 'Expand all children of this tree' option.
 - Check the 'Sort menu tree by the active menu item's trail' option.
 - Set the region to 'Left Navigation' for the University of Cambridge theme.
-- Add '&lt;front&gt;' to the 'Show block on specific pages' settings.
+- Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings.
 - Click 'Save block'.
 
 ### Adding the page title
