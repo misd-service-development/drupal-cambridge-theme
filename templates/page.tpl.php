@@ -288,75 +288,70 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
 <?php endif; ?>
 
 <?php if ($has_page_title): ?>
-<div class="campl-row campl-page-header">
-  <div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
-    <?php if ($has_left_navigation): ?>
-    <div class="campl-column3 campl-spacing-column">
-      &nbsp;
-    </div>
-    <div class="campl-column9">
-      <?php else: ?>
-      <div class="campl-column12">
-        <?php endif; ?>
+  <div class="campl-row campl-page-header">
+    <div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
+      <?php if ($has_left_navigation): ?>
+        <div class="campl-column3 campl-spacing-column">
+          &nbsp;
+        </div>
+      <?php endif; ?>
+
+      <div class="<?php print $has_left_navigation ? 'campl-column9' : 'campl-column12'; ?>">
         <div class="campl-content-container">
           <?php print render($page['page_title']); ?>
         </div>
       </div>
     </div>
   </div>
-  <?php endif; ?>
+<?php endif; ?>
 
-  <?php if ($has_left_navigation || isset($page['content']) || $messages || $has_sidebar) : ?>
-    <div class="campl-row campl-content  <?php if ($has_page_title || $has_carousel): print 'campl-recessed-content';
-    endif; ?>">
-      <div class="campl-wrap clearfix">
-        <?php if ($has_left_navigation) : ?>
-          <div class="campl-column3">
-            <div class="campl-tertiary-navigation">
-              <?php print render($page['left_navigation']); ?>
-            </div>
+<?php if ($has_left_navigation || isset($page['content']) || $messages || $has_sidebar) : ?>
+  <div class="campl-row campl-content
+    <?php if ($has_page_title || $has_carousel): print 'campl-recessed-content'; endif; ?>">
+    <div class="campl-wrap clearfix">
+      <?php if ($has_left_navigation) : ?>
+        <div class="campl-column3">
+          <div class="campl-tertiary-navigation">
+            <?php print render($page['left_navigation']); ?>
           </div>
-        <?php endif; ?>
-        <?php if (isset($page['content'])) : ?>
-          <?php
-          $columns = 12;
-          if ($has_left_navigation) {
-            $columns = $columns - 3;
-          }
-          if ($has_sidebar) {
-            $columns = $columns - 3;
-          }
-          ?>
-          <div class="campl-column<?php print $columns; ?> campl-main-content" id="#page-content">
+        </div>
+      <?php endif; ?>
+      <?php if (isset($page['content'])) : ?>
+        <?php
+        $columns = 12;
+        if ($has_left_navigation) {
+          $columns = $columns - 3;
+        }
+        if ($has_sidebar) {
+          $columns = $columns - 3;
+        }
+        ?>
+        <div class="campl-column<?php print $columns; ?> campl-main-content" id="#page-content">
 
-            <?php if ($messages): ?>
-              <?php print $messages; ?>
-            <?php endif; ?>
+          <?php if ($messages): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
 
-            <?php if ($tabs): ?>
-              <?php print render($tabs); ?>
-            <?php endif; ?>
+          <?php if ($tabs): ?>
+            <?php print render($tabs); ?>
+          <?php endif; ?>
 
-            <?php print render($page['content']); ?>
+          <?php print render($page['content']); ?>
 
-          </div>
-        <?php endif; ?>
+        </div>
+      <?php endif; ?>
 
-        <?php if ($has_sidebar) : ?>
-          <div class="campl-column3 campl-secondary-content <?php if ($has_carousel):
-            print 'campl-recessed-secondary-content'; endif; ?>">
-            <?php print render($page['sidebar']); ?>
-          </div>
-        <?php endif; ?>
-
-      </div>
+      <?php if ($has_sidebar) : ?>
+        <div class="campl-column3 campl-secondary-content <?php if ($has_carousel):
+          print 'campl-recessed-secondary-content'; endif; ?>">
+          <?php print render($page['sidebar']); ?>
+        </div>
+      <?php endif; ?>
 
     </div>
-  <?php endif; ?>
 
-  <?php if (isset($page['footer'])) : ?>
-    <?php print render($page['footer']); ?>
-  <?php endif; ?>
+  </div>
+<?php endif; ?>
 
 <?php if (
   (isset($page['footer_1']) && count($page['footer_1'])) ||
