@@ -6,6 +6,7 @@ $has_page_title = isset($page['page_title']) && count($page['page_title']);
 $has_carousel = isset($page['carousel']) && count($page['carousel']);
 $has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
 $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
+$has_partnerships = isset($page['partnerships']) && count($page['partnerships']);
 
 ?>
 
@@ -345,6 +346,14 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
         <div class="campl-column3 campl-secondary-content <?php if ($has_carousel):
           print 'campl-recessed-secondary-content'; endif; ?>">
           <?php print render($page['sidebar']); ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($has_partnerships) : ?>
+        <div class="campl-column12 campl-partnership-branding">
+          <div class="campl-content-container campl-side-padding">
+            <?php print render($page['partnerships']); ?>
+          </div>
         </div>
       <?php endif; ?>
 
