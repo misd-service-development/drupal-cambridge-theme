@@ -357,7 +357,6 @@ $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
   <?php if (isset($page['footer'])) : ?>
     <?php print render($page['footer']); ?>
   <?php endif; ?>
-</div>
 
 <?php if (
   (isset($page['footer_1']) && count($page['footer_1'])) ||
