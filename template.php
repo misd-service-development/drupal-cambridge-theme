@@ -300,7 +300,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
         $object['#theme'] = array('cambridge_theme_left_navigation_link');
 
-        if (count($object['#below'])) {
+        if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
           $replace_wrappers($object['#below']);
         }
       }
