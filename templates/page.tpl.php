@@ -327,7 +327,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           $columns = $columns - 3;
         }
         ?>
-        <div class="campl-column<?php print $columns; ?> campl-main-content" id="#page-content">
+        <div class="campl-column<?php print $columns; ?> campl-main-content" id="page-content">
 
           <?php if ($messages): ?>
             <?php print $messages; ?>
