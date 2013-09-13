@@ -171,7 +171,13 @@ function cambridge_theme_preprocess_block(&$variables) {
     $variables['classes_array'][] = 'campl-content-container';
   }
   elseif ($variables['block']->region === 'sidebar') {
-    $variables['classes_array'][] = 'campl-content-container';
+    if ($variables['block']->module === 'views') {
+      $variables['title_attributes_array']['class'] = 'campl-content-container';
+      $variables['title_attributes_array']['class'] = 'campl-no-bottom-padding';
+    }
+    else {
+      $variables['classes_array'][] = 'campl-content-container';
+    }
   }
   elseif (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     $variables['classes_array'][] = 'campl-content-container campl-navigation-list';
