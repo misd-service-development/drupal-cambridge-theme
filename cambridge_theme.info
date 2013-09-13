@@ -10,6 +10,7 @@ stylesheets[all][] = "css/drupal.css"
 scripts[] = 'js/custom.js'
 scripts[] = 'js/libs/ios-orientationchange-fix.js'
 scripts[] = 'js/libs/modernizr.js'
+scripts[] = 'js/drupal.js'
 
 regions[breadcrumb] = 'Breadcrumb'
 regions[page_title] = 'Page Title'
