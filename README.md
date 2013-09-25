@@ -60,17 +60,3 @@ You can replace Drupal's native breadcrumbs with the [Easy breadcrumb](https://d
 ### Touch Icons
 
 Drupal allows you to change the University's favicon natively, but to change the Web Clip icon for iOS devices install the [Touch Icons](https://drupal.org/project/touch_icons) module.
-
-### Views
-
-A carousel can be created using the Views module.
-
-The requirements are:
-
-- The view is called 'Carousel' and has one or more block displays.
-- The blocks are placed in the 'Carousel' region.
-- The format is an unordered 'HTML list', the row class is 'campl-slide campl-column12' and the list class is 'campl-unstyled-list campl-slides'.
-- There are 2 fields:
-    1. An image (886x432), which has the field class 'image-container' and is linked to the relevant URL.
-    2. A caption, which has the field class 'campl-slide-caption', is rewritten to '&lt;span class="campl-slide-caption-txt"&gt;[CAPTION_FIELD_PATTERN]</span>' and is linked to the relevant URL.
-- All default views classes are turned off.
