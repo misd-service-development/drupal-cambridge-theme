@@ -287,6 +287,38 @@ function cambridge_theme_block_view_alter(&$data, $block) {
         }
       }
     }
+
+    // We need to add the campl-current-page class to the current page, but there isn't a way to do this with arrays as
+    // it can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
+
+    require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+
+    $object = new RecursiveArrayObject($data['content']['#content']);
+
+    $find_active = function ($objects) use (&$find_active) {
+      foreach ($objects as $key => $object) {
+        if ('#' === substr($key, 0, 1)) {
+          continue;
+        }
+
+        if (in_array('active', (array) $object['#attributes']['class'])) {
+          $object['#attributes']['class'][] = 'campl-current-page';
+          return TRUE;
+        }
+
+        if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
+          if (TRUE === $find_active($object['#below'])) {
+            return TRUE;
+          }
+        }
+      }
+
+      return FALSE;
+    };
+
+    $find_active($object);
+
+    $data['content']['#content'] = $object->getArrayCopy();
   }
   elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
     // Forcibly disable the block title.
@@ -324,6 +356,21 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     $data['content']['#content'] = $object->getArrayCopy();
   }
+}
+
+/**
+ * Implements hook_theme_link().
+ */
+function cambridge_theme_link($variables) {
+  if (
+    isset($variables['options']['attributes']['class'])
+    &&
+    in_array('active-trail', $variables['options']['attributes']['class'])
+  ) {
+    $variables['options']['attributes']['class'][] = 'campl-selected';
+  }
+
+  return theme_link($variables);
 }
 
 /**
