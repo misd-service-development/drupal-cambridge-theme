@@ -9,8 +9,18 @@
           '">' . variable_get('site_name') . ' <span class="campl-vertical-breadcrumb-indicator"></span></a></li>';
 
         $menu_trail_left = menu_get_active_trail('node/' . arg(1));
-        if ($menu_trail_left) {
+
+        if (count($menu_trail_left) > 2) {
+          $this_item = end($menu_trail_left);
+          $parent_item = prev($menu_trail_left);
+          reset($menu_trail_left);
+
           $parents_item_left = count($menu_trail_left) - 1;
+
+          if ($this_item['has_children'] == FALSE) {
+            $parents_item_left--;
+          }
+
           for ($i = 1; $i < $parents_item_left; $i++) {
             $menu_trail_url = drupal_lookup_path('alias', $menu_trail_left[$i]['link_path']);
             if (FALSE === $menu_trail_url) {
@@ -24,7 +34,33 @@
       </ul>
 
       <ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
-        <?php print render($content); ?>
+        <?php if (count($menu_trail_left) > 2 && $this_item['has_children'] == FALSE): ?>
+          <li class="campl-selected">
+            <a href="<?php print base_path() . drupal_lookup_path(
+                'alias',
+                $parent_item['link_path']
+              ); ?>"><?php print $parent_item['link_title']; ?></a>
+            <ul class="campl-unstyled-list campl-vertical-breadcrumb-children">
+              <?php print render($content); ?>
+            </ul>
+          </li>
+          <?php
+          $uncles = cambridge_theme_get_menu_siblings($parent_item);
+
+          foreach ($uncles as $uncle) {
+            if ($uncle->mlid == $parent_item['mlid']) {
+              continue;
+            }
+
+            print '<li><a href="' . base_path() . drupal_lookup_path(
+                'alias',
+                $uncle->link_path
+              ) . '">' . $uncle->link_title . '</a></li>';
+          }
+          ?>
+        <?php else: ?>
+          <?php print render($content); ?>
+        <?php endif; ?>
       </ul>
 
     </div>

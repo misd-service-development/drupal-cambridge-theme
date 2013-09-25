@@ -412,3 +412,29 @@ function theme_cambridge_easy_breadcrumb($variables) {
 
   return $html;
 }
+
+/**
+ * Find siblings for a menu link.
+ *
+ * @param $menu_link
+ *   A menu link.
+ *
+ * @return
+ *   An array of menu link siblings.
+ */
+function cambridge_theme_get_menu_siblings($menu_link) {
+  $parent = _menu_link_find_parent($menu_link);
+
+  if (!$parent) {
+    // Top level, so fake what we need.
+    $parent = array(
+      'menu_name' => $menu_link['menu_name'],
+      'mlid' => 0,
+    );
+  }
+
+  return db_query(
+    "SELECT mlid, plid, link_path, link_title FROM {menu_links} WHERE menu_name=:menu AND plid=:mlid AND hidden=0 ORDER BY weight, link_title",
+    array(':menu' => $parent['menu_name'], ':mlid' => $parent['mlid'])
+  )->fetchAllAssoc('mlid');
+}
