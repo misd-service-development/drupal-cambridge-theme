@@ -46,6 +46,10 @@ Using the theme
 - Add '&lt;front&gt;' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
 
+### Creating teasers, carousels etc
+
+These can be created in Views using fields by setting it to output the right HTML tags and add classes as the right points. This is, however, difficult and repetitive. Node view modes should be used instead, but can't be provided as part of the theme. These are available in Features are instead (such as [teasers](https://github.com/misd-service-development/drupal-feature-teasers) and [carousels](https://github.com/misd-service-development/drupal-feature-carousel)).
+
 Optional module integration
 ---------------------------
 
