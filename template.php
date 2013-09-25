@@ -156,6 +156,23 @@ function cambridge_theme_preprocess_block(&$variables) {
       // or a user profile
       (isset($variables['elements']['#theme']) && $variables['elements']['#theme'] === 'user_profile')
       ||
+      // or a default Drupal not found message
+      (
+        isset($variables['elements']['main']['#children'])
+        &&
+        $variables['elements']['main']['#children'] == t(
+          'The requested page "@path" could not be found.',
+          array('@path' => request_uri())
+        )
+      )
+      ||
+      // or a default Drupal access denied message
+      (
+        isset($variables['elements']['main']['#children'])
+        &&
+        $variables['elements']['main']['#children'] == t('You are not authorized to access this page.')
+      )
+      ||
       // or an empty front page
       isset($variables['elements']['default_message'])
     )
