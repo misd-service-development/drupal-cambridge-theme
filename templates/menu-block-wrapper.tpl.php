@@ -48,7 +48,7 @@
           $uncles = cambridge_theme_get_menu_siblings($parent_item);
 
           foreach ($uncles as $uncle) {
-            if ($uncle->mlid == $parent_item['mlid']) {
+            if ($uncle->mlid == $parent_item['mlid'] || $uncle->link_title == t('Home')) {
               continue;
             }
 
