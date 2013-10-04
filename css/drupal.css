@@ -20,7 +20,7 @@
 }
 
 /* Prevent conflict with vertical breadcrumb children lists and Drupal lists */
-.campl-vertical-breadcrumb-children li.leaf {
+.campl-vertical-breadcrumb-children li.leaf, .campl-vertical-breadcrumb-children li.collapsed {
     padding: 5px 5px 5px 0;
 }
 
