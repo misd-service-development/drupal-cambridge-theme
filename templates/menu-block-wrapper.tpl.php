@@ -36,10 +36,16 @@
       <ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
         <?php if (count($menu_trail_left) > 2 && $this_item['has_children'] == FALSE): ?>
           <li class="campl-selected">
-            <a href="<?php print base_path() . drupal_lookup_path(
-                'alias',
-                $parent_item['link_path']
-              ); ?>"><?php print $parent_item['link_title']; ?></a>
+            <?php
+
+            $parent_item_url = drupal_lookup_path('alias', $parent_item['link_path']);
+            if (FALSE === $parent_item_url) {
+              $parent_item_url = $parent_item['link_path'];
+            }
+            $url_path = base_path() . $parent_item_url;
+
+            ?>
+            <a href="<?php print $url_path; ?>"><?php print $parent_item['link_title']; ?></a>
             <ul class="campl-unstyled-list campl-vertical-breadcrumb-children">
               <?php print render($content); ?>
             </ul>
@@ -52,10 +58,13 @@
               continue;
             }
 
-            print '<li><a href="' . base_path() . drupal_lookup_path(
-                'alias',
-                $uncle->link_path
-              ) . '">' . $uncle->link_title . '</a></li>';
+            $uncle_url = drupal_lookup_path('alias', $uncle->link_path);
+            if (FALSE === $uncle_url) {
+              $uncle_url = $uncle->link_path;
+            }
+            $url_path = base_path() . $uncle_url;
+
+            print '<li><a href="' . $url_path . '">' . $uncle->link_title . '</a></li>';
           }
           ?>
         <?php else: ?>
