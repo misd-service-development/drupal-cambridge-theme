@@ -13,7 +13,6 @@ scripts[] = 'js/libs/modernizr.js'
 scripts[] = 'js/drupal.js'
 
 regions[breadcrumb] = 'Breadcrumb'
-regions[page_title] = 'Page Title'
 regions[horizontal_navigation] = 'Horizontal Navigation'
 regions[carousel] = 'Carousel'
 regions[left_navigation] = 'Left Navigation'

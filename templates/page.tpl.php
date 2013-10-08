@@ -2,8 +2,8 @@
 
 $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
 
-$has_page_title = isset($page['page_title']) && count($page['page_title']);
 $has_carousel = isset($page['carousel']) && count($page['carousel']);
+$has_page_title = !$is_front && !$has_carousel && $title && $title != '';
 $has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
 $has_sub_content = isset($page['sub_content']) && count($page['sub_content']);
 $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
@@ -297,7 +297,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
       <div class="<?php print $has_left_navigation ? 'campl-column9' : 'campl-column12'; ?>">
         <div class="campl-content-container">
-          <?php print render($page['page_title']); ?>
+          <h1 class="campl-sub-title"><?php print $title; ?></h1>
         </div>
       </div>
     </div>

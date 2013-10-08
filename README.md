@@ -35,17 +35,6 @@ Using the theme
 - Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
 
-### Adding the page title
-
-- Enable the 'PHP filter' module.
-- Go to admin/structure/block and click 'Add block'.
-- Set 'Block Title' to '&lt;none&gt;'.
-- Set the 'Block description' to something descriptive (eg 'Page title').
-- Set the text format to 'PHP Code'.
-- Set the region to 'Page Title' for the University of Cambridge theme.
-- Add '&lt;front&gt;' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
-- Click 'Save block'.
-
 ### Creating teasers, carousels etc
 
 These can be created in Views using fields by setting it to output the right HTML tags and add classes as the right points. This is, however, difficult and repetitive. Node view modes should be used instead, but can't be provided as part of the theme. These are available in Features are instead (such as [teasers](https://github.com/misd-service-development/drupal-feature-teasers) and [carousels](https://github.com/misd-service-development/drupal-feature-carousel)).
