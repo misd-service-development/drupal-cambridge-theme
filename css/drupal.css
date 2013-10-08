@@ -33,3 +33,8 @@
 .campl-carousel .contextual-links li {
     float: none;
 }
+
+/* Make sure news listing items end with a border */
+.campl-news-listing:last-child {
+    border-bottom: 1px dashed #b5b5b5;
+}

@@ -5,6 +5,7 @@ $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
 $has_page_title = isset($page['page_title']) && count($page['page_title']);
 $has_carousel = isset($page['carousel']) && count($page['carousel']);
 $has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
+$has_sub_content = isset($page['sub_content']) && count($page['sub_content']);
 $has_sidebar = isset($page['sidebar']) && count($page['sidebar']);
 $has_partnerships = isset($page['partnerships']) && count($page['partnerships']);
 
@@ -323,22 +324,35 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
         if ($has_left_navigation) {
           $columns = $columns - 3;
         }
+        if ($has_sub_content) {
+          $columns = $columns - 3;
+        }
         if ($has_sidebar) {
           $columns = $columns - 3;
         }
         ?>
         <div class="campl-column<?php print $columns; ?> campl-main-content" id="page-content">
 
-          <?php if ($messages): ?>
-            <?php print $messages; ?>
-          <?php endif; ?>
+          <div class="<?php if ($has_sub_content): ?>campl-sub-column-right-border<?php endif; ?>">
 
-          <?php if ($tabs): ?>
-            <?php print render($tabs); ?>
-          <?php endif; ?>
+            <?php if ($messages): ?>
+              <?php print $messages; ?>
+            <?php endif; ?>
 
-          <?php print render($page['content']); ?>
+            <?php if ($tabs): ?>
+              <?php print render($tabs); ?>
+            <?php endif; ?>
 
+            <?php print render($page['content']); ?>
+
+          </div>
+
+        </div>
+      <?php endif; ?>
+
+      <?php if ($has_sub_content) : ?>
+        <div class="campl-column3 campl-sub-column-left-border campl-main-content-sub-column">
+          <?php print render($page['sub_content']); ?>
         </div>
       <?php endif; ?>
 

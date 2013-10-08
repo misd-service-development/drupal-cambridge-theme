@@ -2,28 +2,29 @@
 
     // Tweak the proportions of teaser image to teaser text. This should be moved to the templating layer instead.
 
-    var hasLeftNavigation = $('.campl-tertiary-navigation').length > 0;
-    var hasSidebar = $('.campl-secondary-content').length > 0;
+    var columns = 12;
 
-    if (!(hasLeftNavigation && hasSidebar)) {
-        $('.campl-horizontal-teaser-img').parent('.campl-column6').each(function () {
-            var columns;
-            if ((!hasLeftNavigation && !hasSidebar)) {
-                columns = 3;
-            } else {
-                columns = 4;
-            }
-            $(this).removeClass('campl-column6').addClass('campl-column' + columns);
-        });
-        $('.campl-horizontal-teaser-txt').parent('.campl-column6').each(function () {
-            var columns;
-            if ((!hasLeftNavigation && !hasSidebar)) {
-                columns = 9;
-            } else {
-                columns = 8;
-            }
-            $(this).removeClass('campl-column6').addClass('campl-column' + columns);
-        });
+    if ($('.campl-tertiary-navigation').length > 0) {
+        columns = columns - 3;
     }
+    if ($('.campl-main-content-sub-column').length > 0) {
+        columns = columns - 3;
+    }
+    if ($('.campl-secondary-content').length > 0) {
+        columns = columns - 3;
+    }
+
+    var imageWidth = 6;
+
+    if (columns == 12) {
+        imageWidth = 3;
+    } else if (columns >= 9) {
+        imageWidth = 4;
+    }
+
+    var textWidth = 12 - imageWidth;
+
+    $('.campl-horizontal-teaser-img').parent('.campl-column6').removeClass('campl-column6').addClass('campl-column' + imageWidth);
+    $('.campl-horizontal-teaser-txt').parent('.campl-column6').removeClass('campl-column6').addClass('campl-column' + textWidth);
 
 })(jQuery);
