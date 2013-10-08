@@ -38,3 +38,8 @@
 .campl-news-listing:last-child {
     border-bottom: 1px dashed #b5b5b5;
 }
+
+/* Stop active local footer links from changing colour */
+.campl-local-footer li a.active {
+    color: #fff;
+}
