@@ -265,9 +265,6 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <h1 class="campl-page-title"><?php print !empty($section_title) ? $section_title : $site_name; ?></h1>
         <?php endif; ?>
 
-        <!-- TODO
-           <p class="campl-mobile-parent"><a href=""><span class="campl-back-btn campl-menu-indicator"></span>Department A-Z</a></p>
-           -->
       </div>
     </div>
   </div>
