@@ -8,12 +8,6 @@
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
-  <?php if ($display_submitted): ?>
-    <div class="submitted">
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
-
   <?php
   // We hide the comments and links now so that we can render them later.
   hide($content['comments']);
@@ -32,6 +26,13 @@
   ?>
 
   <div class="content campl-content-container"<?php print $content_attributes; ?>>
+    <?php if ($display_submitted): ?>
+      <div class="submitted">
+        <p><?php print $submitted; ?></p>
+        <hr>
+      </div>
+    <?php endif; ?>
+
     <?php
     print render($content);
     ?>
