@@ -264,7 +264,12 @@ function cambridge_theme_block_view_alter(&$data, $block) {
   if (in_array($block->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     // Add wrapper to blocks in the local footer column regions.
     if (array_key_exists('content', $data) && is_array($data['content'])) {
-      $data['content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
+      if ($block->module === 'menu_block') {
+        $data['content']['#content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
+      }
+      else {
+        $data['content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
+      }
     }
   }
   elseif ($block->module === 'menu_block' && $block->region === 'horizontal_navigation') {
