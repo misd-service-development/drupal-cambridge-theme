@@ -43,3 +43,15 @@
 .campl-local-footer li a.active {
     color: #fff;
 }
+
+/* Remove field collection styles */
+.field-collection-view {
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.field-collection-container {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
