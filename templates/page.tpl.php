@@ -57,9 +57,9 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 </div>
 <div class="campl-row campl-global-header campl-search-drawer">
   <div class="campl-wrap clearfix">
-    <form class="campl-site-search-form" id="site-search-container" action="">
+    <form class="campl-site-search-form" id="site-search-container" action="http://search.cam.ac.uk/web" method="get">
       <div class="campl-search-form-wrapper clearfix">
-        <input type="text" class="text" placeholder="Search"/>
+        <input type="text" class="text" name="query" value="" placeholder="Search"/>
         <input type="image" class="campl-search-submit"
                src="<?php print $base_theme_path; ?>/images/interface/btn-search.png"/>
       </div>
