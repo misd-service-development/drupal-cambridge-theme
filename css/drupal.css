@@ -44,6 +44,11 @@
     color: #fff;
 }
 
+/* Prevent padding on small table rows */
+.campl-table tr.even, .campl-table tr.odd {
+    padding: 0;
+}
+
 /* Remove field collection styles */
 .field-collection-view {
     border-bottom: 0;

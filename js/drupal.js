@@ -27,4 +27,8 @@
     $('.campl-horizontal-teaser-img').parent('.campl-column6').removeClass('campl-column6').addClass('campl-column' + imageWidth);
     $('.campl-horizontal-teaser-txt').parent('.campl-column6').removeClass('campl-column6').addClass('campl-column' + textWidth);
 
+    // Add classes to tables that are missing them and remove potentially style-breaking attributes. This should be moved to the templating layer instead.
+
+    $('table:not(.campl-table)', '.campl-content').addClass('campl-table campl-table-bordered campl-table-striped campl-vertical-stacking-table').attr('border', 0).attr('cellpadding', 0).attr('cellspacing', 0).attr('style', null);
+
 })(jQuery);

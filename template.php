@@ -82,6 +82,15 @@ function cambridge_theme_menu_local_tasks(&$variables) {
 }
 
 /**
+ * Implements theme_table().
+ */
+function cambridge_theme_table($variables) {
+  $variables['attributes']['class'][] = 'campl-table campl-table-bordered campl-table-striped campl-vertical-stacking-table';
+
+  return theme_table($variables);
+}
+
+/**
  * Implements hook_js_alter().
  */
 function cambridge_theme_js_alter(&$javascript) {
@@ -361,6 +370,13 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     $data['content']['#content'] = $object->getArrayCopy();
   }
+}
+
+/**
+ * Implements hook_preprocess_views_view_table().
+ */
+function cambridge_theme_preprocess_views_view_table(&$vars) {
+  $vars['classes_array'][] = 'campl-table campl-table-bordered campl-table-striped campl-vertical-stacking-table';
 }
 
 /**
