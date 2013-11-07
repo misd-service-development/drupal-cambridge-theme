@@ -386,6 +386,8 @@ function cambridge_theme_link($variables) {
   if (
     isset($variables['options']['attributes']['class'])
     &&
+    is_array($variables['options']['attributes']['class'])
+    &&
     in_array('active-trail', $variables['options']['attributes']['class'])
   ) {
     $variables['options']['attributes']['class'][] = 'campl-selected';
