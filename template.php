@@ -380,7 +380,7 @@ function cambridge_theme_preprocess_views_view_table(&$vars) {
 }
 
 /**
- * Implements hook_theme_link().
+ * Implements theme_link().
  */
 function cambridge_theme_link($variables) {
   if (
