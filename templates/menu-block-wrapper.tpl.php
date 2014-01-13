@@ -22,6 +22,10 @@
           }
 
           for ($i = 1; $i < $parents_item_left; $i++) {
+            if ('<firstchild>' === $menu_trail_left[$i]['link_path']) {
+              $menu_trail_left[$i]['link_path'] = _menu_firstchild_get_firstchild_href($menu_trail_left[$i]['mlid']);
+            }
+
             $menu_trail_url = drupal_lookup_path('alias', $menu_trail_left[$i]['link_path']);
             if (FALSE === $menu_trail_url) {
               $menu_trail_url = $menu_trail_left[$i]['link_path'];
@@ -37,6 +41,10 @@
         <?php if (count($menu_trail_left) > 2 && $this_item['has_children'] == FALSE): ?>
           <li class="campl-selected">
             <?php
+
+            if ('<firstchild>' === $parent_item['link_path']) {
+              $parent_item['link_path'] = _menu_firstchild_get_firstchild_href($parent_item['mlid']);
+            }
 
             $parent_item_url = drupal_lookup_path('alias', $parent_item['link_path']);
             if (FALSE === $parent_item_url) {
@@ -56,6 +64,10 @@
           foreach ($uncles as $uncle) {
             if ($uncle->mlid == $parent_item['mlid'] || $uncle->link_title == t('Home')) {
               continue;
+            }
+
+            if ('<firstchild>' === $uncle->link_path) {
+              $uncle->link_path = _menu_firstchild_get_firstchild_href($uncle->mlid);
             }
 
             $uncle_url = drupal_lookup_path('alias', $uncle->link_path);

@@ -495,14 +495,14 @@ projectlight.localNav=(function(){
 		
 		//Bound click event for all links inside the local navigation. 
 		//handles moving forwards and backwards through pages or opening dropdown menu
-		$links.find('span').click(function(e){
+		$links.click(function(e){
 			var $linkClicked = $(this),
-			$listItemClicked = $linkClicked.parent().parent();
+			$listItemClicked = $linkClicked.parent();
 
 			if($listItemClicked.hasClass("campl-title") && Modernizr.mq('only screen and (max-width: 767px)')){
 				e.preventDefault();
 			}else{
-				if($listItemClicked.hasClass("campl-sub") && Modernizr.mq('only screen and (max-width: 767px)')){
+				if($listItemClicked.hasClass("campl-sub")){
 					//slide mobile or tablet menu forward
 					if(projectlight.mobileLayout){
 						slideMenu("forward");
@@ -520,8 +520,8 @@ projectlight.localNav=(function(){
 				}else{
 					if($listItemClicked.hasClass("campl-back-link")){
 						slideMenu("back");
-						$linkClicked.parent().parent().parent().parent().addClass("campl-previous");
 						$linkClicked.parent().parent().parent().addClass("campl-previous");
+						$linkClicked.parent().parent().addClass("campl-previous");
 						return false
 					}
 				}

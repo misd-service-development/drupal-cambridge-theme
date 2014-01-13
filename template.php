@@ -212,6 +212,48 @@ function cambridge_theme_preprocess_menu_block_wrapper(&$variables) {
 }
 
 /**
+ * Implements hook_menu_block_tree_alter().
+ */
+function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
+  $block = block_load('menu_block', $config['delta']);
+
+  if ('horizontal_navigation' !== $block->region) {
+    return;
+  }
+
+  // We need to add in extra 'Overview' menu items as parents aren't clickable/tapable, but there isn't a way to do this
+  // with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
+  // (Ugly, but...)
+
+  require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+
+  $tree = new RecursiveArrayObject($tree);
+
+  $add_extra = function ($items) use (&$add_extra) {
+    foreach ($items as $item) {
+      if (0 === count($item['below'])) {
+        continue;
+      }
+
+      $add_extra($item['below']);
+
+      if ('<firstchild>' !== $item['link']['link_path']) {
+        $overview = array('link' => $item['link']->getArrayCopy(), 'below' => array());
+        $overview['link']['title'] .= ' overview';
+
+        $temp = $item['below']->getArrayCopy();
+        $temp = array('overview' => $overview) + $temp;
+        $item['below']->exchangeArray($temp);
+      }
+    }
+  };
+
+  $add_extra($tree);
+
+  $tree = $tree->getArrayCopy();
+}
+
+/**
  * Implements theme_status_messages().
  */
 function cambridge_theme_status_messages($variables) {
