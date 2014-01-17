@@ -2,7 +2,7 @@ name = University of Cambridge
 description = The University of Cambridge's house style.
 core = 7.x
 engine = phptemplate
-version = 1.0
+version = 1.1-dev
 
 stylesheets[all][] = "css/full-stylesheet.css"
 stylesheets[all][] = "css/drupal.css"
