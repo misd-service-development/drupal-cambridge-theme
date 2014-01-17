@@ -50,6 +50,10 @@ By default the section title on the page is the site's name, to change this for 
 
 You can replace Drupal's native breadcrumbs with the [Easy breadcrumb](https://drupal.org/project/easy_breadcrumb) module. Once enabled, place the 'Easy Breadcrumb' block in the 'Breadcrumb' region.
 
+### Menu Firstchild
+
+Normally in Drupal all menu parent items have to be links, and as parent items aren't clickable in the horizontal navigation the theme will add in a child with the text of the parent plus 'overview' so that the user can get to the page. In cases where you don't want to have the parent item linking to a page, you can use the [Menu Firstchild](https://drupal.org/project/menu_firstchild) module to create a manual wrapper menu item.
+
 ### Touch Icons
 
 Drupal allows you to change the University's favicon natively, but to change the Web Clip icon for iOS devices install the [Touch Icons](https://drupal.org/project/touch_icons) module.
