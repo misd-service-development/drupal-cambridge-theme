@@ -25,18 +25,20 @@
   }
   ?>
 
-  <div class="content campl-content-container"<?php print $content_attributes; ?>>
-    <?php if ($display_submitted): ?>
-      <div class="submitted">
-        <p><?php print $submitted; ?></p>
-        <hr>
-      </div>
-    <?php endif; ?>
+  <?php if (($rendered_content = render($content)) || $display_submitted): ?>
+    <div class="content campl-content-container"<?php print $content_attributes; ?>>
+      <?php if ($display_submitted): ?>
+        <div class="submitted">
+          <p><?php print $submitted; ?></p>
+          <hr>
+        </div>
+      <?php endif; ?>
 
-    <?php
-    print render($content);
-    ?>
-  </div>
+      <?php
+      print $rendered_content;
+      ?>
+    </div>
+  <?php endif; ?>
 
   <?php print render($content['links']); ?>
 
