@@ -61,7 +61,7 @@ function cambridge_theme_menu_local_tasks(&$variables) {
     return NULL;
   }
 
-  $output = '<div class="campl-content-container">';
+  $output = '<div class="campl-content-container campl-no-bottom-padding">';
 
   if (!empty($variables['primary'])) {
     $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
