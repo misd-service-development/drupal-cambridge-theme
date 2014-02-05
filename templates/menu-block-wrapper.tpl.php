@@ -5,8 +5,8 @@
       <ul class="campl-unstyled-list campl-vertical-breadcrumb">
         <?php
 
-        print '<li><a href="' . base_path() .
-          '">' . variable_get('site_name') . ' <span class="campl-vertical-breadcrumb-indicator"></span></a></li>';
+        $link_text = variable_get('site_name') . '<span class="campl-vertical-breadcrumb-indicator"></span>';
+        print '<li>' . l($link_text, '<front>', array('html' => TRUE)) . '</li>';
 
         $menu_trail_left = menu_get_active_trail('node/' . arg(1));
 
@@ -30,8 +30,8 @@
             if (FALSE === $menu_trail_url) {
               $menu_trail_url = $menu_trail_left[$i]['link_path'];
             }
-            $url_path = base_path() . $menu_trail_url;
-            print '<li><a href="' . $url_path . '">' . $menu_trail_left[$i]['title'] . '<span class="campl-vertical-breadcrumb-indicator"></span></a></li>';
+            $link_text = $menu_trail_left[$i]['title'] . '<span class="campl-vertical-breadcrumb-indicator"></span>';
+            print '<li>' . l($link_text, $menu_trail_url, array('html' => TRUE)) . '</li>';
           }
         }
         ?>
@@ -50,10 +50,8 @@
             if (FALSE === $parent_item_url) {
               $parent_item_url = $parent_item['link_path'];
             }
-            $url_path = base_path() . $parent_item_url;
-
+            print l($parent_item['link_title'], $parent_item_url);
             ?>
-            <a href="<?php print $url_path; ?>"><?php print $parent_item['link_title']; ?></a>
             <ul class="campl-unstyled-list campl-vertical-breadcrumb-children">
               <?php print render($content); ?>
             </ul>
@@ -74,9 +72,7 @@
             if (FALSE === $uncle_url) {
               $uncle_url = $uncle->link_path;
             }
-            $url_path = base_path() . $uncle_url;
-
-            print '<li><a href="' . $url_path . '">' . $uncle->link_title . '</a></li>';
+            print '<li>' . l($uncle->link_title, $uncle_url) . '</li>';
           }
           ?>
         <?php else: ?>
