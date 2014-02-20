@@ -225,32 +225,35 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
   // with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
   // (Ugly, but...)
 
-  require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+  require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
 
   $tree = new RecursiveArrayObject($tree);
 
-  $add_extra = function ($items) use (&$add_extra) {
-    foreach ($items as $item) {
-      if (0 === count($item['below'])) {
-        continue;
-      }
-
-      $add_extra($item['below']);
-
-      if ('<firstchild>' !== $item['link']['link_path']) {
-        $overview = array('link' => $item['link']->getArrayCopy(), 'below' => array());
-        $overview['link']['title'] .= ' overview';
-
-        $temp = $item['below']->getArrayCopy();
-        $temp = array('overview' => $overview) + $temp;
-        $item['below']->exchangeArray($temp);
-      }
-    }
-  };
-
-  $add_extra($tree);
+  _cambridge_theme_add_horizontal_navigation_overview_items($tree);
 
   $tree = $tree->getArrayCopy();
+}
+
+/**
+ * Add in extra 'Overview' menu items as parents aren't clickable/tapable.
+ */
+function _cambridge_theme_add_horizontal_navigation_overview_items($items) {
+  foreach ($items as $item) {
+    if (0 === count($item['below'])) {
+      continue;
+    }
+
+    _cambridge_theme_add_horizontal_navigation_overview_items($item['below']);
+
+    if ('<firstchild>' !== $item['link']['link_path']) {
+      $overview = array('link' => $item['link']->getArrayCopy(), 'below' => array());
+      $overview['link']['title'] .= ' overview';
+
+      $temp = $item['below']->getArrayCopy();
+      $temp = array('overview' => $overview) + $temp;
+      $item['below']->exchangeArray($temp);
+    }
+  }
 }
 
 /**
@@ -347,32 +350,11 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     // We need to add the campl-current-page class to the current page, but there isn't a way to do this with arrays as
     // it can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
 
-    require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
 
     $object = new RecursiveArrayObject($data['content']['#content']);
 
-    $find_active = function ($objects) use (&$find_active) {
-      foreach ($objects as $key => $object) {
-        if ('#' === substr($key, 0, 1)) {
-          continue;
-        }
-
-        if (in_array('active', (array) $object['#attributes']['class'])) {
-          $object['#attributes']['class'][] = 'campl-current-page';
-          return TRUE;
-        }
-
-        if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
-          if (TRUE === $find_active($object['#below'])) {
-            return TRUE;
-          }
-        }
-      }
-
-      return FALSE;
-    };
-
-    $find_active($object);
+    _cambridge_theme_find_active_horizontal_navigation($object);
 
     $data['content']['#content'] = $object->getArrayCopy();
   }
@@ -384,7 +366,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     // functions so that the left navigation menu renders correctly, but there isn't a way to do this with arrays as it
     // can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
 
-    require_once __DIR__ . '/includes/recursive_array_object.class.inc';
+    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
 
     if (FALSE === isset($data['content']['#content'])) {
       return;
@@ -392,26 +374,55 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     $object = new RecursiveArrayObject($data['content']['#content']);
 
-    $replace_wrappers = function ($objects) use (&$replace_wrappers) {
-      foreach ($objects as $key => $object) {
-        if ('#' === substr($key, 0, 1)) {
-          continue;
-        }
-
-        $object['#theme'] = array('cambridge_theme_left_navigation_link');
-
-        if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
-          $replace_wrappers($object['#below']);
-        }
-      }
-
-      $objects['#theme_wrappers'] = array('cambridge_theme_left_navigation_block');
-    };
-
-    $replace_wrappers($object);
+    _cambridge_theme_replace_left_navigation_wrappers($object);
 
     $data['content']['#content'] = $object->getArrayCopy();
   }
+}
+
+/**
+ * Add the campl-current-page class to the current page.
+ */
+function _cambridge_theme_find_active_horizontal_navigation($objects) {
+  foreach ($objects as $key => $object) {
+    if ('#' === substr($key, 0, 1)) {
+      continue;
+    }
+
+    if (in_array('active', (array) $object['#attributes']['class'])) {
+      $object['#attributes']['class'][] = 'campl-current-page';
+
+      return TRUE;
+    }
+
+    if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
+      if (TRUE === _cambridge_theme_find_active_horizontal_navigation($object['#below'])) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Add references to the cambridge_theme_left_navigation_link and cambridge_theme_left_navigation_block functions
+ * so that the left navigation menu renders correctly.
+ */
+function _cambridge_theme_replace_left_navigation_wrappers($objects) {
+  foreach ($objects as $key => $object) {
+    if ('#' === substr($key, 0, 1)) {
+      continue;
+    }
+
+    $object['#theme'] = array('cambridge_theme_left_navigation_link');
+
+    if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
+      _cambridge_theme_replace_left_navigation_wrappers($object['#below']);
+    }
+  }
+
+  $objects['#theme_wrappers'] = array('cambridge_theme_left_navigation_block');
 }
 
 /**

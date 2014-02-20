@@ -11,7 +11,8 @@ class RecursiveArrayObject extends ArrayObject {
   public function __construct(array $array) {
     foreach ($array as $key => $value) {
       if (is_array($value)) {
-        $value = new static($value);
+        $class = get_class($this);
+        $value = new $class($value);
       }
       $this->offsetSet($key, $value);
     }
