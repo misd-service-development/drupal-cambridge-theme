@@ -25,12 +25,8 @@ Using the theme
 #### Vertical navigation
 
 - Go to admin/structure/block and click 'Add menu block'.
-- Click the 'Advanced options' tab.
 - Set the 'Administrative title' to something descriptive (eg 'Vertical menu').
 - Set 'Menu' to the menu.
-- Check the 'Make the starting level follow the active menu item' option.
-- Uncheck the 'Expand all children of this tree' option.
-- Check the 'Sort menu tree by the active menu item's trail' option.
 - Set the region to 'Left Navigation' for the University of Cambridge theme.
 - Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
