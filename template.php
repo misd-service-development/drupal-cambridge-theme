@@ -217,21 +217,34 @@ function cambridge_theme_preprocess_menu_block_wrapper(&$variables) {
 function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
   $block = block_load('menu_block', $config['delta']);
 
-  if ('horizontal_navigation' !== $block->region) {
-    return;
+  if ('left_navigation' === $block->region) {
+    // Force menu block configuration.
+    $config['level'] = 1;
+    $config['follow'] = 'active';
+    $config['depth'] = 0;
+    $config['expanded'] = 0;
+    $config['sort'] = 1;
   }
+  elseif ('horizontal_navigation' === $block->region) {
+    // Force menu block configuration.
+    $config['level'] = 1;
+    $config['follow'] = 0;
+    $config['depth'] = 0;
+    $config['expanded'] = 1;
+    $config['sort'] = 0;
 
-  // We need to add in extra 'Overview' menu items as parents aren't clickable/tapable, but there isn't a way to do this
-  // with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
-  // (Ugly, but...)
+    // We need to add in extra 'Overview' menu items as parents aren't clickable/tapable, but there isn't a way to do
+    // this with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
+    // (Ugly, but...)
 
-  require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
+    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
 
-  $tree = new RecursiveArrayObject($tree);
+    $tree = new RecursiveArrayObject($tree);
 
-  _cambridge_theme_add_horizontal_navigation_overview_items($tree);
+    _cambridge_theme_add_horizontal_navigation_overview_items($tree);
 
-  $tree = $tree->getArrayCopy();
+    $tree = $tree->getArrayCopy();
+  }
 }
 
 /**
