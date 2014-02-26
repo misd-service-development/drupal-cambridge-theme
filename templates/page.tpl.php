@@ -274,7 +274,9 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
 <?php if (isset($page['horizontal_navigation'])) : ?>
   <div class="campl-row campl-page-header">
-    <?php print render($page['horizontal_navigation']); ?>
+    <div class="campl-wrap">
+      <?php print render($page['horizontal_navigation']); ?>
+    </div>
   </div>
 <?php endif; ?>
 
