@@ -370,6 +370,15 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     _cambridge_theme_find_active_horizontal_navigation($object);
 
     $data['content']['#content'] = $object->getArrayCopy();
+
+    foreach ($data['content']['#content'] as $key => $item) {
+      if (FALSE === is_int($key)) {
+        continue;
+      }
+      if (in_array('active-trail', $item['#attributes']['class'])) {
+        $data['content']['#content'][$key]['#localized_options']['attributes']['class'][] = 'campl-selected';
+      }
+    }
   }
   elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
     // Forcibly disable the block title.
@@ -430,6 +439,10 @@ function _cambridge_theme_replace_left_navigation_wrappers($objects) {
 
     $object['#theme'] = array('cambridge_theme_left_navigation_link');
 
+    if (in_array('active-trail', $object['#attributes']['class']->getArrayCopy())) {
+      $object['#attributes']['class'][] = 'campl-selected';
+    }
+
     if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
       _cambridge_theme_replace_left_navigation_wrappers($object['#below']);
     }
@@ -443,23 +456,6 @@ function _cambridge_theme_replace_left_navigation_wrappers($objects) {
  */
 function cambridge_theme_preprocess_views_view_table(&$vars) {
   $vars['classes_array'][] = 'campl-table campl-table-bordered campl-table-striped campl-vertical-stacking-table';
-}
-
-/**
- * Implements theme_link().
- */
-function cambridge_theme_link($variables) {
-  if (
-    isset($variables['options']['attributes']['class'])
-    &&
-    is_array($variables['options']['attributes']['class'])
-    &&
-    in_array('active-trail', $variables['options']['attributes']['class'])
-  ) {
-    $variables['options']['attributes']['class'][] = 'campl-selected';
-  }
-
-  return theme_link($variables);
 }
 
 /**
