@@ -17,12 +17,28 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
       'function' => 'cambridge_theme_local_dropdown_menu',
       'render element' => 'tree',
     ),
-    'cambridge_theme_left_navigation_block' => array(
-      'function' => 'cambridge_theme_left_navigation_block',
-      'render element' => 'tree',
+    'cambridge_theme_left_navigation_structure' => array(
+      'function' => 'cambridge_theme_left_navigation_structure',
+      'render element' => 'element',
     ),
-    'cambridge_theme_left_navigation_link' => array(
-      'function' => 'cambridge_theme_left_navigation_link',
+    'cambridge_theme_left_navigation_splitter' => array(
+      'function' => 'cambridge_theme_left_navigation_splitter',
+      'render element' => 'element',
+    ),
+    'cambridge_theme_left_navigation_breadcrumb' => array(
+      'function' => 'cambridge_theme_left_navigation_breadcrumb',
+      'render element' => 'element',
+    ),
+    'cambridge_theme_left_navigation_navigation' => array(
+      'function' => 'cambridge_theme_left_navigation_navigation',
+      'render element' => 'element',
+    ),
+    'cambridge_theme_left_navigation_children' => array(
+      'function' => 'cambridge_theme_left_navigation_children',
+      'render element' => 'element',
+    ),
+    'cambridge_theme_menu_link__left_navigation_breadcrumb' => array(
+      'function' => 'cambridge_theme_menu_link__left_navigation_breadcrumb',
       'render element' => 'element',
     ),
     'cambridge_easy_breadcrumb' => array(
@@ -201,17 +217,6 @@ function cambridge_theme_preprocess_block(&$variables) {
 }
 
 /**
- * Implements template_preprocess_menu_block_wrapper().
- */
-function cambridge_theme_preprocess_menu_block_wrapper(&$variables) {
-  // Let the template know if this is the left_navigation region or not.
-  $variables['config']['in_left_navigation'] = in_array(
-    'cambridge_theme_left_navigation_block',
-    $variables['content']['#theme_wrappers']
-  );
-}
-
-/**
  * Implements hook_menu_block_tree_alter().
  */
 function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
@@ -220,9 +225,9 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
   if ('left_navigation' === $block->region) {
     // Force menu block configuration.
     $config['level'] = 1;
-    $config['follow'] = 'active';
+    $config['follow'] = 0;
     $config['depth'] = 0;
-    $config['expanded'] = 0;
+    $config['expanded'] = 1;
     $config['sort'] = 1;
   }
   elseif ('horizontal_navigation' === $block->region) {
@@ -342,6 +347,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
   elseif ($block->module === 'menu_block' && $block->region === 'horizontal_navigation') {
     // Forcibly disable the block title.
     $data['subject'] = NULL;
+    $block->title = NULL;
 
     // Add wrappers to the horizontal navigation regions.
 
@@ -381,24 +387,220 @@ function cambridge_theme_block_view_alter(&$data, $block) {
     }
   }
   elseif ($block->module === 'menu_block' && $block->region === 'left_navigation') {
-    // Forcibly disable the block title.
-    $data['subject'] = NULL;
-
-    // We need to add references to the cambridge_theme_left_navigation_link and cambridge_theme_left_navigation_block
-    // functions so that the left navigation menu renders correctly, but there isn't a way to do this with arrays as it
-    // can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
-
-    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
-
     if (FALSE === isset($data['content']['#content'])) {
       return;
     }
 
-    $object = new RecursiveArrayObject($data['content']['#content']);
+    // Forcibly disable the block title.
+    $data['subject'] = NULL;
+    $block->title = NULL;
 
-    _cambridge_theme_replace_left_navigation_wrappers($object);
+    $content = $data['content']['#content'];
 
-    $data['content']['#content'] = $object->getArrayCopy();
+    $active = NULL;
+
+    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
+
+    foreach ($content as $key => $item) {
+      if (FALSE === is_int($key)) {
+        continue;
+      }
+
+      if (TRUE === in_array('active', $item['#attributes']['class'])) {
+        $active = new RecursiveArrayObject($content[$key]);
+      }
+    }
+
+    if (NULL === $active) {
+      foreach ($content as $key => $item) {
+        if (FALSE === is_int($key)) {
+          continue;
+        }
+
+        if (TRUE === in_array('active-trail', $item['#attributes']['class'])) {
+          $active = new RecursiveArrayObject($content[$key]);
+
+          // Sometimes the menu has an active-trail without an active item (eg Feeds module's log pages. Cycle through
+          // the items to make sure we have one. Not ideal, but the menu would break otherwise.
+
+          if (FALSE === _cambridge_theme_left_navigation_has_active_item($active)) {
+            // If we don't have an active item, don't try and change the menu.
+            $active = NULL;
+          }
+
+          break;
+        }
+      }
+    }
+
+    $breadcrumbs = array();
+
+    if (NULL === $active) {
+      // No active part, so just display the menu at the top level.
+      $navigation = array();
+      $siblings = $content;
+
+      foreach ($siblings as $key => $sibling) {
+        if (FALSE === is_int($key)) {
+          continue;
+        }
+        if ($sibling['#title'] == 'Home') {
+          $title = variable_get('site_name');
+
+          if (module_exists('context')) {
+            foreach (context_active_contexts() as $context) {
+              if (!empty($context->reactions['theme']['title'])) {
+                $title = $context->reactions['theme']['title'];
+              }
+            }
+          }
+
+          $breadcrumbs = array($key => $siblings[$key]) + $breadcrumbs;
+          $breadcrumbs[$key]['#title'] = $title;
+        }
+      }
+
+      // If there isn't a breadcrumb already (ie the top level doesn't have a 'Home' menu item), make one that points to
+      // the front page.
+
+      if (count($breadcrumbs) === 0) {
+        $breadcrumbs['foo'] = array(
+          '#theme' => array('menu_link'),
+          '#title' => variable_get('site_name'),
+          '#href' => '<front>',
+          '#attributes' => array(),
+        );
+      }
+    }
+    else {
+      $active['_siblings'] = new RecursiveArrayObject($content);
+
+      $navigation = array();
+
+      // See if the top level has a 'Home' menu item, and make it the first breadcrumb level if found.
+
+      foreach ($active['_siblings'] as $key => $sibling) {
+        if (FALSE === is_int($key)) {
+          continue;
+        }
+        if ($sibling['#title'] == 'Home') {
+          $title = variable_get('site_name');
+
+          // Use the context module's section title if enabled/used.
+
+          if (module_exists('context')) {
+            foreach (context_active_contexts() as $context) {
+              if (!empty($context->reactions['theme']['title'])) {
+                $title = $context->reactions['theme']['title'];
+              }
+            }
+          }
+
+          $breadcrumbs = array($key => $active['_siblings'][$key]->getArrayCopy()) + $breadcrumbs;
+          $breadcrumbs[$key]['#title'] = $title;
+        }
+      }
+
+      // If there isn't a breadcrumb already (ie the top level doesn't have a 'Home' menu item), make one that points to
+      // the front page.
+
+      if (count($breadcrumbs) === 0) {
+        $breadcrumbs['foo'] = array(
+          '#theme' => array('menu_link'),
+          '#title' => variable_get('site_name'),
+          '#href' => '<front>',
+          '#attributes' => array(),
+        );
+      }
+
+      // Break up the menu into the breadcrumb and navigation sections.
+
+      _cambridge_theme_left_navigation_break_up($active, $breadcrumbs, $navigation);
+
+      // Add in overview-style links when necessary.
+
+      $key = key($navigation);
+
+      if (count($navigation[$key]['#below']) > 0) {
+        if ('<firstchild>' !== $navigation[$key]['#original_link']['link_path']) {
+          $navigation[$key]['#below'] = $navigation + $navigation[$key]['#below'];
+          $navigation[$key]['#below'][$key]['#title'] .= ' overview';
+        }
+
+        $navigation[$key]['#attributes']['class'][] = 'campl-selected';
+        $navigation[$key]['#href'] = '<none>';
+      }
+
+      // We don't want to display grandchildren.
+
+      foreach ($navigation[$key]['#below'] as $childKey => $child) {
+        if (FALSE === is_int($childKey)) {
+          continue;
+        }
+        $navigation[$key]['#below'][$childKey]['#below'] = array();
+
+        if (in_array('active', $child['#attributes']['class'])) {
+          $navigation[$key]['#below'][$childKey]['#attributes']['class'][] = 'campl-selected';
+        }
+      }
+
+      // Pick out siblings.
+
+      $siblings = $navigation[$key]['_siblings'];
+      unset($siblings[$key]);
+
+      if ($navigation[$key]['#title'] == 'Home') {
+        $navigation = array();
+      }
+    }
+
+    foreach ($siblings as $key => $sibling) {
+      if (FALSE === is_int($key)) {
+        continue;
+      }
+
+      // We don't want to display children of the siblings.
+
+      $siblings[$key]['#below'] = array();
+
+      if ($sibling['#title'] == 'Home') {
+        unset($siblings[$key]);
+      }
+    }
+
+    // Construct the two menu parts.
+
+    $data['content']['#content'] = array();
+    $data['content']['#content']['#theme'] = array('cambridge_theme_left_navigation_structure');
+    $data['content']['#content']['#below']['breadcrumb']['#below'] = $breadcrumbs;
+    $data['content']['#content']['#below']['breadcrumb']['#below']['#theme_wrappers'] = array('cambridge_theme_left_navigation_breadcrumb');
+    $data['content']['#content']['#below']['breadcrumb']['#theme'] = array('cambridge_theme_left_navigation_splitter');
+    $data['content']['#content']['#below']['breadcrumb']['#href'] = '<front>';
+    $data['content']['#content']['#below']['breadcrumb']['#localized_options'] = array();
+    $data['content']['#content']['#below']['breadcrumb']['#attributes'] = array();
+    $data['content']['#content']['#below']['breadcrumb']['#bid'] = array('module' => 'menu_block', 'delta' => 2);
+    foreach ($data['content']['#content']['#below']['breadcrumb']['#below'] as $key => $value) {
+      if (FALSE === isset($data['content']['#content']['#below']['breadcrumb']['#below'][$key]['#theme'])) {
+        continue;
+      }
+      array_unshift(
+        $data['content']['#content']['#below']['breadcrumb']['#below'][$key]['#theme'],
+        'menu_link__left_navigation_breadcrumb'
+      );
+    }
+    $data['content']['#content']['#below']['navigation']['#below'] = array_merge($navigation, $siblings);
+    $data['content']['#content']['#below']['navigation']['#below']['#theme_wrappers'] = array('cambridge_theme_left_navigation_navigation');
+    $data['content']['#content']['#below']['navigation']['#theme'] = array('cambridge_theme_left_navigation_splitter');
+    $data['content']['#content']['#below']['navigation']['#href'] = '<front>';
+    $data['content']['#content']['#below']['navigation']['#localized_options'] = array();
+    $data['content']['#content']['#below']['navigation']['#attributes'] = array();
+    $data['content']['#content']['#below']['navigation']['#bid'] = array('module' => 'menu_block', 'delta' => 2);
+    foreach ($data['content']['#content']['#below']['navigation']['#below'] as $key => $value) {
+      if (FALSE === isset($data['content']['#content']['#below']['navigation']['#below'][$key]['#below']['#theme_wrappers'])) {
+        continue;
+      }
+      $data['content']['#content']['#below']['navigation']['#below'][$key]['#below']['#theme_wrappers'] = array(array('cambridge_theme_left_navigation_children'));
+    }
   }
 }
 
@@ -428,27 +630,156 @@ function _cambridge_theme_find_active_horizontal_navigation($objects) {
 }
 
 /**
- * Add references to the cambridge_theme_left_navigation_link and cambridge_theme_left_navigation_block functions
- * so that the left navigation menu renders correctly.
+ * Test whether the menu has an active item.
  */
-function _cambridge_theme_replace_left_navigation_wrappers($objects) {
-  foreach ($objects as $key => $object) {
-    if ('#' === substr($key, 0, 1)) {
+function _cambridge_theme_left_navigation_has_active_item($item) {
+  if (in_array('active', $item['#attributes']['class']->getArrayCopy())) {
+    return TRUE;
+  }
+
+  foreach ($item['#below'] as $key => $child) {
+    if (FALSE === is_int($key)) {
       continue;
     }
 
-    $object['#theme'] = array('cambridge_theme_left_navigation_link');
-
-    if (in_array('active-trail', $object['#attributes']['class']->getArrayCopy())) {
-      $object['#attributes']['class'][] = 'campl-selected';
-    }
-
-    if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
-      _cambridge_theme_replace_left_navigation_wrappers($object['#below']);
+    if (TRUE === _cambridge_theme_left_navigation_has_active_item($child)) {
+      return TRUE;
     }
   }
 
-  $objects['#theme_wrappers'] = array('cambridge_theme_left_navigation_block');
+  return FALSE;
+}
+
+/**
+ * Break up the left-hand navigation into the breadcrumb and navigation sections.
+ */
+function _cambridge_theme_left_navigation_break_up($item, &$breadcrumbs, &$navigation) {
+  if (FALSE === $item instanceof RecursiveArrayObject) {
+    return;
+  }
+
+  if (
+    FALSE === in_array('active-trail', $item['#attributes']['class']->getArrayCopy())
+    &&
+    FALSE === in_array('active', $item['#attributes']['class']->getArrayCopy())
+  ) {
+    return;
+  }
+
+  $child_is_active = FALSE;
+
+  foreach ($item['#below'] as $key => $child) {
+    if (FALSE === is_int($key)) {
+      continue;
+    }
+
+    $child['_siblings'] = $item['#below']->getArrayCopy();
+
+    if (TRUE === in_array('active', $child['#attributes']['class']->getArrayCopy())) {
+      $child_is_active = count($child['#below']) === 0;
+      break;
+    }
+  }
+
+  if (
+    $child_is_active
+    ||
+    (
+      in_array('active', $item['#attributes']['class']->getArrayCopy())
+      &&
+      $item['#original_link']['link_path'] !== '<firstchild>'
+    )
+  ) {
+    $navigation[$item['#original_link']['mlid']] = $item->getArrayCopy();
+
+    return;
+  }
+
+  $breadcrumbs[$item['#original_link']['mlid']] = $item->getArrayCopy();
+  $breadcrumbs[$item['#original_link']['mlid']]['#below'] = array();
+
+  foreach ($item['#below'] as $key => $child) {
+    if (FALSE === is_int($key)) {
+      continue;
+    }
+
+    _cambridge_theme_left_navigation_break_up($child, $breadcrumbs, $navigation);
+  }
+}
+
+/**
+ * Wrap the left navigation structure.
+ */
+function cambridge_theme_left_navigation_structure($variables) {
+  $output = drupal_render($variables['element']['#below']);
+
+  return '<div class="campl-tertiary-navigation-structure">' . $output . '</div>';
+}
+
+/**
+ * Wrap the left navigation parts.
+ */
+function cambridge_theme_left_navigation_splitter($variables) {
+  return drupal_render($variables['element']['#below']);
+}
+
+/**
+ * Wrap the left navigation breadcrumb.
+ */
+function cambridge_theme_left_navigation_breadcrumb($variables) {
+  return '<ul class="campl-unstyled-list campl-vertical-breadcrumb">' . $variables['element']['#children'] . '</ul>';
+}
+
+/**
+ * Implements theme_menu_link__left_navigation_breadcrumb().
+ */
+function cambridge_theme_menu_link__left_navigation_breadcrumb(array $variables) {
+  $element = $variables['element'];
+
+  $element['#localized_options']['html'] = TRUE;
+
+  $output = l(
+    $element['#title'] . '<span class="campl-vertical-breadcrumb-indicator"></span>',
+    $element['#href'],
+    $element['#localized_options']
+  );
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . '</li>';
+}
+
+/**
+ * Wrap the left navigation navigation.
+ */
+function cambridge_theme_left_navigation_navigation($variables) {
+  return '<ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">' . $variables['element']['#children'] . '</ul>';
+}
+
+/**
+ * Wrap the left navigation navigation children.
+ */
+function cambridge_theme_left_navigation_children($variables) {
+  return '<ul class="campl-unstyled-list campl-vertical-breadcrumb-children">' . $variables['element']['#children'] . '</ul>';
+}
+
+/**
+ * Implements theme_menu_link().
+ */
+function cambridge_theme_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  if ($element['#href'] === '<none>') {
+    $output = $element['#title'];
+  }
+  else {
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  }
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 /**
@@ -543,30 +874,4 @@ function theme_cambridge_easy_breadcrumb($variables) {
   }
 
   return $html;
-}
-
-/**
- * Find siblings for a menu link.
- *
- * @param $menu_link
- *   A menu link.
- *
- * @return
- *   An array of menu link siblings.
- */
-function cambridge_theme_get_menu_siblings($menu_link) {
-  $parent = _menu_link_find_parent($menu_link);
-
-  if (!$parent) {
-    // Top level, so fake what we need.
-    $parent = array(
-      'menu_name' => $menu_link['menu_name'],
-      'mlid' => 0,
-    );
-  }
-
-  return db_query(
-    "SELECT mlid, plid, link_path, link_title FROM {menu_links} WHERE menu_name=:menu AND plid=:mlid AND hidden=0 ORDER BY weight, link_title",
-    array(':menu' => $parent['menu_name'], ':mlid' => $parent['mlid'])
-  )->fetchAllAssoc('mlid');
 }
