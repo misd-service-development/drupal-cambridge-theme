@@ -16,7 +16,11 @@
   // See if the first visible item is an image field. If it is, output it outside of the campl-content-container so that
   // it appears as a leading image.
   foreach ($content as $key => $value) {
-    if (FALSE === array_key_exists('#printed', $value) || FALSE == $value['#printed']) {
+    if (
+      (FALSE === array_key_exists('#printed', $value) || FALSE == $value['#printed'])
+      &&
+      (FALSE === array_key_exists('#access', $value) || TRUE == $value['#access'])
+    ) {
       if (isset($value['#field_type']) && $value['#field_type'] === 'image') {
         print render($content[$key]);
       }
