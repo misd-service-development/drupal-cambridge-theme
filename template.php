@@ -194,6 +194,10 @@ function cambridge_theme_preprocess_block(&$variables) {
   elseif ($variables['block']->region === 'sidebar' && $variables['block']->module !== 'views') {
     $variables['content_attributes_array']['class'][] = 'campl-content-container';
   }
+  elseif ($variables['block']->region === 'partnerships') {
+    $variables['classes_array'][] = 'campl-content-container campl-logo-container campl-bottom-padding';
+    $variables['title_attributes_array']['class'][] = 'campl-branding-title';
+  }
   elseif (in_array($variables['block']->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     $variables['classes_array'][] = 'campl-content-container campl-navigation-list';
     $variables['theme_hook_suggestions'][] = 'block__footer_x';
