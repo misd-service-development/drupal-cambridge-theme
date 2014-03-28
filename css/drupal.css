@@ -14,13 +14,18 @@
     padding: 0;
 }
 
+/* Prevent conflict with vertical breadcrumb active items */
+.campl-vertical-breadcrumb a.active {
+    color: #999999;
+}
+
 /* Prevent conflict with vertical breadcrumb navigation lists and Drupal lists */
 .campl-vertical-breadcrumb-navigation li.leaf, .campl-vertical-breadcrumb-navigation li.expanded, .campl-vertical-breadcrumb-navigation li.collapsed {
     padding: 10px 0;
 }
 
 /* Prevent conflict with vertical breadcrumb children lists and Drupal lists */
-.campl-vertical-breadcrumb-children li.leaf, .campl-vertical-breadcrumb-children li.collapsed {
+.campl-vertical-breadcrumb-children li.leaf, .campl-vertical-breadcrumb-children li.expanded, .campl-vertical-breadcrumb-children li.collapsed {
     padding: 5px 5px 5px 0;
 }
 
