@@ -165,6 +165,23 @@ function cambridge_theme_left_navigation_link($variables) {
 }
 
 /**
+ * Implements template_preprocess_page().
+ */
+function cambridge_theme_preprocess_page(&$variables) {
+  if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
+    // Taxonomy term listing page.
+    if (FALSE === empty($variables['page']['content']['system_main']['term_heading']['term']['#term']->description)) {
+      $variables['page']['content']['system_main']['term_heading']['#prefix'] = '<div class="campl-content-container campl-no-bottom-padding">' . $variables['page']['content']['system_main']['term_heading']['#prefix'];
+      $variables['page']['content']['system_main']['term_heading']['#suffix'] .= '<hr></div>';
+    }
+    if (isset($variables['page']['content']['system_main']['no_content'])) {
+      $variables['page']['content']['system_main']['no_content']['#prefix'] = '<div class="campl-content-container campl-no-top-padding">' . $variables['page']['content']['system_main']['no_content']['#prefix'];
+      $variables['page']['content']['system_main']['no_content']['#suffix'] .= '</div>';
+    }
+  }
+}
+
+/**
  * Implements template_preprocess_block().
  */
 function cambridge_theme_preprocess_block(&$variables) {
