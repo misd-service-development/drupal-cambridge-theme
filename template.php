@@ -58,6 +58,19 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
 function cambridge_theme_preprocess_html(&$variables) {
   $variables['classes_array'][] = 'campl-theme-' . theme_get_setting('colour_scheme');
 
+  drupal_add_html_head(
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'http-equiv' => 'X-UA-Compatible',
+        'content' => 'IE=edge',
+      ),
+      '#weight' => -999, // Immediately after Content-Type.
+    ),
+    'x_ua_compatible'
+  );
+
   if (FALSE === module_exists('touch_icons')) {
     drupal_add_html_head_link(
       array(
