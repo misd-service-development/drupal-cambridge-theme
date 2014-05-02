@@ -634,13 +634,31 @@ function _cambridge_theme_find_active_horizontal_navigation($objects) {
       continue;
     }
 
-    if (in_array('active', (array) $object['#attributes']['class'])) {
-      $object['#attributes']['class'][] = 'campl-current-page';
+    $has_children = (is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below']);
 
-      return TRUE;
+    if (in_array('active', (array) $object['#attributes']['class'])) {
+      $is_active = TRUE;
+
+      // If the item is an overview/firstchild link the parent item will appear as active, so take a look at the
+      // children to see if there's another active item.
+
+      if (TRUE === $has_children) {
+        foreach ($object['#below'] as $child) {
+          if (in_array('active', (array) $child['#attributes']['class'])) {
+            $is_active = FALSE;
+            break;
+          }
+        }
+      }
+
+      if (TRUE === $is_active) {
+        $object['#attributes']['class'][] = 'campl-current-page';
+
+        return TRUE;
+      }
     }
 
-    if ((is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below'])) {
+    if (TRUE === $has_children) {
       if (TRUE === _cambridge_theme_find_active_horizontal_navigation($object['#below'])) {
         return TRUE;
       }
