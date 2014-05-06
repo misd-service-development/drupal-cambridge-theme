@@ -40,13 +40,13 @@
 
 <?php print $page; ?>
 
+<?php print $scripts; ?>
+
 <?php print $page_bottom; ?>
 
 <!--[if lte IE 8]>
 </div>
 <![endif]-->
-
-<?php print $scripts; ?>
 
 </body>
 
