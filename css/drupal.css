@@ -65,3 +65,8 @@
     border-bottom: 0;
     margin-bottom: 0;
 }
+
+/* Prevent conflict with pagination and Drupal lists */
+.campl-pagination ul li {
+    margin: 0;
+}
