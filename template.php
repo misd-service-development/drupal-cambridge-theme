@@ -835,6 +835,247 @@ function cambridge_theme_menu_link(array $variables) {
 }
 
 /**
+ * Implements theme_pager().
+ */
+function cambridge_theme_pager($variables) {
+  global $pager_page_array, $pager_total;
+
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+
+  $pager_current_index = $pager_page_array[$element];
+  $pager_current_index = $pager_current_index < 0 ? 0 : $pager_current_index;
+
+  $pager_total_pages = $pager_total[$element];
+  $pager_max_index = $pager_total_pages - 1;
+
+  if ($pager_total_pages <= 1) {
+    return '';
+  }
+
+  $li_previous = theme(
+    'pager_previous',
+    array('text' => 'previous', 'element' => $element, 'interval' => 1, 'parameters' => $parameters)
+  );
+  $li_first = theme(
+    'pager_first',
+    array('text' => 1, 'element' => $element, 'interval' => 1, 'parameters' => $parameters)
+  );
+  $li_last = theme(
+    'pager_last',
+    array('text' => $pager_total_pages, 'element' => $element, 'interval' => 1, 'parameters' => $parameters)
+  );
+  $li_next = theme(
+    'pager_next',
+    array('text' => 'next', 'element' => $element, 'interval' => 1, 'parameters' => $parameters)
+  );
+
+  if ($li_previous) {
+    $items[] = array('class' => array('campl-previous-li'), 'data' => $li_previous,);
+  }
+
+  if ($li_first) {
+    $items[] = array('data' => $li_first);
+  }
+
+  if ($pager_current_index == 2 && $pager_max_index > 2) {
+    // On the third page, add in page 2 to prevent "1 ... 3".
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index,
+          'page_new' => array($pager_current_index - 1),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+  elseif ($pager_current_index == $pager_max_index && $pager_max_index == 3) {
+    // On the last page of four, add page 2 to prevent "1 ... 3 4".
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index - 1,
+          'page_new' => array($pager_current_index - 2),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+  elseif ($pager_current_index > 1 && $pager_max_index > 2) {
+    $items[] = array('data' => '<span class="campl-elipsis">&hellip;</span>');
+  }
+
+  if (!$li_last && $pager_current_index > 1) {
+    // On the last page, try and add the penultimate.
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index,
+          'page_new' => array($pager_current_index - 1),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+
+  $items[] = array('class' => array('campl-active'), 'data' => '<a>' . ($pager_current_index + 1) . '</a>');
+
+  if (!$li_previous && $pager_current_index < ($pager_max_index - 1)) {
+    // On the first page, try and add the second.
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index + 2,
+          'page_new' => array($pager_current_index + 1),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+
+  if ($pager_current_index + 2 == $pager_max_index && $pager_max_index > 2) {
+    // Two away from the end, add in the penultimate page to prevent the likes of "5 6 ... 8".
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index + 2,
+          'page_new' => array($pager_current_index + 1),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+  elseif (($pager_current_index == 0 && $pager_max_index == 3)) {
+    // On the first page of four, add in page 3 to prevent "1 2 ... 4".
+    $items[] = array(
+      'data' => theme(
+        'pager_link',
+        array(
+          'text' => $pager_current_index + 3,
+          'page_new' => array($pager_current_index + 2),
+          'element' => $element,
+          'parameters' => $parameters,
+        )
+      )
+    );
+  }
+  elseif (($pager_current_index + 1) < $pager_max_index && $pager_max_index > 2) {
+    $items[] = array('data' => '<span class="campl-elipsis">&hellip;</span>');
+  }
+
+  if ($li_last) {
+    $items[] = array('data' => $li_last);
+  }
+
+  if ($li_next) {
+    $items[] = array('class' => array('campl-next-li'), 'data' => $li_next);
+  }
+
+  $pagination = theme('item_list', array('items' => $items));
+
+  return '<div class="campl-pagination campl-pagination-centered">' . $pagination . '</div>';
+}
+
+/**
+ * Implements theme_pager_previous().
+ */
+function cambridge_theme_pager_previous($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array;
+
+  if ($pager_page_array[$element] == 0) {
+    return '';
+  }
+
+  $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
+
+  return theme(
+    'pager_link',
+    array(
+      'text' => $text,
+      'prefix' => '<span class="campl-arrow-span"></span>',
+      'page_new' => $page_new,
+      'element' => $element,
+      'parameters' => $parameters,
+      'attributes' => array('class' => array('ir campl-pagination-btn campl-previous')),
+    )
+  );
+}
+
+/**
+ * Implements theme_next().
+ */
+function cambridge_theme_pager_next($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array, $pager_total;
+
+  if ($pager_page_array[$element] == ($pager_total[$element] - 1)) {
+    return '';
+  }
+
+  $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
+
+  return theme(
+    'pager_link',
+    array(
+      'text' => $text,
+      'prefix' => '<span class="campl-arrow-span"></span>',
+      'page_new' => $page_new,
+      'element' => $element,
+      'parameters' => $parameters,
+      'attributes' => array('class' => array('ir campl-pagination-btn campl-next')),
+    )
+  );
+}
+
+/**
+ * Implements theme_pager_link().
+ */
+function cambridge_theme_pager_link($variables) {
+  $text = $variables['text'];
+  $prefix = isset($variables['prefix']) ? $variables['prefix'] : '';
+  $suffix = isset($variables['prefix']) ? $variables['prefix'] : '';
+  $page_new = $variables['page_new'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = $variables['attributes'];
+
+  $page = isset($_GET['page']) ? $_GET['page'] : '';
+  if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
+    $parameters['page'] = $new_page;
+  }
+
+  $query = array();
+  if (count($parameters)) {
+    $query = drupal_get_query_parameters($parameters, array());
+  }
+  if ($query_pager = pager_get_query_parameters()) {
+    $query = array_merge($query, $query_pager);
+  }
+
+  $attributes['href'] = url($_GET['q'], array('query' => $query));
+
+  return '<a' . drupal_attributes($attributes) . '>' . $prefix . check_plain($text) . $suffix . '</a>';
+}
+
+/**
  * Implements hook_preprocess_views_view_table().
  */
 function cambridge_theme_preprocess_views_view_table(&$vars) {
