@@ -1,6 +1,13 @@
 Changelog
 =========
 
+7.x-1.2-dev
+
+3 June 2014
+
+* Added entity.tpl.php file to templates directory.
+
+
 7.x-1.1
 -------
 
