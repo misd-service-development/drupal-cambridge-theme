@@ -70,3 +70,48 @@
 .campl-pagination ul li {
     margin: 0;
 }
+
+/* Style contextual links */
+.contextual-links-region .contextual-links-wrapper {
+    color: #777;
+    font-family: myriad-pro, myriad, verdana, arial, sans-serif;
+    font-size: 14px;
+}
+
+.contextual-links-region ul.contextual-links li a {
+    margin-bottom: 0;
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+
+.contextual-links-region ul.contextual-links li.first a {
+    margin-top: 0;
+}
+
+.campl-theme-1 ul.contextual-links li a:hover {
+    background-color: #d2e4f3;
+}
+
+.campl-theme-2 ul.contextual-links li a:hover {
+    background-color: #d2f3e1;
+}
+
+.campl-theme-3 ul.contextual-links li a:hover {
+    background-color: #f4d3e5;
+}
+
+.campl-theme-4 ul.contextual-links li a:hover {
+    background-color: #f4f6cd;
+}
+
+.campl-theme-5 ul.contextual-links li a:hover {
+    background-color: #f5e7ca;
+}
+
+.campl-theme-6 ul.contextual-links li a:hover {
+    background-color: #f8e1e5;
+}
+
+.campl-theme-7 ul.contextual-links li a:hover {
+    background-color: #dbd9d9;
+}
