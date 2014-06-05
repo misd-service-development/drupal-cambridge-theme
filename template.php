@@ -291,7 +291,16 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
  */
 function _cambridge_theme_add_horizontal_navigation_overview_items($items) {
   foreach ($items as $item) {
-    if (0 === count($item['below'])) {
+    $has_children = FALSE;
+
+    foreach ($item['below'] as $child) {
+      if (TRUE != $child['link']['hidden']) {
+        $has_children = TRUE;
+        break;
+      }
+    }
+
+    if (FALSE === $has_children) {
       continue;
     }
 
