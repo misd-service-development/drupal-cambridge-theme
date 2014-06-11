@@ -356,6 +356,10 @@ function cambridge_theme_status_messages($variables) {
  * Implements theme_image().
  */
 function cambridge_theme_image($variables) {
+  if (isset($variables['attributes']['class']) && FALSE === is_array($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = array($variables['attributes']['class']);
+  }
+
   // Make sure class is added to all images.
   $variables['attributes']['class'][] = 'campl-scale-with-grid';
 
