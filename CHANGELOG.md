@@ -1,6 +1,13 @@
 Changelog
 =========
 
+7.x-1.2-dev
+-------
+
+* Added full-node class to the node.tpl.php file
+* Added full-node styling to the drupal css file to separate fields better on a
+  default node template layout.
+
 7.x-1.1
 -------
 
