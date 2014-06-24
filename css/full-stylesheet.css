@@ -570,6 +570,8 @@ body{margin:0;padding:0; background:#000;width:100%;}
 
 .campl-heading-container{border-bottom:1px solid #e4e4e4;}
 
+.campl-centred-text {text-align: center;}
+
 /* 7.0 CUSTOM MODULES -----------------------------------------------------------------------------------------------*/
 
 /* Header */
@@ -2227,7 +2229,7 @@ th.campl-alt{background:#fff;color:#28828a}
 	.js .campl-theme-7 .campl-local-navigation-container li.campl-sub li.campl-sub li.campl-back-link a:hover,
 	.js .campl-theme-7 .campl-local-navigation-container li.campl-sub li.campl-sub li.campl-sub li.campl-back-link a:focus,
 	.js .campl-theme-7 .campl-local-navigation-container li.campl-sub li.campl-sub li.campl-sub li.campl-back-link a:hover{background-color:#5F5F5F;}
-}}
+}
 
 /* generic colours */
 .campl-global-header{background:#000000}
