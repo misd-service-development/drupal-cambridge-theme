@@ -70,3 +70,9 @@
 .campl-pagination ul li {
     margin: 0;
 }
+
+/* Improving the layout of full node displays as fields are too closely
+   bunched */
+.full-node .field {
+    padding: 5px 0 10px 0;
+}
