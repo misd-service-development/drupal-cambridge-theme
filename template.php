@@ -258,6 +258,13 @@ function cambridge_theme_preprocess_block(&$variables) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter() for a Views exposed form.
+ */
+function cambridge_theme_form_views_exposed_form_alter(&$form) {
+  $form['#attributes']['class'][] = 'campl-content-container';
+}
+
+/**
  * Implements hook_menu_block_tree_alter().
  */
 function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
