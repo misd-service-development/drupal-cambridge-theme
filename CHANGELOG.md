@@ -1,6 +1,11 @@
 Changelog
 =========
 
+7.x-1.2-dev
+-------
+
+* Added a new generic class (campl-centred-text) for the centre-ing of text and html dom elements
+
 7.x-1.1
 -------
 
