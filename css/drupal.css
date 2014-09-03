@@ -115,3 +115,12 @@
 .campl-theme-7 ul.contextual-links li a:hover {
     background-color: #dbd9d9;
 }
+
+/* Space out fields */
+.field + .field {
+    margin-top: 10px;
+}
+
+.campl-teaser .field + .field {
+    margin-top: 20px;
+}
