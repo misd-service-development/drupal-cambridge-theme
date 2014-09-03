@@ -1,0 +1,15 @@
+#page-content {
+    padding: 3em 0 5em;
+}
+
+@media only screen and (max-height: 700px) {
+    #page-content {
+        padding: 2em 0 4em;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    #page-content {
+        padding: 0 0 2em;
+    }
+}

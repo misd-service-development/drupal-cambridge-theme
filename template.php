@@ -53,6 +53,13 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements template_preprocess_maintenance_page().
+ */
+function cambridge_theme_preprocess_maintenance_page(&$variables) {
+  drupal_add_css(path_to_theme() . '/css/maintenance.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
+}
+
+/**
  * Implements template_preprocess_html().
  */
 function cambridge_theme_preprocess_html(&$variables) {
