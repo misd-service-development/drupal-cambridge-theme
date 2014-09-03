@@ -578,16 +578,11 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
       _cambridge_theme_left_navigation_break_up($active, $breadcrumbs, $navigation);
 
-      // Add in overview-style links when necessary.
+      // Stop the category being a link when on the page.
 
       $key = key($navigation);
 
-      if (count($navigation[$key]['#below']) > 0) {
-        if ('<firstchild>' !== $navigation[$key]['#original_link']['link_path']) {
-          $navigation[$key]['#below'] = $navigation + $navigation[$key]['#below'];
-          $navigation[$key]['#below'][$key]['#title'] .= ' overview';
-        }
-
+      if (in_array('active', $navigation[$key]['#attributes']['class'])) {
         $navigation[$key]['#attributes']['class'][] = 'campl-selected';
         $navigation[$key]['#href'] = '<none>';
       }
