@@ -351,7 +351,7 @@ projectlight.initTables = function(){
 			//need to find all children of the table rows, (and not just table data cells)
 			var $tableCells = $(this).children();
 			$tableCells.each(function (i) {
-				if(headerTextArray[i]) { 
+				if(headerTextArray[i]) {
 					$(this).prepend("<span class='campl-table-heading'>"+headerTextArray[i]+"</span>")
 				}
 			})
@@ -500,12 +500,12 @@ projectlight.localNav=(function(){
 		$links.click(function(e){
 			var $linkClicked = $(this),
 			$listItemClicked = $linkClicked.parent();
-
+			
 			if($listItemClicked.hasClass("campl-title") && Modernizr.mq('only screen and (max-width: 767px)')){
-				e.preventDefault();
+				e.preventDefault();	
 			}else{
 				if($listItemClicked.hasClass("campl-sub")){
-					//slide mobile or tablet menu forward
+					//slide mobile or tablet menu forward 
 					if(projectlight.mobileLayout){
 						slideMenu("forward");
 						$listItemClicked.addClass("campl-current")
@@ -518,7 +518,7 @@ projectlight.localNav=(function(){
 							showSubNavigation($linkClicked, e)
 						}
 					}
-				e.preventDefault();
+				e.preventDefault();	
 				}else{
 					if($listItemClicked.hasClass("campl-back-link")){
 						slideMenu("back");
@@ -528,9 +528,9 @@ projectlight.localNav=(function(){
 					}
 				}
 			}
-
+			
 		});
-
+		
 		//ensure dropdown or sliding panels are set to the correct width if the page changes and also on first load
 		$(window).resize(function(){
 			setMenuWidth();
@@ -781,11 +781,15 @@ projectlight.createCarousel = function(){
 		//truncate homepage carousel content if page is thinner than tablet view but not on mobile view
 		if(Modernizr.mq('only screen and (min-width: 768px) and (max-width: 1000px)')){	
 			projectlight.$slideCaption.each(function(){
-				$(this).text($.trim($(this).text()).substring(0, 50).split(" ").slice(0, -1).join(" ") + "...")
+        if($.trim($(this).text()).length>51) {
+					$(this).text($.trim($(this).text()).substring(0, 50).split(" ").slice(0, -1).join(" ") + "...")
+				}
 			})
 
 			projectlight.$carouselContent.each(function(){
-				$(this).text($.trim($(this).text()).substring(0, 35).split(" ").slice(0, -1).join(" ") + "...")
+				if($.trim($(this).text()).length>36) {
+					$(this).text($.trim($(this).text()).substring(0, 35).split(" ").slice(0, -1).join(" ") + "...")
+				}
 			})
 
 		}
@@ -1069,11 +1073,15 @@ $(function() {
 				//carousel height is remaining as if text isn't being truncated
 
 				projectlight.$slideCaption.each(function(i){
-						$(this).text($.trim(projectlight.slideCaptionItems[i]).substring(0, 50).split(" ").slice(0, -1).join(" ") + "...")
+						if(($.trim(projectlight.slideCaptionItems[i]).length>51)) {
+							$(this).text($.trim(projectlight.slideCaptionItems[i]).substring(0, 50).split(" ").slice(0, -1).join(" ") + "...")
+						}
 					})
 					
 					projectlight.$carouselContent.each(function(i){
-						$(this).text($.trim(projectlight.carouselContentItems[i]).substring(0, 35).split(" ").slice(0, -1).join(" ") + "...")
+						if(($.trim(projectlight.slideCaptionItems[i]).length>36)) {
+							$(this).text($.trim(projectlight.carouselContentItems[i]).substring(0, 35).split(" ").slice(0, -1).join(" ") + "...")
+						}
 					})
 			}else{
 				

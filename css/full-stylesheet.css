@@ -67,7 +67,7 @@ blockquote.campl-float-right p {padding-right:0px;background:url(../images/inter
 /* Misc */
 hr {margin: 5px 0 20px;border: 0;border-top: 1px solid #eeeeee;border-bottom: 1px solid #ffffff;height:1px}
 b, strong {font-weight: bold;}
-em {font-style: italic;font-weight:normal}
+em {font-style: italic;}
 address {display: block;margin-bottom: 18px;font-style: normal;line-height: 18px;}
 small {font-size: 85%;}
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
@@ -275,7 +275,8 @@ label { cursor: pointer;  display: block;margin-bottom: 5px; }
 legend { border: 0; padding: 0; white-space: normal;display: block;width: 100%;padding: 0;margin-bottom: 10px; }
 .lt-ie8 legend{margin-left: -7px;}
 
-button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button;margin-bottom:5px; }
+button, input[type="button"], input[type="image"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button;margin-bottom:5px; }
+input[type="image"] { -webkit-appearance: none; }
 .lt-ie8 button, .lt-ie8 input{overflow: visible;zoom:1;margin: 0 2.5px 5px 2.5px}
 button[disabled], input[disabled] { cursor: default;color:#999 }
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
@@ -384,7 +385,9 @@ input[type="checkbox"][disabled],
 input[type="radio"][readonly],
 input[type="checkbox"][readonly] {background-color: transparent;}
 
-input[type="submit"],input[type="reset"],input[type="button"],input[type="radio"],input[type="checkbox"] {width: auto;}
+input[type="submit"],input[type="reset"],input[type="button"],input[type="image"],input[type="radio"],input[type="checkbox"] {width: auto;}
+
+input[type="image"] { display: inline; vertical-align: middle; margin-bottom: 5px; }
 
 /* select menus */
 select,
@@ -701,7 +704,7 @@ body{margin:0;padding:0; background:#000;width:100%;}
 .lt-ie8 .campl-local-navigation li {margin:0}
 .js .campl-local-navigation a{padding:10px 20px;}
 .js .campl-local-navigation li.campl-sub>a{padding:10px 40px 10px 10px;margin:0}
-.js .campl-local-navigation li.campl-sub>a{background-image:url(../images/interface/bg-local-navigation-sub-arrow.png);background-repeat:no-repeat;background-position:95% 50% ;}
+.js .campl-local-navigation li.campl-sub>a{background-image:url(../images/interface/bg-local-navigation-sub-arrow.png);background-repeat:no-repeat;background-position:100% 50% ;}
 
 .js .campl-local-navigation li > ul {margin-top:-1px}
 .js .campl-local-navigation li ul {left: -9999px;position: absolute; width: 235px;z-index:14;}
