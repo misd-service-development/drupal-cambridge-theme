@@ -124,3 +124,8 @@
 .campl-teaser .field + .field {
     margin-top: 20px;
 }
+
+/* Prevent top margin on comment forms */
+#comments {
+    margin-top: 0;
+}

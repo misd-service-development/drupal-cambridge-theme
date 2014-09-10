@@ -215,6 +215,9 @@ function cambridge_theme_preprocess_block(&$variables) {
       // but it can be a form
       isset($variables['elements']['#form_id'])
       ||
+      // or a comment form
+      isset($variables['elements']['comment_form'])
+      ||
       // or a user profile
       (isset($variables['elements']['#theme']) && $variables['elements']['#theme'] === 'user_profile')
       ||
