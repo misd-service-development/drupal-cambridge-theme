@@ -9,9 +9,9 @@
   <?php print render($title_suffix); ?>
 
   <?php
-  // We hide the comments and links now so that we can render them later.
-  hide($content['comments']);
-  hide($content['links']);
+  // We render the comments and links now but show them later.
+  $comments = render($content['comments']);
+  $links = render($content['links']);
 
   // See if the first visible item is an image field. If it is, output it outside of the campl-content-container so that
   // it appears as a leading image.
@@ -44,8 +44,16 @@
     </div>
   <?php endif; ?>
 
-  <?php print render($content['links']); ?>
+  <?php if ('' !== trim($links)): ?>
+    <div class="campl-content-container campl-no-top-padding">
+      <?php print $links; ?>
+    </div>
+  <?php endif; ?>
 
-  <?php print render($content['comments']); ?>
+  <?php if ('' !== trim($comments)): ?>
+    <div class="campl-content-container campl-no-top-padding">
+      <?php print $comments; ?>
+    </div>
+  <?php endif; ?>
 
 </div>
