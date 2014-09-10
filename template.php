@@ -268,7 +268,7 @@ function cambridge_theme_form_views_exposed_form_alter(&$form) {
  * Implements hook_menu_block_tree_alter().
  */
 function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
-  $block = block_load('menu_block', $config['delta']);
+  $block = _cambridge_theme_block_load('menu_block', $config['delta']);
 
   if ('left_navigation' === $block->region) {
     // Force menu block configuration.
@@ -1189,4 +1189,31 @@ function theme_cambridge_easy_breadcrumb($variables) {
   }
 
   return $html;
+}
+
+/**
+ * Loads a block object from the database for the current theme.
+ *
+ * This is a replica of block_load(), except that it uses the current theme.
+ */
+function _cambridge_theme_block_load($module, $delta) {
+  global $theme;
+
+  if (isset($delta)) {
+    $block = db_query(
+      'SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
+      array(':module' => $module, ':delta' => $delta, ':theme' => $theme)
+    )->fetchObject();
+  }
+
+  // If the block does not exist in the database yet return a stub block
+  // object.
+  if (empty($block)) {
+    $block = new stdClass();
+    $block->module = $module;
+    $block->delta = $delta;
+    $block->region = NULL;
+  }
+
+  return $block;
 }
