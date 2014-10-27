@@ -32,5 +32,6 @@ features[] = favicon
 settings[toggle_logo] = 0
 
 settings[colour_scheme] = 2
+settings[search_box] = 0
 
 files[] = template.php

@@ -4,6 +4,8 @@
  * Implements hook_form_system_theme_settings_alter().
  */
 function cambridge_theme_form_system_theme_settings_alter(&$form, $form_state) {
+  global $base_url;
+
   $form['cambridge'] = array(
     '#type' => 'fieldset',
     '#title' => t('Theme settings'),
@@ -22,6 +24,50 @@ function cambridge_theme_form_system_theme_settings_alter(&$form, $form_state) {
       7 => 'Gray',
     ),
     '#default_value' => theme_get_setting('colour_scheme'),
+  );
+  $form['cambridge']['search_box'] = array(
+    '#type' => 'radios',
+    '#title' => t('Search box'),
+    '#description' => t('Choose what the search box in the global navigation searches.'),
+    '#options' => array(
+      0 => t('Whole University'),
+      1 => t('This site (ie ' . $base_url . ')'),
+      2 => t('Search engine filter'),
+    ),
+    '#default_value' => theme_get_setting('search_box'),
+  );
+  $form['cambridge']['search_box_filter'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Filter settings'),
+    '#description' => t('These details must match a filter configured in the University\'s search engine.'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="search_box"]' => array('value' => 2),
+      ),
+    ),
+  );
+  $form['cambridge']['search_box_filter']['search_box_filter_inst'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Institution filter code'),
+    '#default_value' => theme_get_setting('search_box_filter_inst'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="search_box"]' => array('value' => 2),
+      ),
+      'required' => array(
+        ':input[name="search_box"]' => array('value' => 2),
+      ),
+    ),
+  );
+  $form['cambridge']['search_box_filter']['search_box_filter_tag'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Tag'),
+    '#default_value' => theme_get_setting('search_box_filter_tag'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="search_box"]' => array('value' => 2),
+      ),
+    ),
   );
 
   // Hide reference to non-existent default logo.
