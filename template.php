@@ -273,6 +273,21 @@ function cambridge_theme_form_views_exposed_form_alter(&$form) {
 function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
   $block = _cambridge_theme_block_load('menu_block', $config['delta']);
 
+  // If the block is enabled by Context, the region won't currently be set.
+  if (BLOCK_REGION_NONE == $block->region && module_exists('context')) {
+    if ($plugin = context_get_plugin('reaction', 'block')) {
+      foreach (array('left_navigation', 'horizontal_navigation') as $region) {
+        $context_blocks = $plugin->block_list($region);
+
+        $key = sprintf('%s-%s', 'menu_block', $config['delta']);
+
+        if (isset($context_blocks[$key])) {
+          $block->region = $context_blocks[$key]->region;
+        }
+      }
+    }
+  }
+
   if ('left_navigation' === $block->region) {
     // Force menu block configuration.
     $config['level'] = 1;
