@@ -17,16 +17,20 @@ Using the theme
 #### Horizontal navigation
 
 - Go to admin/structure/block and click 'Add menu block'.
+- Click the 'Advanced options' tab.
 - Set the 'Administrative title' to something descriptive (eg 'Horizontal menu').
 - Set 'Menu' to the menu.
+- Check the 'Expand all children of this tree' option.
 - Set the region to 'Horizontal Navigation' for the University of Cambridge theme.
 - Click 'Save block'.
 
 #### Vertical navigation
 
 - Go to admin/structure/block and click 'Add menu block'.
+- Click the 'Advanced options' tab.
 - Set the 'Administrative title' to something descriptive (eg 'Vertical menu').
 - Set 'Menu' to the menu.
+- Check the 'Expand all children of this tree' option.
 - Set the region to 'Left Navigation' for the University of Cambridge theme.
 - Add '&lt;front&gt;', 'user' and 'user/*' to the 'Show block on specific pages' settings (making sure that the 'All pages except those listed' option is selected).
 - Click 'Save block'.
