@@ -19,7 +19,7 @@ function cambridge_theme_form_system_theme_settings_alter(&$form, $form_state) {
       4 => 'Green',
       5 => 'Orange',
       6 => 'Red',
-      7 => 'Gray',
+      7 => 'Grey',
     ),
     '#default_value' => theme_get_setting('colour_scheme'),
   );
