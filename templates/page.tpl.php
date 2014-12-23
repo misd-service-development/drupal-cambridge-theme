@@ -1,12 +1,14 @@
 <?php
 
+global $base_url;
+
 $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
 
-$site_name = !empty($section_title) ? $section_title : $site_name;
+$site_title = !empty($section_title) ? $section_title : $site_name;
 
 $has_carousel = isset($page['carousel']) && count($page['carousel']);
 $has_left_navigation = isset($page['left_navigation']) && count($page['left_navigation']);
-$has_page_title = !$is_front && !$has_carousel && $title && $title != '' && ($has_left_navigation || $title !== $site_name);
+$has_page_title = !$is_front && !$has_carousel && $title && $title != '' && ($has_left_navigation || $title !== $site_title);
 $has_sub_content = isset($page['sub_content']) && count($page['sub_content']);
 $has_sidebar = (isset($page['sidebar']) && count($page['sidebar'])) || $has_carousel;
 $has_partnerships = isset($page['partnerships']) && count($page['partnerships']);
@@ -48,6 +50,23 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <form action="http://search.cam.ac.uk/web" method="get">
             <input id="header-search" type="text" name="query" value="" placeholder="Search"/>
 
+            <?php
+            switch (theme_get_setting('search_box')):
+              case 1:
+                print '<input type="hidden" name="filterTitle" value="' . $site_name . '"/>';
+                print '<input type="hidden" name="include" value="' . $base_url . '"/>';
+                break;
+              case 2:
+                print '<input type="hidden" name="inst" value="' .
+                  htmlspecialchars(theme_get_setting('search_box_filter_inst')) . '"/>';
+                if (theme_get_setting('search_box_filter_tag')):
+                  print '<input type="hidden" name="tag" value="' .
+                    htmlspecialchars(theme_get_setting('search_box_filter_tag')) . '"/>';
+                endif;
+                break;
+            endswitch;
+            ?>
+
             <input type="image" class="campl-search-submit"
                    src="<?php print $base_theme_path; ?>/images/interface/btn-search-header.png"/>
           </form>
@@ -62,6 +81,24 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
     <form class="campl-site-search-form" id="site-search-container" action="http://search.cam.ac.uk/web" method="get">
       <div class="campl-search-form-wrapper clearfix">
         <input type="text" class="text" name="query" value="" placeholder="Search"/>
+
+        <?php
+        switch (theme_get_setting('search_box')):
+          case 1:
+            print '<input type="hidden" name="filterTitle" value="' . $site_name . '"/>';
+            print '<input type="hidden" name="include" value="' . $base_url . '"/>';
+            break;
+          case 2:
+            print '<input type="hidden" name="inst" value="' .
+              htmlspecialchars(theme_get_setting('search_box_filter_inst')) . '"/>';
+            if (theme_get_setting('search_box_filter_tag')):
+              print '<input type="hidden" name="tag" value="' .
+                htmlspecialchars(theme_get_setting('search_box_filter_tag')) . '"/>';
+            endif;
+            break;
+        endswitch;
+        ?>
+
         <input type="image" class="campl-search-submit"
                src="<?php print $base_theme_path; ?>/images/interface/btn-search.png"/>
       </div>
@@ -263,9 +300,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
         <?php endif; ?>
 
-        <?php if ($site_name): ?>
-          <h1 class="campl-page-title"><?php print $site_name; ?></h1>
-        <?php endif; ?>
+        <h1 class="campl-page-title"><?php print $site_title; ?></h1>
 
       </div>
     </div>
