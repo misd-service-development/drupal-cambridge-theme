@@ -509,18 +509,8 @@ function cambridge_theme_block_view_alter(&$data, $block) {
           continue;
         }
         if ($sibling['#title'] == 'Home') {
-          $title = variable_get('site_name');
-
-          if (module_exists('context')) {
-            foreach (context_active_contexts() as $context) {
-              if (!empty($context->reactions['theme']['title'])) {
-                $title = $context->reactions['theme']['title'];
-              }
-            }
-          }
-
           $breadcrumbs = array($key => $siblings[$key]) + $breadcrumbs;
-          $breadcrumbs[$key]['#title'] = $title;
+          $breadcrumbs[$key]['#title'] = variable_get('site_name');
         }
       }
 
@@ -548,20 +538,8 @@ function cambridge_theme_block_view_alter(&$data, $block) {
           continue;
         }
         if ($sibling['#title'] == 'Home') {
-          $title = variable_get('site_name');
-
-          // Use the context module's section title if enabled/used.
-
-          if (module_exists('context')) {
-            foreach (context_active_contexts() as $context) {
-              if (!empty($context->reactions['theme']['title'])) {
-                $title = $context->reactions['theme']['title'];
-              }
-            }
-          }
-
           $breadcrumbs = array($key => $active['_siblings'][$key]->getArrayCopy()) + $breadcrumbs;
-          $breadcrumbs[$key]['#title'] = $title;
+          $breadcrumbs[$key]['#title'] = variable_get('site_name');
         }
       }
 
