@@ -17,9 +17,9 @@
   // it appears as a leading image.
   foreach ($content as $key => $value) {
     if (
-      (FALSE === array_key_exists('#printed', $value) || FALSE == $value['#printed'])
+      (FALSE === isset($value['#printed']) || FALSE == $value['#printed'])
       &&
-      (FALSE === array_key_exists('#access', $value) || TRUE == $value['#access'])
+      (FALSE === isset($value['#access']) || TRUE == $value['#access'])
     ) {
       if (isset($value['#field_type']) && $value['#field_type'] === 'image') {
         print render($content[$key]);
