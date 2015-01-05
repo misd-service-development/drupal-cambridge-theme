@@ -3,6 +3,18 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.3
+-------
+
+5 January 2015.
+
+* Fix PHP warning when a node page has no fields with content.
+* Add options to configure the global header search box.
+* Fix typo (Grey rather than Gray).
+* Remove broken Context-based renaming of menu items.
+* Make sure that all menu blocks in the horizontal and vertical navigation regions are expanded.
+* Fix configuration override for menu blocks placed by Context.
+
 7.x-1.2
 -------
 
