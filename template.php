@@ -293,16 +293,48 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
     $config['level'] = 1;
     $config['follow'] = 0;
     $config['depth'] = 0;
-    $config['expanded'] = 1;
     $config['sort'] = 1;
+
+    if (0 == $config['expanded']) {
+      // As the menu will break if it's not expanded, we'll have to reload it again.
+      $config['expanded'] = 1;
+
+      // Get the full, un-pruned tree.
+      if ($config['parent_mlid']) {
+        $tree = menu_tree_all_data($config['menu_name']);
+      }
+      else {
+        $max_depth = ($config['depth'] == 0) ? NULL : min($config['level'] + $config['depth'] - 1, MENU_MAX_DEPTH);
+
+        $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);
+      }
+      // And add the active trail data back to the full tree.
+      menu_tree_add_active_path($tree);
+    }
   }
   elseif ('horizontal_navigation' === $block->region) {
     // Force menu block configuration.
     $config['level'] = 1;
     $config['follow'] = 0;
     $config['depth'] = 0;
-    $config['expanded'] = 1;
     $config['sort'] = 0;
+
+    if (0 == $config['expanded']) {
+      // As the menu will break if it's not expanded, we'll have to reload it again.
+      $config['expanded'] = 1;
+
+      // Get the full, un-pruned tree.
+      if ($config['parent_mlid']) {
+        $tree = menu_tree_all_data($config['menu_name']);
+      }
+      else {
+        $max_depth = ($config['depth'] == 0) ? NULL : min($config['level'] + $config['depth'] - 1, MENU_MAX_DEPTH);
+
+        $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);
+      }
+      // And add the active trail data back to the full tree.
+      menu_tree_add_active_path($tree);
+    }
 
     // We need to add in extra 'Overview' menu items as parents aren't clickable/tapable, but there isn't a way to do
     // this with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
