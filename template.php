@@ -975,7 +975,7 @@ function cambridge_theme_pager($variables) {
     );
   }
 
-  $items[] = array('class' => array('campl-active'), 'data' => '<a>' . ($pager_current_index + 1) . '</a>');
+  $items[] = array('class' => array('campl-active'), 'data' => '<span>' . ($pager_current_index + 1) . '</span>');
 
   if (!$li_previous && $pager_current_index < ($pager_max_index - 1)) {
     // On the first page, try and add the second.
@@ -1032,7 +1032,7 @@ function cambridge_theme_pager($variables) {
     $items[] = array('class' => array('campl-next-li'), 'data' => $li_next);
   }
 
-  $pagination = theme('item_list', array('items' => $items));
+  $pagination = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('pager'))));
 
   return '<div class="campl-pagination campl-pagination-centered">' . $pagination . '</div>';
 }
@@ -1067,7 +1067,7 @@ function cambridge_theme_pager_previous($variables) {
 }
 
 /**
- * Implements theme_next().
+ * Implements theme_pager_next().
  */
 function cambridge_theme_pager_next($variables) {
   $text = $variables['text'];
