@@ -176,7 +176,7 @@ function cambridge_theme_left_navigation_link($variables) {
   }
   $list_menu = '';
 
-  if ($element['#title'] != t('Home')) {
+  if (_cambridge_theme_is_home_path($element['#href'])) {
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     $list_menu = '<li' . drupal_attributes($element['#attributes']) . ' >' . $output . $sub_menu . "</li>\n";
   }
@@ -555,9 +555,10 @@ function cambridge_theme_block_view_alter(&$data, $block) {
         if (FALSE === is_int($key)) {
           continue;
         }
-        if ($sibling['#title'] == 'Home') {
+        if (_cambridge_theme_is_home_path($sibling['#href'])) {
           $breadcrumbs = array($key => $siblings[$key]) + $breadcrumbs;
           $breadcrumbs[$key]['#title'] = variable_get('site_name');
+          break;
         }
       }
 
@@ -584,9 +585,10 @@ function cambridge_theme_block_view_alter(&$data, $block) {
         if (FALSE === is_int($key)) {
           continue;
         }
-        if ($sibling['#title'] == 'Home') {
+        if (_cambridge_theme_is_home_path($sibling['#href'])) {
           $breadcrumbs = array($key => $active['_siblings'][$key]->getArrayCopy()) + $breadcrumbs;
           $breadcrumbs[$key]['#title'] = variable_get('site_name');
+          break;
         }
       }
 
@@ -633,7 +635,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       $siblings = $navigation[$key]['_siblings'];
       unset($siblings[$key]);
 
-      if ($navigation[$key]['#title'] == 'Home') {
+      if (_cambridge_theme_is_home_path($navigation[$key]['#href'])) {
         $navigation = array();
       }
     }
@@ -647,7 +649,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
       $siblings[$key]['#below'] = array();
 
-      if ($sibling['#title'] == 'Home') {
+      if (_cambridge_theme_is_home_path($sibling['#href'])) {
         unset($siblings[$key]);
       }
     }
@@ -1217,6 +1219,13 @@ function theme_cambridge_easy_breadcrumb($variables) {
   }
 
   return $html;
+}
+
+/**
+ * Whether a path is equivalent to '<front>'.
+ */
+function _cambridge_theme_is_home_path($path) {
+  return $path == '<front>' || $path == drupal_get_normal_path(variable_get('site_frontpage', 'node'));
 }
 
 /**
