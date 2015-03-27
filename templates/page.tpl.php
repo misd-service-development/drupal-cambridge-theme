@@ -300,7 +300,10 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
         <?php endif; ?>
 
-        <h1 class="campl-page-title"><?php print $site_title; ?></h1>
+        <h1 class="campl-page-title">
+          <?php print $site_title; ?>
+          <?php if (!$has_page_title): print $feed_icons; endif; ?>
+        </h1>
 
       </div>
     </div>
@@ -335,8 +338,10 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
       <?php endif; ?>
 
       <div class="<?php print $has_left_navigation ? 'campl-column9' : 'campl-column12'; ?>">
-        <div class="campl-content-container">
-          <h1 class="campl-sub-title"><?php print $title; ?></h1>
+        <div class="campl-content-container clearfix contextual-links-region">
+          <?php print render($title_prefix); ?>
+          <h1 class="campl-sub-title"><?php print $title; ?> <?php print $feed_icons; ?></h1>
+          <?php print render($title_suffix); ?>
         </div>
       </div>
     </div>
