@@ -71,6 +71,44 @@
     margin: 0;
 }
 
+.item-list .pager li {
+    padding: 0;
+    list-style-type: inherit;
+}
+
+.view .campl-pagination .progress-disabled {
+    float: left;
+}
+
+.campl-pagination li > span {
+    float: left;
+    padding: 5px 7px;
+    line-height: 12px;
+    border: 1px solid #d6d6d6;
+    margin: 0 2px;
+}
+
+.campl-pagination li > span.campl-elipsis {
+    border: 0;
+}
+
+@media only screen and (max-width: 1150px) {
+    .campl-pagination li > span {
+        padding: 8px 15px;
+        line-height: 20px;
+    }
+}
+
+.campl-active span {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
+.campl-pagination .campl-active span {
+    cursor: default;
+    font-weight: bold;
+}
+
 /* Style contextual links */
 .contextual-links-region .contextual-links-wrapper {
     color: #777;
