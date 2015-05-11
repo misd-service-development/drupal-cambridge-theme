@@ -294,23 +294,6 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
     $config['follow'] = 0;
     $config['depth'] = 0;
     $config['sort'] = 1;
-
-    if (0 == $config['expanded']) {
-      // As the menu will break if it's not expanded, we'll have to reload it again.
-      $config['expanded'] = 1;
-
-      // Get the full, un-pruned tree.
-      if ($config['parent_mlid']) {
-        $tree = menu_tree_all_data($config['menu_name']);
-      }
-      else {
-        $max_depth = ($config['depth'] == 0) ? NULL : min($config['level'] + $config['depth'] - 1, MENU_MAX_DEPTH);
-
-        $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);
-      }
-      // And add the active trail data back to the full tree.
-      menu_tree_add_active_path($tree);
-    }
   }
   elseif ('horizontal_navigation' === $block->region) {
     // Force menu block configuration.
@@ -319,34 +302,7 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
     $config['depth'] = 0;
     $config['sort'] = 0;
 
-    if (0 == $config['expanded']) {
-      // As the menu will break if it's not expanded, we'll have to reload it again.
-      $config['expanded'] = 1;
-
-      // Get the full, un-pruned tree.
-      if ($config['parent_mlid']) {
-        $tree = menu_tree_all_data($config['menu_name']);
-      }
-      else {
-        $max_depth = ($config['depth'] == 0) ? NULL : min($config['level'] + $config['depth'] - 1, MENU_MAX_DEPTH);
-
-        $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);
-      }
-      // And add the active trail data back to the full tree.
-      menu_tree_add_active_path($tree);
-    }
-
-    // We need to add in extra 'Overview' menu items as parents aren't clickable/tapable, but there isn't a way to do
-    // this with arrays as it can have any number of levels. So they need to be turned into ArrayObjects and back again.
-    // (Ugly, but...)
-
-    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
-
-    $tree = new RecursiveArrayObject($tree);
-
-    _cambridge_theme_add_horizontal_navigation_overview_items($tree);
-
-    $tree = $tree->getArrayCopy();
+    $tree = _cambridge_theme_add_horizontal_navigation_overview_items($tree);
   }
 }
 
@@ -354,7 +310,7 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
  * Add in extra 'Overview' menu items as parents aren't clickable/tapable.
  */
 function _cambridge_theme_add_horizontal_navigation_overview_items($items) {
-  foreach ($items as $item) {
+  foreach ($items as $i => $item) {
     $has_children = FALSE;
 
     foreach ($item['below'] as $child) {
@@ -368,17 +324,19 @@ function _cambridge_theme_add_horizontal_navigation_overview_items($items) {
       continue;
     }
 
-    _cambridge_theme_add_horizontal_navigation_overview_items($item['below']);
+    $items[$i]['below'] = _cambridge_theme_add_horizontal_navigation_overview_items($item['below']);
 
     if ('<firstchild>' !== $item['link']['link_path']) {
-      $overview = array('link' => $item['link']->getArrayCopy(), 'below' => array());
+      $overview = array('link' => $item['link'], 'below' => array());
       $overview['link']['title'] .= ' overview';
 
-      $temp = $item['below']->getArrayCopy();
+      $temp = $item['below'];
       $temp = array('overview' => $overview) + $temp;
-      $item['below']->exchangeArray($temp);
+      $items[$i]['below'] = $temp;
     }
   }
+
+  return $items;
 }
 
 /**
@@ -477,16 +435,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       }
     }
 
-    // We need to add the campl-current-page class to the current page, but there isn't a way to do this with arrays as
-    // it can have any number of levels. So they need to be turned into ArrayObjects and back again. (Ugly, but...)
-
-    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
-
-    $object = new RecursiveArrayObject($data['content']['#content']);
-
-    _cambridge_theme_find_active_horizontal_navigation($object);
-
-    $data['content']['#content'] = $object->getArrayCopy();
+    $data['content']['#content'] = _cambridge_theme_find_active_horizontal_navigation($data['content']['#content']);
 
     foreach ($data['content']['#content'] as $key => $item) {
       if (FALSE === is_int($key)) {
@@ -510,15 +459,13 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
     $active = NULL;
 
-    require_once dirname(__FILE__) . '/includes/recursive_array_object.class.inc';
-
     foreach ($content as $key => $item) {
       if (FALSE === is_int($key)) {
         continue;
       }
 
       if (TRUE === in_array('active', $item['#attributes']['class'])) {
-        $active = new RecursiveArrayObject($content[$key]);
+        $active = $content[$key];
       }
     }
 
@@ -529,15 +476,10 @@ function cambridge_theme_block_view_alter(&$data, $block) {
         }
 
         if (TRUE === in_array('active-trail', $item['#attributes']['class'])) {
-          $active = new RecursiveArrayObject($content[$key]);
-
           // Sometimes the menu has an active-trail without an active item (eg Feeds module's log pages. Cycle through
           // the items to make sure we have one. Not ideal, but the menu would break otherwise.
 
-          if (FALSE === _cambridge_theme_left_navigation_has_active_item($active)) {
-            // If we don't have an active item, don't try and change the menu.
-            $active = NULL;
-          }
+          $active = _cambridge_theme_left_navigation_has_active_item($content[$key]);
 
           break;
         }
@@ -575,7 +517,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       }
     }
     else {
-      $active['_siblings'] = new RecursiveArrayObject($content);
+      $active['_siblings'] = $content;
 
       $navigation = array();
 
@@ -586,7 +528,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
           continue;
         }
         if (_cambridge_theme_is_home_path($sibling['#href'])) {
-          $breadcrumbs = array($key => $active['_siblings'][$key]->getArrayCopy()) + $breadcrumbs;
+          $breadcrumbs = array($key => $active['_siblings'][$key]) + $breadcrumbs;
           $breadcrumbs[$key]['#title'] = variable_get('site_name');
           break;
         }
@@ -699,7 +641,7 @@ function _cambridge_theme_find_active_horizontal_navigation($objects) {
       continue;
     }
 
-    $has_children = (is_array($object['#below']) || $object['#below'] instanceof Countable) && count($object['#below']);
+    $has_children = is_array($object['#below']) && count($object['#below']);
 
     if (in_array('active', (array) $object['#attributes']['class'])) {
       $is_active = TRUE;
@@ -709,7 +651,7 @@ function _cambridge_theme_find_active_horizontal_navigation($objects) {
 
       if (TRUE === $has_children) {
         foreach ($object['#below'] as $child) {
-          if (in_array('active', (array) $child['#attributes']['class'])) {
+          if (isset($child['#attributes']['class']) && in_array('active', $child['#attributes']['class'])) {
             $is_active = FALSE;
             break;
           }
@@ -717,55 +659,51 @@ function _cambridge_theme_find_active_horizontal_navigation($objects) {
       }
 
       if (TRUE === $is_active) {
-        $object['#attributes']['class'][] = 'campl-current-page';
+        $objects[$key]['#attributes']['class'][] = 'campl-current-page';
 
-        return TRUE;
+        break;
       }
     }
 
     if (TRUE === $has_children) {
-      if (TRUE === _cambridge_theme_find_active_horizontal_navigation($object['#below'])) {
-        return TRUE;
-      }
+      $objects[$key]['#below'] = _cambridge_theme_find_active_horizontal_navigation($object['#below']);
     }
   }
 
-  return FALSE;
+  return $objects;
 }
 
 /**
  * Test whether the menu has an active item.
  */
 function _cambridge_theme_left_navigation_has_active_item($item) {
-  if (in_array('active', $item['#attributes']['class']->getArrayCopy())) {
-    return TRUE;
+  if (is_array($item['#attributes']['class']) && in_array('active', $item['#attributes']['class'])) {
+    return $item;
   }
 
-  foreach ($item['#below'] as $key => $child) {
-    if (FALSE === is_int($key)) {
-      continue;
-    }
+  if (is_array($item['#below'])) {
+    foreach ($item['#below'] as $key => $child) {
+      if (FALSE === is_int($key)) {
+        continue;
+      }
 
-    if (TRUE === _cambridge_theme_left_navigation_has_active_item($child)) {
-      return TRUE;
+      if (NULL !== _cambridge_theme_left_navigation_has_active_item($child)) {
+        return $item;
+      }
     }
   }
 
-  return FALSE;
+  return NULL;
 }
 
 /**
  * Break up the left-hand navigation into the breadcrumb and navigation sections.
  */
-function _cambridge_theme_left_navigation_break_up($item, &$breadcrumbs, &$navigation) {
-  if (FALSE === $item instanceof RecursiveArrayObject) {
-    return;
-  }
-
+function _cambridge_theme_left_navigation_break_up(&$item, &$breadcrumbs, &$navigation) {
   if (
-    FALSE === in_array('active-trail', $item['#attributes']['class']->getArrayCopy())
+    FALSE === in_array('active-trail', $item['#attributes']['class'])
     &&
-    FALSE === in_array('active', $item['#attributes']['class']->getArrayCopy())
+    FALSE === in_array('active', $item['#attributes']['class'])
   ) {
     return;
   }
@@ -777,9 +715,9 @@ function _cambridge_theme_left_navigation_break_up($item, &$breadcrumbs, &$navig
       continue;
     }
 
-    $child['_siblings'] = $item['#below']->getArrayCopy();
+    $item['#below'][$key]['_siblings'] = $item['#below'];
 
-    if (TRUE === in_array('active', $child['#attributes']['class']->getArrayCopy())) {
+    if (TRUE === in_array('active', $child['#attributes']['class'])) {
       $child_is_active = count($child['#below']) === 0;
       break;
     }
@@ -789,17 +727,17 @@ function _cambridge_theme_left_navigation_break_up($item, &$breadcrumbs, &$navig
     $child_is_active
     ||
     (
-      in_array('active', $item['#attributes']['class']->getArrayCopy())
+      in_array('active', $item['#attributes']['class'])
       &&
       $item['#original_link']['link_path'] !== '<firstchild>'
     )
   ) {
-    $navigation[$item['#original_link']['mlid']] = $item->getArrayCopy();
+    $navigation[$item['#original_link']['mlid']] = $item;
 
     return;
   }
 
-  $breadcrumbs[$item['#original_link']['mlid']] = $item->getArrayCopy();
+  $breadcrumbs[$item['#original_link']['mlid']] = $item;
   $breadcrumbs[$item['#original_link']['mlid']]['#below'] = array();
 
   foreach ($item['#below'] as $key => $child) {
@@ -808,6 +746,7 @@ function _cambridge_theme_left_navigation_break_up($item, &$breadcrumbs, &$navig
     }
 
     _cambridge_theme_left_navigation_break_up($child, $breadcrumbs, $navigation);
+    $item['#below'][$key] = $child;
   }
 }
 
