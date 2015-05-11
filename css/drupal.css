@@ -167,3 +167,8 @@
 #comments {
     margin-top: 0;
 }
+
+/* Style faux-selected items like real ones */
+.campl-vertical-breadcrumb-navigation .campl-faux-selected > a {
+  color: #171717;
+}
