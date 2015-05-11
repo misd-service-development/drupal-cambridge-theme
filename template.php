@@ -357,11 +357,11 @@ function cambridge_theme_status_messages($variables) {
         $name = t('Warning');
         break;
       case 'warning':
-        $type = 'Alert';
+        $type = 'alert';
         $name = t('Alert');
         break;
       default:
-        $type = 'info';
+        $type = 'information';
         $name = t('Information');
     }
 
