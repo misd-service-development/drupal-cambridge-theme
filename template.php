@@ -294,6 +294,8 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
     $config['follow'] = 0;
     $config['depth'] = 0;
     $config['sort'] = 1;
+
+    $tree = _cambridge_theme_mark_active_item_in_tree($tree);
   }
   elseif ('horizontal_navigation' === $block->region) {
     // Force menu block configuration.
@@ -302,8 +304,36 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
     $config['depth'] = 0;
     $config['sort'] = 0;
 
+    $tree = _cambridge_theme_mark_active_item_in_tree($tree);
+
     $tree = _cambridge_theme_add_horizontal_navigation_overview_items($tree);
   }
+}
+
+/**
+ * Cycle through the tree to find a faux-active item.
+ */
+function _cambridge_theme_mark_active_item_in_tree($tree) {
+  foreach ($tree as $key => $item) {
+    $tree[$key] = _cambridge_theme_mark_active_item($item);
+  }
+
+  return $tree;
+}
+
+/**
+ * Mark the end of active trails as faux active.
+ */
+function _cambridge_theme_mark_active_item($item) {
+  if (TRUE == $item['link']['in_active_trail'] && 0 === count($item['below']) && $_GET['q'] != $item['link']['href']) {
+    $item['link']['cambridge_theme_faux_active'] = TRUE;
+  }
+
+  foreach ($item['below'] as $key => $child) {
+    $item['below'][$key] = _cambridge_theme_mark_active_item($child);
+  }
+
+  return $item;
 }
 
 /**
@@ -401,6 +431,9 @@ function cambridge_theme_image($variables) {
  * Implements hook_block_view_alter().
  */
 function cambridge_theme_block_view_alter(&$data, $block) {
+  if ($block->module === 'menu_block') {
+    $data['content']['#content'] = _cambridge_theme_add_active_item($data['content']['#content']);
+  }
 
   if (in_array($block->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     // Add wrapper to blocks in the local footer column regions.
@@ -550,13 +583,15 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
       _cambridge_theme_left_navigation_break_up($active, $breadcrumbs, $navigation);
 
-      // Stop the category being a link when on the page.
+      // Stop the category being a link when on the page (unless it's a faux active item).
 
       $key = key($navigation);
 
       if (in_array('active', $navigation[$key]['#attributes']['class'])) {
         $navigation[$key]['#attributes']['class'][] = 'campl-selected';
-        $navigation[$key]['#href'] = '<none>';
+        if (FALSE === isset($navigation[$key]['#original_link']['cambridge_theme_faux_active'])) {
+          $navigation[$key]['#href'] = '<none>';
+        }
       }
 
       // We don't want to display grandchildren.
@@ -568,7 +603,12 @@ function cambridge_theme_block_view_alter(&$data, $block) {
         $navigation[$key]['#below'][$childKey]['#below'] = array();
 
         if (in_array('active', $child['#attributes']['class'])) {
-          $navigation[$key]['#below'][$childKey]['#attributes']['class'][] = 'campl-selected';
+          if (FALSE === isset($child['#original_link']['cambridge_theme_faux_active'])) {
+            $navigation[$key]['#below'][$childKey]['#attributes']['class'][] = 'campl-selected';
+          }
+          else {
+            $navigation[$key]['#below'][$childKey]['#attributes']['class'][] = 'campl-faux-selected';
+          }
         }
       }
 
@@ -630,6 +670,28 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       $data['content']['#content']['#below']['navigation']['#below'][$key]['#below']['#theme_wrappers'] = array(array('cambridge_theme_left_navigation_children'));
     }
   }
+}
+
+/**
+ * Cycle through a tree and make items marked as faux active as actually active.
+ */
+function _cambridge_theme_add_active_item($items) {
+  foreach ($items as $key => $item) {
+    if (FALSE === is_int($key)) {
+      continue;
+    }
+
+    if (
+      isset($item['#original_link']['cambridge_theme_faux_active'])
+      &&
+      FALSE === in_array('active', $item['#attributes']['class'])
+    ) {
+      $items[$key]['#attributes']['class'][] = 'active';
+    }
+    $items[$key]['#below'] = _cambridge_theme_add_active_item($items[$key]['#below']);
+  }
+
+  return $items;
 }
 
 /**
