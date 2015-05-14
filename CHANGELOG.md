@@ -3,6 +3,21 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.4
+-------
+
+14 May 2015.
+
+* Add RSS feed icons to pages.
+* Allow 'home' menu items to not be labelled 'Home'.
+* Add compatibility with Views ajax and/or mini pagers.
+* Improve Drupal-level navigation performance.
+* Revert forcing all menu blocks in the horizontal and vertical navigation to be expanded.
+* Use Drupal Behaviors, so JavaScript is applied to Ajax-loaded content.
+* Fix IE8 font issues.
+* If an active trail in the navigation doesn't have an active item, make the lowest item appear as such.
+* Fix styling of alert messages.
+
 7.x-1.3
 -------
 
