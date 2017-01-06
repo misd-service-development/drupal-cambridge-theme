@@ -306,7 +306,8 @@ function cambridge_theme_menu_block_tree_alter(&$tree, &$config) {
 
     $tree = _cambridge_theme_mark_active_item_in_tree($tree);
 
-    $tree = _cambridge_theme_add_horizontal_navigation_overview_items($tree);
+    _cambridge_theme_add_overview_items($tree);
+
   }
 }
 
@@ -322,6 +323,41 @@ function _cambridge_theme_mark_active_item_in_tree($tree) {
 }
 
 /**
+ * Add faux overview items in menu tree to allow clicking in mobile view
+ */
+function _cambridge_theme_add_overview_items(&$tree) {
+
+    foreach ($tree as $key => &$value) {
+
+        // Ignore disabled menu items
+        if($value['link']['hidden'] == 0) {
+
+            // Ignore childless items
+            if($value['link']['has_children'] == 1) {
+
+                // now recursively check any children
+                _cambridge_theme_add_overview_items($tree[$key]['below']);
+
+                // add the overview except for firstchild items
+                if ('<firstchild>' !== $value['link']['link_path']) {
+
+                    // create and overview page with same link data but nothing below
+                    $overview = array('link' => $value['link'], 'below' => array());
+                    //dpm('needs an overview page', $overview['link']['title']);
+                    $overview['link']['title'] .= ' overview'; // append overview
+
+                    // pre-pend it to existing tree
+                    $temp = $value['below'];
+                    $temp = array('overview' => $overview) + $temp;
+                    $tree[$key]['below'] = $temp;
+                }
+            }
+        }
+    }
+}
+
+
+/**
  * Mark the end of active trails as faux active.
  */
 function _cambridge_theme_mark_active_item($item) {
@@ -334,39 +370,6 @@ function _cambridge_theme_mark_active_item($item) {
   }
 
   return $item;
-}
-
-/**
- * Add in extra 'Overview' menu items as parents aren't clickable/tapable.
- */
-function _cambridge_theme_add_horizontal_navigation_overview_items($items) {
-  foreach ($items as $i => $item) {
-    $has_children = FALSE;
-
-    foreach ($item['below'] as $child) {
-      if (TRUE != $child['link']['hidden']) {
-        $has_children = TRUE;
-        break;
-      }
-    }
-
-    if (FALSE === $has_children) {
-      continue;
-    }
-
-    $items[$i]['below'] = _cambridge_theme_add_horizontal_navigation_overview_items($item['below']);
-
-    if ('<firstchild>' !== $item['link']['link_path']) {
-      $overview = array('link' => $item['link'], 'below' => array());
-      $overview['link']['title'] .= ' overview';
-
-      $temp = $item['below'];
-      $temp = array('overview' => $overview) + $temp;
-      $items[$i]['below'] = $temp;
-    }
-  }
-
-  return $items;
 }
 
 /**
