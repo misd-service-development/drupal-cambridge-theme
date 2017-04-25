@@ -362,7 +362,7 @@ projectlight.initTables = function(){
 	
 }	
 
-/**  LOCAL NAVIGATION CONTROLS updated code taken from sony.com **/
+/** LOCAL NAVIGATION CONTROLS **/
 //this controls both the dropdowns and graphical style of the desktop navigation and the sliding panels of the mobile navigation
 projectlight.localNav=(function(){
 	var $openMenu,$navigation,$navContainer,$topUL,$topListItems,$allListItems,$links,$secondLevelListitems,$allMenuLists,n,$allNavLinks,menuPosition=0,m;
