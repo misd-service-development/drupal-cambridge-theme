@@ -3,6 +3,10 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.6
+
+* Updated code comments.
+
 7.x-1.5
 
 * Fixed a bug that stopped menu items being clickable if they had child pages
