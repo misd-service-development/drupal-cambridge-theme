@@ -647,9 +647,9 @@ projectlight.localNav=(function(){
 			}
 		}
 	}
-	//controls mulitple levels of dropdown navigation depending on hover and clicked classes being set
-	//nb: we have altered from the original sony code by only allowing users to open one level or
-	//dropdown menu in the desktop view
+	// controls multiple levels of dropdown navigation depending on hover and clicked classes being set
+	// nb: we have altered from the original code by only allowing users to open one level of
+	// dropdown menu in the desktop view
 	function showSubNavigation(linkClicked, event){
 		var $linkClicked = $(linkClicked),
 		$listItemClicked = $linkClicked.parent(),
