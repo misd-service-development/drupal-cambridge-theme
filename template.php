@@ -42,13 +42,15 @@ function cambridge_theme_theme($existing, $type, $theme, $path) {
       'render element' => 'element',
     ),
     'cambridge_easy_breadcrumb' => array(
-      'function' => 'theme_cambridge_easy_breadcrumb',
       'variables' => array(
         'breadcrumb' => NULL,
         'segments_quantity' => NULL,
         'separator' => NULL,
-      ),
+        ),
+      'template' => 'easy-breadcrumb',
+      'path' => drupal_get_path('theme', 'cambridge_theme') . '/templates',
     ),
+
   );
 }
 
@@ -673,6 +675,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
       $data['content']['#content']['#below']['navigation']['#below'][$key]['#below']['#theme_wrappers'] = array(array('cambridge_theme_left_navigation_children'));
     }
   }
+
 }
 
 /**
@@ -1239,57 +1242,61 @@ function cambridge_theme_breadcrumb($breadcrumbs) {
   return $html;
 }
 
-/**
- * Implements hook_block_view_MODULE_DELTA_alter() for the Easy Breadcrumb module's Easy Breadcrumb block.
+
+/*
+ * Implementation of a preprocess hook for easy breadcrumb module.
+ * When easy breadcrumb changed from version 2.12 to 2.13, they changed the
+ * module worked from a theme function to a tpl file and preprocess function.
+ * We have had to adapt our theme to match their new setup.
+ *
+ * This function has replaced the theme easy breadcrumb function in the
+ * earlier versions of the theme.
+ * JAG212 - 26th July 2017.
  */
-function cambridge_theme_block_view_easy_breadcrumb_easy_breadcrumb_alter(&$data, $block) {
-  $data['content']['easy_breadcrumb']['#theme'] = 'cambridge_easy_breadcrumb';
-}
+function cambridge_preprocess_easy_breadcrumb(&$variables) {
+    $breadcrumbs = _easy_breadcrumb_build_items();
+    if (module_exists('schemaorg')) {
+        $variables['list_type'] = 'https://schema.org/BreadcrumbList';
+    }
+    else {
+        $variables['list_type'] = 'http://data-vocabulary.org/Breadcrumb';
+    }
 
-/**
- * Style the Easy Breadcrumb module's Easy Breadcrumb block.
- */
-function theme_cambridge_easy_breadcrumb($variables) {
-  $breadcrumbs = $variables['breadcrumb'];
-  $segments_quantity = $variables['segments_quantity'];
-
-  if (count($breadcrumbs) <= 1) {
-    return '';
-  }
-
-  $html = '';
-
-  if ($segments_quantity > 0) {
-    $html .= '<div class="campl-breadcrumb" id="breadcrumb">';
-    $html .= '<ul class="campl-unstyled-list campl-horizontal-navigation clearfix">';
-
+    // Loop round all breadcrumbs
     foreach ($breadcrumbs as $i => $breadcrumb) {
-      if (isset($breadcrumb['url'])) {
-        $content = $breadcrumb['content'];
-        $class = $breadcrumb['class'];
-        $url = $breadcrumb['url'];
-        if (in_array('easy-breadcrumb_segment-front', $class)) {
-          $class[] = 'campl-home ir';
-        }
+        $content = decode_entities($breadcrumb['content']);
+
         if ($i == 0) {
-          $html .= '<li class="first-child">';
+            $list_html = '<li class="first-child">';
         }
         else {
-          $html .= '<li>';
+            $list_html = '<li>';
         }
-        $html .= l($content, $url, array('attributes' => array('class' => $class))) . '</li>';
-      }
-      else {
-        $content = html_entity_decode($breadcrumb['content']);
-        $class = implode(' ', $breadcrumb['class']);
-        $html .= '<li class="' . $class . '">' . $content . '</li>';
-      }
-    }
-    $html .= '</ul>';
-    $html .= '</div>';
-  }
 
-  return $html;
+        if (in_array('easy-breadcrumb_segment-front', $breadcrumb['class'])) {
+            // Set appropriate styling to allow home breadcrumb to appear
+            // as a house image rather than the word home
+            $breadcrumb['class'][] = 'campl-home ir';
+        }
+
+        if (isset($breadcrumb['url'])) {
+            $variables['breadcrumb'][$i] = $list_html . '<span itemprop="title">';
+            $variables['breadcrumb'][$i] .= l($content, $breadcrumb['url'], array(
+                'attributes' => array('class' => $breadcrumb['class'])
+            ));
+            $variables['breadcrumb'][$i] .= '</span></li>';
+        }
+        else {
+            // Last breadcrumb is plain text not a hyperlink
+            $class = implode(' ', $breadcrumb['class']);
+            $variables['breadcrumb'][$i] = $list_html . '<span class="' . $class . '" itemprop="title">' . check_plain($content) . '</span></li>';
+        }
+    }
+
+    /* Segmentation handled by <li> styling background so we don't need this. */
+    //$variables['segments_quantity'] = count($variables['breadcrumb']);
+    //$variables['seperator_ending'] = variable_get(EasyBreadcrumbConstants::DB_VAR_SEPERATOR_ENDING, FALSE) ? 0 : 1;
+    //$variables['separator'] = filter_xss(variable_get(EasyBreadcrumbConstants::DB_VAR_SEGMENTS_SEPARATOR, '>>'));
 }
 
 /**
