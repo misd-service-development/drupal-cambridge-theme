@@ -3,6 +3,14 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.8
+
+* Updated the theme to take into account the changes in the latest version of Easy Breadcrumb module 7.x-2.13. Their theme layer has changed completely and we have had to match the changes to allow us to continue to use easy breadcrumb in some Cambridge sites. If you are using easy breadcrumb prior to 7.x-2.13 you will need to upgrade to this version of the module if you wish to continue using easy breadcrumb and the Cambridge theme. 
+
+7.x-1.7
+
+* Updated code comments.
+
 7.x-1.6
 
 * Updated code comments.
