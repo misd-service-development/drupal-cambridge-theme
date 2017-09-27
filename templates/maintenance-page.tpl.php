@@ -73,7 +73,7 @@ $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
         <label for="header-search" class="hidden">Search site</label>
 
         <div class="campl-search-input">
-          <form action="http://search.cam.ac.uk/web" method="get">
+          <form action="https://search.cam.ac.uk/web" method="get">
             <input id="header-search" type="text" name="query" value="" placeholder="Search"/>
 
             <input type="image" class="campl-search-submit"
@@ -87,7 +87,7 @@ $base_theme_path = base_path() . drupal_get_path('theme', 'cambridge_theme');
 </div>
 <div class="campl-row campl-global-header campl-search-drawer">
   <div class="campl-wrap clearfix">
-    <form class="campl-site-search-form" id="site-search-container" action="http://search.cam.ac.uk/web" method="get">
+    <form class="campl-site-search-form" id="site-search-container" action="https://search.cam.ac.uk/web" method="get">
       <div class="campl-search-form-wrapper clearfix">
         <input type="text" class="text" name="query" value="" placeholder="Search"/>
         <input type="image" class="campl-search-submit"
