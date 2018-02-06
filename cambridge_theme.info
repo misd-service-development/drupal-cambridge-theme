@@ -6,6 +6,7 @@ version = 1.9-dev
 
 stylesheets[all][] = "css/full-stylesheet.css"
 stylesheets[all][] = "css/drupal.css"
+stylesheets[all][] = "css/falcon.css"
 
 scripts[] = 'js/custom.js'
 scripts[] = 'js/libs/ios-orientationchange-fix.js'
