@@ -190,6 +190,11 @@ function cambridge_theme_left_navigation_link($variables) {
  * Implements template_preprocess_page().
  */
 function cambridge_theme_preprocess_page(&$variables) {
+
+  // Get the site slogan
+  $slogan = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
+  $variables['site_slogan'] = ($slogan) ? '' : filter_xss_admin(variable_get('site_slogan', ''));
+
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     // Taxonomy term listing page.
     if (FALSE === empty($variables['page']['content']['system_main']['term_heading']['term']['#term']->description)) {

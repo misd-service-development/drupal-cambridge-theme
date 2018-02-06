@@ -1,0 +1,64 @@
+/* Additional classes to support sites migrated from Falcon to Drupal */
+
+.campl-page-subtitle {
+color: white;
+font-size: 30px;
+line-height: 36px;
+font-family: "myriad-pro", myriad, verdana, arial, sans-serif;
+font-weight: 300;
+}
+
+div.scale-iframe {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px;
+height: 0;
+overflow: hidden;
+}
+
+.scale-iframe iframe, .scale-iframe object, .scale-iframe embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.image-inline {
+max-width: 100%;
+height: auto;
+}
+
+img.image-right {
+float: right;
+margin: 10px 0 10px 20px;
+clear: both;
+max-width: 100%;
+height: auto;
+}
+
+img.image-left {
+float: left;
+margin: 10px 30px 10px 0;
+clear: both;
+max-width: 100%;
+height: auto;
+}
+
+.quote {
+font-family: Georgia, "serif";
+font-size: 19px;
+font-style: italic;
+margin: 0 0 10px;
+padding: 0 0 0 25px;
+line-height: 22.5px;
+}
+
+/* Media queries */
+@media (max-width: 767px) {
+  .campl-page-subtitle {
+    font-size: 18px;
+    line-height: 34px;
+    margin-bottom: 0;
+  }
+}
