@@ -305,6 +305,12 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <?php if (!$has_page_title): print $feed_icons; endif; ?>
         </h1>
 
+        <?php if ($site_slogan): ?>
+          <div id="site-slogan" class="campl-page-subtitle">
+            <?php print $site_slogan; ?>
+          </div>
+        <?php endif; ?>
+
       </div>
     </div>
   </div>

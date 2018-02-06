@@ -1,5 +1,13 @@
 /* Additional classes to support sites migrated from Falcon to Drupal */
 
+.campl-page-subtitle {
+color: white;
+font-size: 30px;
+line-height: 36px;
+font-family: "myriad-pro", myriad, verdana, arial, sans-serif;
+font-weight: 300;
+}
+
 div.scale-iframe {
 position: relative;
 padding-bottom: 56.25%;
