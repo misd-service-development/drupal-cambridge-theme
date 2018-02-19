@@ -190,6 +190,11 @@ function cambridge_theme_left_navigation_link($variables) {
  * Implements template_preprocess_page().
  */
 function cambridge_theme_preprocess_page(&$variables) {
+
+  // Get the site slogan
+  $slogan = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
+  $variables['site_slogan'] = ($slogan) ? '' : filter_xss_admin(variable_get('site_slogan', ''));
+
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     // Taxonomy term listing page.
     if (FALSE === empty($variables['page']['content']['system_main']['term_heading']['term']['#term']->description)) {
@@ -442,7 +447,7 @@ function cambridge_theme_block_view_alter(&$data, $block) {
 
   if (in_array($block->region, array('footer_1', 'footer_2', 'footer_3', 'footer_4'))) {
     // Add wrapper to blocks in the local footer column regions.
-    if (array_key_exists('content', $data) && is_array($data['content'])) {
+    if (isset($data) && array_key_exists('content', $data) && is_array($data['content'])) {
       if ($block->module === 'menu_block') {
         $data['content']['#content']['#theme_wrappers'] = array('cambridge_theme_unstyled_list');
       }
