@@ -1156,7 +1156,6 @@ caption{background:#fff;padding:5px 0}
 
 	blockquote.campl-float-right {display:none}
 
-	textarea,
 	input[type="text"],
 	input[type="password"],
 	input[type="datetime"],
@@ -1174,6 +1173,8 @@ caption{background:#fff;padding:5px 0}
 	.campl-uneditable-input,
 	.campl-input-block-level {height: 22px;}
 	.campl-input-block-level {min-height: 32px;}
+  
+	textarea { height: 110px; }
 
 	select, input[type="file"] { height: 32px;line-height: 32px;}
 
