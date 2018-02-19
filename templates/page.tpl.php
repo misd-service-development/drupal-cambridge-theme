@@ -47,7 +47,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
         <label for="header-search" class="hidden">Search site</label>
 
         <div class="campl-search-input">
-          <form action="http://search.cam.ac.uk/web" method="get">
+          <form action="https://search.cam.ac.uk/web" method="get">
             <input id="header-search" type="text" name="query" value="" placeholder="Search"/>
 
             <?php
@@ -78,7 +78,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 </div>
 <div class="campl-row campl-global-header campl-search-drawer">
   <div class="campl-wrap clearfix">
-    <form class="campl-site-search-form" id="site-search-container" action="http://search.cam.ac.uk/web" method="get">
+    <form class="campl-site-search-form" id="site-search-container" action="https://search.cam.ac.uk/web" method="get">
       <div class="campl-search-form-wrapper clearfix">
         <input type="text" class="text" name="query" value="" placeholder="Search"/>
 
@@ -304,6 +304,12 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <?php print $site_title; ?>
           <?php if (!$has_page_title): print $feed_icons; endif; ?>
         </h1>
+
+        <?php if ($site_slogan): ?>
+          <div id="site-slogan" class="campl-page-subtitle">
+            <?php print $site_slogan; ?>
+          </div>
+        <?php endif; ?>
 
       </div>
     </div>
