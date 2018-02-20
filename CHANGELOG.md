@@ -3,6 +3,15 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.9
+
+* The primary purpose of this release is to add new CSS to support the import of Falcon / Plone CMS websites into the University's standard Drupal setup (e.g. adding the two Project Light colour schemes that were not previously available in Drupal). This release has also resolved a number of support issues, detailed below:
+
+* [103 - Textarea form elements do not display correctly on mobile] (https://github.com/misd-service-development/drupal-cambridge-theme/issues/103)
+* [101 - Empty Footer Blocks Throw Warning Message] (https://github.com/misd-service-development/drupal-cambridge-theme/issues/101)
+* [100 - Added css and Icons to support migrated falcon sites] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/100)
+* [99 - Update search.cam.ac.uk URL to be https:// instead of http://] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/99)
+
 7.x-1.8
 
 * Updated the theme to take into account the changes in the latest version of Easy Breadcrumb module 7.x-2.13. Their theme layer has changed completely and we have had to match the changes to allow us to continue to use easy breadcrumb in some Cambridge sites. If you are using easy breadcrumb prior to 7.x-2.13 you will need to upgrade to this version of the module if you wish to continue using easy breadcrumb and the Cambridge theme. 
