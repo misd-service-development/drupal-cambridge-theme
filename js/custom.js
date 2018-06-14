@@ -751,6 +751,7 @@ projectlight.createCarousel = function(){
 			projectlight.resetCarousel();
 
 			this.autoPlaying = true;
+                        $('.campl-play').addClass('campl-pause').removeClass('campl-play');
 			this.startAutoPlay();
 			
 			
@@ -822,6 +823,19 @@ projectlight.createCarousel = function(){
 		previouslistItem.appendChild(previouslink);
 		carouselControls.appendChild(previouslistItem);
 	
+		var pauselistItem = document.createElement('li');
+		pauselistItem.className = "campl-pause-li";
+		var pauselink = document.createElement('a');
+		var pauseArrowSpan = document.createElement('span');
+		pauseArrowSpan.className = "campl-arrow-span";
+		pauselink.className = "ir campl-carousel-control-btn campl-pause";
+		var pauselinkText = document.createTextNode('pause slides');
+		pauselink.setAttribute('href', '#');
+		pauselink.appendChild(pauseArrowSpan);
+		pauselink.appendChild(pauselinkText);
+		pauselistItem.appendChild(pauselink);
+		carouselControls.appendChild(pauselistItem);
+
 		var nextlistItem = document.createElement('li');
 		nextlistItem.className = "campl-next-li";
 		var nextlink = document.createElement('a');
@@ -855,20 +869,35 @@ projectlight.createCarousel = function(){
 		// detect which button has been clicked from event delegation + call animate slides and pass direction val
 		if(buttonClicked.hasClass('campl-previous')){
 			carousel.animateSlides('left');
+                        $('.campl-pause').addClass('campl-play').removeClass('campl-pause');
 		}
-		if(buttonClicked.hasClass('campl-next')){
+		else if(buttonClicked.hasClass('campl-next')){
 			carousel.animateSlides('right');
+                       $('.campl-pause').addClass('campl-play').removeClass('campl-pause');
+		}
+		else if(buttonClicked.hasClass('campl-pause')){
+                        buttonClicked.removeClass('campl-pause');
+                        buttonClicked.addClass('campl-play');
+		}
+		else if(buttonClicked.hasClass('campl-play')){
+                        buttonClicked.removeClass('campl-play');
+                        buttonClicked.addClass('campl-pause');
+                        carousel.autoPlaying = true;
+                        carousel.startAutoPlay(1000);
 		}
 		e.preventDefault();
 	};
 
 
-	//autplay function sets time out which is called repeatedly from the animation completed call back
-	carousel.startAutoPlay = function(){
+	//autoplay function sets time out which is called repeatedly from the animation completed call back
+	carousel.startAutoPlay = function(ticks){
+            if(ticks === undefined) {
+                ticks = 5000;
+            }
 		this.slides.queue(function() {
 			carousel.timer = window.setTimeout(function() {
 				carousel.animateSlides('right');
-			}, 6000);
+			}, ticks);
 		})
 		carousel.slides.dequeue();
 	};
@@ -917,13 +946,12 @@ projectlight.createCarousel = function(){
 					carousel.slides.css({left: -carousel.carouselContainer.innerWidth()+'px'});
 
 				}
+
 				if(carousel.autoPlaying === true){
 					carousel.startAutoPlay();
 				}
 			});
-			
 		}
-		
 	}
 	
 	
@@ -955,16 +983,22 @@ projectlight.createCarousel = function(){
 		//carousel.updateControlActivation();
 		// carousel.startAutoPlay();
 
+                // Project light doesn't resart the carousel aftr a resize event - see commented out code above.
+                // Therefore we need to ensure we have a play rather than a pause button.
+                $('.campl-pause').addClass('campl-play').removeClass('campl-pause');
+
 	}
 	
-	projectlight.stopCarousel = function(){
-		carousel.stopAutoPlay();
-	};
 
-	projectlight.startCarousel = function(){
-		carousel.stopAutoPlay();
-		carousel.startAutoPlay();
-	};
+	// dont seem to be used
+	//projectlight.stopCarousel = function(){
+	//	carousel.stopAutoPlay();
+	//};
+
+	//projectlight.startCarousel = function(){
+	//	carousel.stopAutoPlay();
+	//	carousel.startAutoPlay();
+	//};
 	
 	
 	carousel.init();
@@ -1051,11 +1085,14 @@ $(function() {
 	//instantiate height of buttons for mobile users, on carousel object
 	if($(".campl-carousel").length){
 		projectlight.createCarousel();
-		//wait for DOM ready to resize buttons for mobile
+    //wait for DOM ready to resize buttons for mobile (actually need to wait for page load) TPD
 		if(Modernizr.mq('only screen and (max-width: 767px)')){
-			$(".campl-carousel-controls a").height($(".image-container").height())	
+			$(window).load( function(){
+          var height = $(".image-container").height();
+			    $(".campl-carousel-controls, .campl-carousel-controls a.campl-previous, .campl-carousel-controls a.campl-next").height(height);
+			});
 		}else{
-			$(".campl-carousel-controls a").attr("style", "")
+			$(".campl-carousel-controls, .campl-carousel-controls a").attr("style", "");
 		}
 	}
 
@@ -1128,7 +1165,7 @@ $(function() {
 				projectlight.removeFooterColumnsHeight();
 				
 				//set height of carousel buttons
-				$(".campl-carousel-controls a").height($(".image-container").height())	
+				$(".campl-carousel-controls, .campl-carousel-controls a.campl-previous, .campl-carousel-controls a.campl-next").height($(".image-container").height());
 
 				projectlight.mobileLayout  = true;
 			}else{ //desktop layout code 
@@ -1152,7 +1189,7 @@ $(function() {
 				
 				//remove fixed height on carousel buttons
 				//set height of carousel buttons
-				$(".campl-carousel-controls a").attr("style", "")
+				$(".campl-carousel-controls, .campl-carousel-controls a").attr("style", "");
 				
 				projectlight.mobileLayout  = false;
 			}
