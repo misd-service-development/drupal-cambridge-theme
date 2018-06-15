@@ -1373,8 +1373,8 @@ caption{background:#fff;padding:5px 0}
 	.campl-carousel-controls li{margin:0;width:50px;float:none;height:auto;position:absolute;top:0;}
 	.campl-slide-caption{background:#000}
 	.campl-carousel-control-btn{overflow:auto;width:auto;opacity:0.8}
-    .campl-carousel-controls li.campl-pause-li {right:50%; margin-right: -25px !important; top:50%; margin-top:-25px !important;}
-    .campl-carousel-control-btn.campl-pause, .campl-carousel-control-btn.campl-play {border-radius: 50px;}
+	.campl-carousel-controls li.campl-pause-li {right:50%; margin-right: -25px !important; top:50%; margin-top:-25px !important;}
+	.campl-carousel-control-btn.campl-pause, .campl-carousel-control-btn.campl-play {border-radius: 50px;}
 
 
 	.campl-carousel-content{text-align:left}
