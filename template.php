@@ -1352,3 +1352,16 @@ function cambridge_theme_toc_node_move_to_top_link($variables) {
 
   return $output;
 }
+
+/**
+ * Theme functions for aggregator block items.
+ *
+ * Adds date to standard output.
+ */
+function cambridge_theme_aggregator_block_item($variables) {
+
+  $output = '<span class="campl-aggregator-item"> <a href="' . check_url($variables['item']->link) . '">' . check_plain($variables['item']->title) . "</a><br>";
+  $output .= '<span class="campl-datestamp">' . format_date($variables['item']->timestamp, 'custom', 'd M Y') .'</span></span>';
+
+  return $output;
+}

@@ -172,3 +172,42 @@
 .campl-vertical-breadcrumb-navigation .campl-faux-selected > a {
   color: #171717;
 }
+
+/* Support for Drupals Aggregator module*/
+#aggregator .feed-source {
+  margin: 20px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+#aggregator .feed-item {
+  margin: 20px;
+}
+
+.block-aggregator .item-list {
+  margin-bottom: 10px;
+}
+
+.block-aggregator .item-list li {
+  padding: 10px 0;
+  margin: 0 20px;
+  border-bottom: 1px solid #e4e4e4;
+  list-style-type: none;
+}
+
+.block-aggregator .more-link {
+ margin-bottom: 10px;
+ clear: both;
+}
+
+.block-aggregator .more-link a {
+  padding-right: 15px;
+  background: url(../images/interface/bg-secondary-cta-arrow.png) 100% 50% no-repeat;
+  display: inline-block;
+}
+
+.campl-aggregator-item .campl-datestamp {
+  color: #777777;
+  font-style: italic;
+  font-size: 14px;
+}
