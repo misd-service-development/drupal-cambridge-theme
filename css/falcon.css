@@ -62,3 +62,24 @@ line-height: 22.5px;
     margin-bottom: 0;
   }
 }
+
+.content div.display {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.content div.displaycell {
+  float: left;
+  left: 0%;
+  padding-right: 40px;
+  width: 150px;
+  height: 159px;
+  display: inline;
+}
+
+.campl-icon.falcon-css {
+    display: inline;
+    position: static;
+    padding: 5px 0 2px 20px;
+    margin-left: 2px;
+}
