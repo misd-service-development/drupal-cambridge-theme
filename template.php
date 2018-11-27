@@ -1337,3 +1337,31 @@ function _cambridge_theme_block_load($module, $delta) {
 
   return $block;
 }
+
+/**
+ * Theme functions for 'Move to top' links.
+ */
+function cambridge_theme_toc_node_move_to_top_link($variables) {
+  $content    = $variables['content'];
+  $path_alias = drupal_get_path_alias($_GET['q']);
+  $link       = '<div class="toc-top-links">';
+  $link .= l(t('[top]'), $path_alias, array('fragment' => 'table-of-contents'));
+  $link .= '</div>';
+
+  $output = str_ireplace('</h2>', '</h2>' . $link, $content);
+
+  return $output;
+}
+
+/**
+ * Theme functions for aggregator block items.
+ *
+ * Adds date to standard output.
+ */
+function cambridge_theme_aggregator_block_item($variables) {
+
+  $output = '<span class="campl-aggregator-item"> <a href="' . check_url($variables['item']->link) . '">' . check_plain($variables['item']->title) . "</a><br>";
+  $output .= '<span class="campl-datestamp">' . format_date($variables['item']->timestamp, 'custom', 'd M Y') .'</span></span>';
+
+  return $output;
+}
