@@ -1337,3 +1337,18 @@ function _cambridge_theme_block_load($module, $delta) {
 
   return $block;
 }
+
+/**
+ * Theme functions for 'Move to top' links.
+ */
+function cambridge_theme_toc_node_move_to_top_link($variables) {
+  $content    = $variables['content'];
+  $path_alias = drupal_get_path_alias($_GET['q']);
+  $link       = '<div class="toc-top-links">';
+  $link .= l(t('[top]'), $path_alias, array('fragment' => 'table-of-contents'));
+  $link .= '</div>';
+
+  $output = str_ireplace('</h2>', '</h2>' . $link, $content);
+
+  return $output;
+}
