@@ -211,3 +211,32 @@
   font-style: italic;
   font-size: 14px;
 }
+
+
+/* Adjust local footer colours to make them more readable*/
+.campl-local-footer p {
+color: #c0c0c0;
+}
+
+.campl-theme-5 .campl-local-footer p {
+color: black;
+}
+
+.campl-theme-8 .campl-local-footer p,
+.campl-theme-9 .campl-local-footer p {
+  color: #4f4f4f;
+}
+
+.campl-theme-5 .campl-local-footer h3 {
+ color: #f5f5f5;
+}
+
+.campl-theme-8 .campl-local-footer h3,
+.campl-theme-9 .campl-local-footer h3 {
+ color: #2f4f4f;
+}
+
+/* Prevent footer disapearance on mobile */
+@media (max-width: 767px) {
+  .campl-footer-navigation ul {display:block;}
+}
