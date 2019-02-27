@@ -67,7 +67,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             endswitch;
             ?>
 
-            <input type="image" class="campl-search-submit"
+            <input type="image" alt="Search" class="campl-search-submit"
                    src="<?php print $base_theme_path; ?>/images/interface/btn-search-header.png"/>
           </form>
         </div>
