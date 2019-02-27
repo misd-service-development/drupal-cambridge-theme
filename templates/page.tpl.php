@@ -48,7 +48,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
         <div class="campl-search-input">
           <form action="https://search.cam.ac.uk/web" method="get">
-            <input id="header-search" type="text" name="query" value="" placeholder="Search"/>
+            <input id="header-search" type="text" title="Search" name="query" value="" placeholder="Search"/>
 
             <?php
             switch (theme_get_setting('search_box')):
@@ -80,7 +80,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
   <div class="campl-wrap clearfix">
     <form class="campl-site-search-form" id="site-search-container" action="https://search.cam.ac.uk/web" method="get">
       <div class="campl-search-form-wrapper clearfix">
-        <input type="text" class="text" name="query" value="" placeholder="Search"/>
+        <input type="text" class="text" title="Search" name="query" value="" placeholder="Search"/>
 
         <?php
         switch (theme_get_setting('search_box')):
@@ -99,7 +99,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
         endswitch;
         ?>
 
-        <input type="image" class="campl-search-submit"
+        <input type="image" alt="Search" class="campl-search-submit"
                src="<?php print $base_theme_path; ?>/images/interface/btn-search.png"/>
       </div>
     </form>
