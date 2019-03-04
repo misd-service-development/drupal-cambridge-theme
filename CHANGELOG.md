@@ -3,6 +3,21 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.11
+
+Latest release of the theme, primarily to resolve some existing accessibility issues with Project Light. 
+
+* [110 - Added alt text to search button image] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/110)
+* [109 - minor tweaks to colours to meet AA accessibility standard] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/109)
+
+7.x-1.10
+
+Latest release of the theme covering the following issues and fixes:
+
+* [108 - Add support for responsive video] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/108) 
+* [107 - Add support for Aggregator and TOC modules, as well as some general styling needed for the Falcon-on-Drupal project] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/107)
+* [105 - Add pause button to carousel] (https://github.com/misd-service-development/drupal-cambridge-theme/pull/105)
+
 7.x-1.9
 
 * The primary purpose of this release is to add new CSS to support the import of Falcon / Plone CMS websites into the University's standard Drupal setup (e.g. adding the two Project Light colour schemes that were not previously available in Drupal). This release has also resolved a number of support issues, detailed below:
