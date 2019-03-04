@@ -194,7 +194,7 @@ body, label, input, button, select, textarea{font-size: 12px;font-weight: normal
 /* special text treatments */
 .campl-highlight{color:#fff;background:#55a51c;text-transform:uppercase;font-size:11px;font-weight:bold;padding:1px 3px;margin-top:-15px;display:inline-block;margin-bottom:10px}
 .campl-highlight-alert{color:#fff;background:#ea7125;text-transform:uppercase;font-size:11px;font-weight:bold;padding:1px 3px;margin-top:-15px;display:inline-block;margin-bottom:10px}
-.campl-news-listing .campl-datestamp{color:#777777;background:none;font-weight:normal;font-style:italic;font-size:14px}
+.campl-news-listing .campl-datestamp{color:#717171;background:none;font-weight:normal;font-style:italic;font-size:14px}
 .campl-highlight-date{text-transform:uppercase;}
 .campl-highlight-day{line-height:30px}
 .campl-search-term{background:#fff79f;padding:0 3px;display:inline-block}
@@ -248,7 +248,7 @@ a:active { color: #0072cf; text-decoration:none;border-bottom:0}
 a.campl-external{background: url("../images/interface/icon-external-link.png") no-repeat 100% 4px;  padding-right:15px;}
 
 /* Load More */
-.campl-load-more-btn{background:#f3f3f3;border:1px solid #cdcdcd;margin-bottom:60px;text-align:center;display:block;padding:10px;}
+.campl-load-more-btn{background:#f6f6f6;border:1px solid #cdcdcd;margin-bottom:60px;text-align:center;display:block;padding:10px;}
 .campl-load-more-btn:link, .campl-load-more-btn:focus, .campl-load-more-btn:hover, .campl-load-more-btn:visited{border:1px solid #cdcdcd;}
 
 /* focus links */
@@ -964,7 +964,7 @@ caption{background:#fff;padding:5px 0}
 
 .js .campl-event-dates{display:none}
 .dp_highlighted a{display:block;position:relative;}
-.campl-event-indicator{width:5px;height:5px;position:absolute;bottom:-4px;left:-2px;display:block;background:#f3f3f3}
+.campl-event-indicator{width:5px;height:5px;position:absolute;bottom:-4px;left:-2px;display:block;background:#f6f6f6}
 
 /* Tabs and pills */
 .campl-nav {margin-left: 0;margin-bottom: 20px;list-style: none;}
@@ -2474,7 +2474,7 @@ th.campl-alt{background:#fff;color:#28828a}
 
 .campl-global-footer{color:#fff}
 .campl-content{background:#fff}
-.campl-secondary-content{background:#f3f3f3}
+.campl-secondary-content{background:#f6f6f6}
 
 .campl-homepage-carousel .campl-carousel-control-btn, .campl-paging-btn{background:#171717}
 .campl-homepage-carousel .campl-carousel-control-btn:hover{background:#000}
