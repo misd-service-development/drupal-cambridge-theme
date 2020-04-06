@@ -132,9 +132,11 @@ function cambridge_theme_table($variables) {
  * Implements hook_js_alter().
  */
 function cambridge_theme_js_alter(&$javascript) {
-  // Use the jQuery version provided with the house style.
-  $javascript['misc/jquery.js']['data'] = drupal_get_path('theme', 'cambridge_theme') . '/js/libs/jquery-min.js';
-  $javascript['misc/jquery.js']['version'] = '1.7.1';
+  // If jquery update is not enabled, use the jQuery version provided with the house style.
+  if (FALSE === module_exists('jquery_update')) {
+    $javascript['misc/jquery.js']['data'] = drupal_get_path('theme', 'cambridge_theme') . '/js/libs/jquery-min.js';
+    $javascript['misc/jquery.js']['version'] = '1.7.1';
+  }
 }
 
 /**
