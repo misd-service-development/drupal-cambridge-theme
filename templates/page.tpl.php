@@ -300,10 +300,18 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <img src="<?php print $logo; ?>" class="campl-co-branding-logo" alt=""/>
         <?php endif; ?>
 
-        <h1 class="campl-page-title">
+        <?php if ($is_front): ?>
+          <h1 class="campl-page-title">
+        <?php else: ?>
+          <p class="campl-page-title">
+        <?php endif; ?>
           <?php print $site_title; ?>
           <?php if (!$has_page_title): print $feed_icons; endif; ?>
-        </h1>
+        <?php if ($is_front): ?>
+          </h1>
+        <?php else: ?>
+          </p>
+        <?php endif; ?>
 
         <?php if ($site_slogan): ?>
           <div id="site-slogan" class="campl-page-subtitle">
