@@ -406,7 +406,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
       <?php endif; ?>
 
       <?php if ($has_sub_content) : ?>
-        <div class="campl-column3 campl-sub-column-left-border campl-main-content-sub-column">
+        <div class="campl-column3 campl-main-content-sub-column">
           <?php print render($page['sub_content']); ?>
         </div>
       <?php endif; ?>
