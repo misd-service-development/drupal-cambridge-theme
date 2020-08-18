@@ -1965,7 +1965,7 @@ th.campl-alt{background:#fff;color:#28828a}
   #5f5f5f carousel btn hover
   #5f5f5f main local nav bar
   #7d7777 lighter highlight
-  #8c8989 selected state
+  #797676 selected state
   #404040 pale tone - lightest highlight (footer headings)
   #dfdfac pale table bg
   #000 contact footer text
@@ -1984,22 +1984,22 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-9 .campl-banner-content{background:#b6b5b5}
 .campl-theme-9 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHElEQVQYlWNgQAOfP3/+T1BsMCrCBgajO4n1DACTJUzhVcNWTAAAAABJRU5ErkJggg);min-height:100%}
 
-.campl-theme-9 .campl-carousel-control-btn{background:#8c8989}
+.campl-theme-9 .campl-carousel-control-btn{background:#797676}
 .campl-theme-9 .campl-carousel-control-btn:hover{background:#5f5f5f}
 
-.campl-theme-9 .campl-homepage-carousel .campl-slide{background:#8c8989;color:#fff}
-.campl-theme-9 .campl-partnership-branding{border-color:#8c8989}
+.campl-theme-9 .campl-homepage-carousel .campl-slide{background:#797676;color:#fff}
+.campl-theme-9 .campl-partnership-branding{border-color:#797676}
 
-.campl-theme-9 .campl-highlight-date{background:#8c8989}
+.campl-theme-9 .campl-highlight-date{background:#797676}
 .campl-theme-9 .campl-focus-teaser{background:#efefd9;}
 .campl-theme-9 .campl-focus-link{background-color:#5f5f5f}
 .campl-theme-9 .campl-main-content h1,
 .campl-theme-9 .campl-main-content h2 {color:#5f5f5f; }
 
 .campl-theme-9 table,
-.campl-theme-9 .campl-table-bordered {border-bottom:2px solid #8c8989;}
+.campl-theme-9 .campl-table-bordered {border-bottom:2px solid #797676;}
 .campl-theme-9 th {background:#5b8967;color:#fff}
-.campl-theme-9 th.campl-alt {background:#fff;color:#8c8989}
+.campl-theme-9 th.campl-alt {background:#fff;color:#797676}
 .campl-theme-9 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-9 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #dfdfac;}
 .campl-theme-9 .campl-table-bordered th {border-left: 1px solid #dfdfac;}
@@ -2016,7 +2016,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-9 .campl-local-navigation a:focus,
 .campl-theme-9 .campl-local-navigation a:hover,
 .campl-theme-9 .campl-local-navigation a:active{background-color:#b6b5b5;}
-.campl-theme-9 .campl-local-navigation a.campl-selected{background:#8c8989}
+.campl-theme-9 .campl-local-navigation a.campl-selected{background:#797676}
 .campl-theme-9 .campl-local-navigation li.campl-hover a{background-color:#2f2f2f}
 .campl-theme-9 .campl-local-navigation li.campl-sub li a{background-color: #2f2f2f;border-right:0; }
 .campl-theme-9 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #5f5f5f;}
