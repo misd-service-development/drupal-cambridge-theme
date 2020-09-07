@@ -148,7 +148,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <ul
             class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
             <li>
-              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Postgraduate</a>
               <ul class="campl-global-navigation-tertiary campl-unstyled-list">
                 <li>
                   <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/whycam/">Why Cambridge</a>
@@ -500,7 +500,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
               <a href="http://www.study.cam.ac.uk/undergraduate/">Undergraduate</a>
             </li>
             <li>
-              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Postgraduate</a>
             </li>
             <li>
               <a href="http://www.cam.ac.uk/about-the-university/international-cambridge/studying-at-cambridge">International
