@@ -1670,7 +1670,7 @@ th.campl-alt{background:#fff;color:#28828a}
 	#355918	carousel btn hover
 	#355918	main local nav bar
 	#4b7016 lighter highlight
-	#57831a selected state
+	#578219 selected state
 	#aab300 pale tone - lightest highlight
 	#f4f6cd pale table bg
  */
@@ -1681,22 +1681,22 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-4 .campl-banner-content{background:#4b701c}
 .campl-theme-4 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAM0lEQVQYV2NkQAPPPt39L8WnzIgsDBLDEMCmCCQGV4jLJJhGsEJCikBqGIlRBFY4nDwDAGjMT3NzIr6SAAAAAElFTkSuQmCC);min-height:100%}
 
-.campl-theme-4 .campl-carousel-control-btn{background:#57831a}
+.campl-theme-4 .campl-carousel-control-btn{background:#578219}
 .campl-theme-4 .campl-carousel-control-btn:hover{background:#355918}
 
-.campl-theme-4 .campl-homepage-carousel .campl-slide{background:#57831a;color:#fff}
-.campl-theme-4 .campl-partnership-branding{border-color:#57831a}
+.campl-theme-4 .campl-homepage-carousel .campl-slide{background:#578219;color:#fff}
+.campl-theme-4 .campl-partnership-branding{border-color:#578219}
 
-.campl-theme-4 .campl-highlight-date{background:#57831a}
+.campl-theme-4 .campl-highlight-date{background:#578219}
 .campl-theme-4 .campl-focus-teaser{background:#304220;}
 .campl-theme-4 .campl-focus-link{background-color:#355918}
 .campl-theme-4 .campl-main-content h1,
 .campl-theme-4 .campl-main-content h2 {color:#304220 }
 
 .campl-theme-4 table,
-.campl-theme-4 .campl-table-bordered {border-bottom:2px solid #57831a;}
-.campl-theme-4 th{background:#57831a;color:#fff}
-.campl-theme-4 th.campl-alt{background:#fff;color:#57831a}
+.campl-theme-4 .campl-table-bordered {border-bottom:2px solid 578219;}
+.campl-theme-4 th{background:#578219;color:#fff}
+.campl-theme-4 th.campl-alt{background:#fff;color:#578219}
 .campl-theme-4 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-4 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f4f6cd;}
 .campl-theme-4 .campl-table-bordered th{border-left: 1px solid #f4f6cd;}
@@ -1707,7 +1707,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-4 .campl-local-navigation a:focus,
 .campl-theme-4 .campl-local-navigation a:hover,
 .campl-theme-4 .campl-local-navigation a:active{background-color:#4b701c;}
-.campl-theme-4 .campl-local-navigation a.campl-selected{background:#57831a }
+.campl-theme-4 .campl-local-navigation a.campl-selected{background:#578219 }
 .campl-theme-4 .campl-local-navigation li.campl-hover a{background-color:#222f16}
 .campl-theme-4 .campl-local-navigation li.campl-sub li a{background-color: #222f16;border-right:0; }
 .campl-theme-4 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #355918;}
@@ -1729,7 +1729,7 @@ th.campl-alt{background:#fff;color:#28828a}
 	#ab3901	carousel btn hover
 	#ab3901 main local nav bar
 	#d45812 lighter highlight
-	#df671d selected state
+	#bf5819 selected state
 	#f3bd48 pale tone - lightest highlight
 	#f5e7ca pale table bg
  */
@@ -1740,22 +1740,22 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-5 .campl-banner-content{background:#d45812}
 .campl-theme-5 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAM0lEQVQYV2NkQAN/Xt3/zyKmyIgsDBLDEMCmCCQGV4jLJJhGsEJCikBqGIlRBFY4nDwDAI8kT5P7ti8QAAAAAElFTkSuQmCC);min-height:100%}
 
-.campl-theme-5 .campl-carousel-control-btn{background:#df671d}
+.campl-theme-5 .campl-carousel-control-btn{background:#bf5819}
 .campl-theme-5 .campl-carousel-control-btn:hover{background:#ab3901}
 
-.campl-theme-5 .campl-homepage-carousel .campl-slide{background:#df671d;color:#fff}
-.campl-theme-5 .campl-partnership-branding{border-color:#df671d}
+.campl-theme-5 .campl-homepage-carousel .campl-slide{background:#bf5819;color:#fff}
+.campl-theme-5 .campl-partnership-branding{border-color:#bf5819}
 
-.campl-theme-5 .campl-highlight-date{background:#df671d}
+.campl-theme-5 .campl-highlight-date{background:#bf5819}
 .campl-theme-5 .campl-focus-teaser{background:#c44101;}
 .campl-theme-5 .campl-focus-link{background-color:#ab3901}
 .campl-theme-5 .campl-main-content h1,
 .campl-theme-5 .campl-main-content h2 {color:#c44101 }
 
 .campl-theme-5 table,
-.campl-theme-5 .campl-table-bordered {border-bottom:2px solid #df671d;}
-.campl-theme-5 th{background:#df671d;color:#fff}
-.campl-theme-5 th.campl-alt{background:#fff;color:#df671d}
+.campl-theme-5 .campl-table-bordered {border-bottom:2px solid #bf5819;}
+.campl-theme-5 th{background:#bf5819;color:#fff}
+.campl-theme-5 th.campl-alt{background:#fff;color:#bf5819}
 .campl-theme-5 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-5 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f5e7ca;}
 .campl-theme-5 .campl-table-bordered th{border-left: 1px solid #f5e7ca;}
@@ -1767,7 +1767,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-5 .campl-local-navigation a:focus,
 .campl-theme-5 .campl-local-navigation a:hover,
 .campl-theme-5 .campl-local-navigation a:active{background-color:#d45812;}
-.campl-theme-5 .campl-local-navigation a.campl-selected{background:#df671d }
+.campl-theme-5 .campl-local-navigation a.campl-selected{background:#bf5819 }
 .campl-theme-5 .campl-local-navigation li.campl-hover a{background-color:#772801}
 .campl-theme-5 .campl-local-navigation li.campl-sub li a{background-color: #772801;border-right:0; }
 .campl-theme-5 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #ab3901;}
@@ -1847,33 +1847,33 @@ th.campl-alt{background:#fff;color:#28828a}
 	#5F5F5F carousel btn hover
 	#5F5F5F main local nav bar
 	#7d7777 lighter highlight
-	#8C8989 selected state
+	#797676 selected state
 	#EAE8E8 pale tone - lightest highlight
 	#DBD9D9 pale table bg
  */
 .campl-theme-7 .campl-page-header,
 .campl-theme-7 .campl-local-footer{background:#404040}
-.campl-theme-7 .campl-local-footer h3 a{color:#EAE8E8;}
+.campl-theme-7 .campl-local-footer h3 a{color:#797676;}
 .campl-theme-7 .campl-page-sub-title,
 .campl-theme-7 .campl-banner-content{background:#7d7777}
 .campl-theme-7 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHElEQVQYlWNgQAOfP3/+T1BsMCrCBgajO4n1DACTJUzhVcNWTAAAAABJRU5ErkJggg);min-height:100%}
 
-.campl-theme-7 .campl-carousel-control-btn{background:#8C8989}
+.campl-theme-7 .campl-carousel-control-btn{background:#797676}
 .campl-theme-7 .campl-carousel-control-btn:hover{background:#5F5F5F}
 
-.campl-theme-7 .campl-homepage-carousel .campl-slide{background:#8C8989;color:#fff}
-.campl-theme-7 .campl-partnership-branding{border-color:#8C8989}
+.campl-theme-7 .campl-homepage-carousel .campl-slide{background:#797676;color:#fff}
+.campl-theme-7 .campl-partnership-branding{border-color:#797676}
 
-.campl-theme-7 .campl-highlight-date{background:#8C8989}
+.campl-theme-7 .campl-highlight-date{background:#797676}
 .campl-theme-7 .campl-focus-teaser{background:#404040;}
 .campl-theme-7 .campl-focus-link{background-color:#5F5F5F}
 .campl-theme-7 .campl-main-content h1,
 .campl-theme-7 .campl-main-content h2 {color:#404040 }
 
 .campl-theme-7 table,
-.campl-theme-7 .campl-table-bordered {border-bottom:2px solid #8C8989;}
-.campl-theme-7 th{background:#8C8989;color:#fff}
-.campl-theme-7 th.campl-alt{background:#fff;color:#8C8989}
+.campl-theme-7 .campl-table-bordered {border-bottom:2px solid #797676;}
+.campl-theme-7 th{background:#797676;color:#fff}
+.campl-theme-7 th.campl-alt{background:#fff;color:#797676}
 .campl-theme-7 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-7 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #DBD9D9;}
 .campl-theme-7 .campl-table-bordered th{border-left: 1px solid #DBD9D9;}
@@ -1884,7 +1884,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-7 .campl-local-navigation a:focus,
 .campl-theme-7 .campl-local-navigation a:hover,
 .campl-theme-7 .campl-local-navigation a:active{background-color:#7d7777;}
-.campl-theme-7 .campl-local-navigation a.campl-selected{background:#8C8989}
+.campl-theme-7 .campl-local-navigation a.campl-selected{background:#797676}
 .campl-theme-7 .campl-local-navigation li.campl-hover a{background-color:#2F2F2F}
 .campl-theme-7 .campl-local-navigation li.campl-sub li a{background-color: #2F2F2F;border-right:0; }
 .campl-theme-7 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #5F5F5F;}
@@ -1905,7 +1905,7 @@ th.campl-alt{background:#fff;color:#28828a}
   #404f24 carousel btn hover
   #404f24 main local nav bar
   #79791e lighter highlight
-  #888b22 selected state
+  #777b31 selected state
   #5d6200 pale tone - lightest highlight (footer headings)
   #dfdfac pale table bg
   #fff contact footer text
@@ -1918,21 +1918,21 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-8 .campl-banner-content{background:#79791e}
 .campl-theme-8 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAAA3NCSVQICAjb4U/gAAAABlBMVEXf36z///9KqX8SAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABpJREFUCJlj+N7A8N6B4d4Bhr0HGKoPMKByAdOeDfkuhWGAAAAAAElFTkSuQmCC);min-height:100%}
 
-.campl-theme-8 .campl-carousel-control-btn{background:#8f933b}
+.campl-theme-8 .campl-carousel-control-btn{background:#777b31}
 .campl-theme-8 .campl-carousel-control-btn:hover{background:#404F24}
 
-.campl-theme-8 .campl-homepage-carousel .campl-slide{background:#8f933b;color:#fff}
-.campl-theme-8 .campl-partnership-branding{border-color:#8f933b}
+.campl-theme-8 .campl-homepage-carousel .campl-slide{background:#777b31;color:#fff}
+.campl-theme-8 .campl-partnership-branding{border-color:#777b31}
 
-.campl-theme-8 .campl-highlight-date{background:#8f933b}
+.campl-theme-8 .campl-highlight-date{background:#777b31}
 .campl-theme-8 .campl-focus-teaser{background:#ABB400;}
 .campl-theme-8 .campl-focus-link{background-color:#404F24}
 .campl-theme-8 .campl-main-content h1,
 .campl-theme-8 .campl-main-content h2 {color:#ABB400 }
 
 .campl-theme-8 table,
-.campl-theme-8 .campl-table-bordered {border-bottom:2px solid #8f933b;}
-.campl-theme-8 th{background:#8f933b;color:#fff}
+.campl-theme-8 .campl-table-bordered {border-bottom:2px solid #777b31;}
+.campl-theme-8 th{background:#777b31;color:#fff}
 .campl-theme-8 th.campl-alt{background:#888b22;color:#fff}
 .campl-theme-8 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-8 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #dfdfac;}
@@ -1944,7 +1944,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-8 .campl-local-navigation a:focus,
 .campl-theme-8 .campl-local-navigation a:hover,
 .campl-theme-8 .campl-local-navigation a:active{background-color:#79791e;}
-.campl-theme-8 .campl-local-navigation a.campl-selected{background:#8f933b}
+.campl-theme-8 .campl-local-navigation a.campl-selected{background:#777b31}
 .campl-theme-8 .campl-local-navigation li.campl-hover a{background-color:#4e6c16}
 .campl-theme-8 .campl-local-navigation li.campl-sub li a{background-color: #4e6c16;border-right:0; }
 .campl-theme-8 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #404F24;}
@@ -1965,7 +1965,7 @@ th.campl-alt{background:#fff;color:#28828a}
   #5f5f5f carousel btn hover
   #5f5f5f main local nav bar
   #7d7777 lighter highlight
-  #8c8989 selected state
+  #797676 selected state
   #404040 pale tone - lightest highlight (footer headings)
   #dfdfac pale table bg
   #000 contact footer text
@@ -1984,22 +1984,22 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-9 .campl-banner-content{background:#b6b5b5}
 .campl-theme-9 .campl-tertiary-navigation{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHElEQVQYlWNgQAOfP3/+T1BsMCrCBgajO4n1DACTJUzhVcNWTAAAAABJRU5ErkJggg);min-height:100%}
 
-.campl-theme-9 .campl-carousel-control-btn{background:#8c8989}
+.campl-theme-9 .campl-carousel-control-btn{background:#797676}
 .campl-theme-9 .campl-carousel-control-btn:hover{background:#5f5f5f}
 
-.campl-theme-9 .campl-homepage-carousel .campl-slide{background:#8c8989;color:#fff}
-.campl-theme-9 .campl-partnership-branding{border-color:#8c8989}
+.campl-theme-9 .campl-homepage-carousel .campl-slide{background:#797676;color:#fff}
+.campl-theme-9 .campl-partnership-branding{border-color:#797676}
 
-.campl-theme-9 .campl-highlight-date{background:#8c8989}
+.campl-theme-9 .campl-highlight-date{background:#797676}
 .campl-theme-9 .campl-focus-teaser{background:#efefd9;}
 .campl-theme-9 .campl-focus-link{background-color:#5f5f5f}
 .campl-theme-9 .campl-main-content h1,
 .campl-theme-9 .campl-main-content h2 {color:#5f5f5f; }
 
 .campl-theme-9 table,
-.campl-theme-9 .campl-table-bordered {border-bottom:2px solid #8c8989;}
+.campl-theme-9 .campl-table-bordered {border-bottom:2px solid #797676;}
 .campl-theme-9 th {background:#5b8967;color:#fff}
-.campl-theme-9 th.campl-alt {background:#fff;color:#8c8989}
+.campl-theme-9 th.campl-alt {background:#fff;color:#797676}
 .campl-theme-9 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-9 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #dfdfac;}
 .campl-theme-9 .campl-table-bordered th {border-left: 1px solid #dfdfac;}
@@ -2016,7 +2016,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-9 .campl-local-navigation a:focus,
 .campl-theme-9 .campl-local-navigation a:hover,
 .campl-theme-9 .campl-local-navigation a:active{background-color:#b6b5b5;}
-.campl-theme-9 .campl-local-navigation a.campl-selected{background:#8c8989}
+.campl-theme-9 .campl-local-navigation a.campl-selected{background:#797676}
 .campl-theme-9 .campl-local-navigation li.campl-hover a{background-color:#2f2f2f}
 .campl-theme-9 .campl-local-navigation li.campl-sub li a{background-color: #2f2f2f;border-right:0; }
 .campl-theme-9 .campl-local-navigation li.campl-sub li li a{border-bottom:1px solid #5f5f5f;}
