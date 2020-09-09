@@ -148,19 +148,19 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <ul
             class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
             <li>
-              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+              <a href="https://www.postgraduate.study.cam.ac.uk">Postgraduate</a>
               <ul class="campl-global-navigation-tertiary campl-unstyled-list">
                 <li>
-                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/whycam/">Why Cambridge</a>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/why-cambridge">Why Cambridge</a>
                 </li>
                 <li>
-                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/studying/qualifdir/">Qualifications
-                    directory</a>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/courses">Course directory</a>
                 </li>
                 <li>
-                  <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/apply/">How to apply</a></li>
-                <li><a href="http://www.admin.cam.ac.uk/students/studentregistry/fees/">Fees and funding</a></li>
-                <li><a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/faq/index.html">Frequently asked
+                  <a href="https://www.postgraduate.study.cam.ac.uk/application-process/how-do-i-apply">How to apply</a></li>
+                <li><a href="https://www.postgraduate.study.cam.ac.uk/finance/fees">Fees</a></li>
+                <li><a href="https://www.postgraduate.study.cam.ac.uk/funding">Funding</a></li>
+                <li><a href="https://www.postgraduate.study.cam.ac.uk/find-out-more/applicant-frequently-asked-questions">Frequently asked
                     questions</a></li>
               </ul>
             </li>
@@ -500,7 +500,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
               <a href="http://www.study.cam.ac.uk/undergraduate/">Undergraduate</a>
             </li>
             <li>
-              <a href="http://www.admin.cam.ac.uk/students/gradadmissions/prospec/">Graduate</a>
+              <a href="https://www.postgraduate.study.cam.ac.uk">Postgraduate</a>
             </li>
             <li>
               <a href="http://www.cam.ac.uk/about-the-university/international-cambridge/studying-at-cambridge">International
