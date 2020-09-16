@@ -230,7 +230,7 @@ a:active { color: #0072cf; text-decoration:none;border-bottom:0}
 
 .campl-secondary-cta{background:url(../images/interface/bg-secondary-cta-arrow.png) 100% 50% no-repeat; display:inline-block;padding-right:10px }
 
-.campl-search-listing a, .campl-vertical-breadcrumb a{color:#999999}
+.campl-search-listing a, .campl-vertical-breadcrumb a{color:#737373}
 .campl-search-listing .campl-listing-title a{color: #0072cf;}
 .campl-teaser-title a, .campl-pagination a, .campl-load-more-btn, .campl-load-more-btn:focus, .campl-load-more-btn:hover, .campl-load-more-btn:visited{color:#171717}
 .campl-focus-teaser a{color:#fff}
