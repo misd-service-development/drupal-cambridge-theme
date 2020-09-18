@@ -786,7 +786,7 @@ body{margin:0;padding:0; background:#000;width:100%;}
 .campl-carousel-controls .campl-previous .campl-arrow-span{background-image:url(../images/interface/btn-carousel-prev.png)}
 
 .campl-slide{position:relative}
-.campl-slide-caption{background:url(../images/interface/bg-carousel-caption.png) repeat 0 0 ;position:absolute;bottom:0;right:153px;color:#fff;padding:12px 16px 13px;left:20px;text-align:left}
+.campl-slide-caption{background:rgba(0,0,0,0.8);position:absolute;bottom:0;right:153px;color:#fff;padding:12px 16px 13px;left:20px;text-align:left}
 
 .campl-slide-caption-txt{margin-right:40px;}
 .campl-carousel-pagination{position:absolute;right:16px;bottom:16px}
