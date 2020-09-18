@@ -49,6 +49,14 @@
     color: #fff;
 }
 
+/* Ensure links in tables and messageboxes follow normal colour conventions */
+.campl-message-box a, table a {
+color: #0065b8;
+}
+.campl-message-box a:visited, table a:visited {
+color: #551A8B;
+}
+
 /* Prevent padding on small table rows */
 .campl-table tr.even, .campl-table tr.odd {
     padding: 0;
