@@ -1052,6 +1052,8 @@ caption{background:#fff;padding:5px 0}
 .campl-video-container {position: relative;padding-bottom: 56.25%;padding-top: 30px;height: 0;overflow: hidden;}
 .campl-video-container iframe, .campl-video-container object, .campl-video-container embed, .campl-video-container-inner {position: absolute;top: 0;left: 0;width: 100% !important;height: 100% !important;}
 
+/* Messagebox */
+.campl-message-box {padding: 20px;margin: 20px;background-color: #d2f3e1;border: 1px solid #003a41;text-align: center;}
 
 /* 8.0 MEDIA QUERIES ------------------------------------------------------------------------------------------------*/
 
@@ -1520,7 +1522,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-1 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-1 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #d2e4f3;}
 .campl-theme-1 .campl-table-bordered th{border-left: 1px solid #d2e4f3;}
-
+.campl-theme-1 .campl-message-box {background-color: #d2e4f3;border-color: #002e55;}
 
 /* local navigation */
 .campl-theme-1 .campl-local-navigation {background:#004e8f;border-bottom:1px solid #003e74;border-top:1px solid #003e74}
@@ -1640,7 +1642,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-3 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-3 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f4d3e5;}
 .campl-theme-3 .campl-table-bordered th{border-left: 1px solid #f4d3e5;}
-
+.campl-theme-3 .campl-message-box {background-color: #f4d3e5;border-color: #35254a;}
 
 /* local navigation */
 .campl-theme-3 .campl-local-navigation {background:#612d70;border-bottom:1px solid #422E5D;border-top:1px solid #422E5D}
@@ -1700,6 +1702,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-4 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-4 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f4f6cd;}
 .campl-theme-4 .campl-table-bordered th{border-left: 1px solid #f4f6cd;}
+.campl-theme-4 .campl-message-box {background-color: #f4f6cd ;border-color: #222f16;}
 
 /* local navigation */
 .campl-theme-4 .campl-local-navigation {background:#355918;border-bottom:1px solid #304220;border-top:1px solid #304220}
@@ -1759,7 +1762,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-5 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-5 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f5e7ca;}
 .campl-theme-5 .campl-table-bordered th{border-left: 1px solid #f5e7ca;}
-
+.campl-theme-5 .campl-message-box {background-color: #f5e7ca;border-color: #772801;}
 
 /* local navigation */
 .campl-theme-5 .campl-local-navigation {background:#ab3901;border-bottom:1px solid #c44101;border-top:1px solid #c44101}
@@ -1819,6 +1822,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-6 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-6 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #f8e1e5;}
 .campl-theme-6 .campl-table-bordered th{border-left: 1px solid #f8e1e5;}
+.campl-theme-6 .campl-message-box {background-color: #f8e1e5;border-color: #6c112a;}
 
 /* local navigation */
 .campl-theme-6 .campl-local-navigation {background:#a51137;border-bottom:1px solid #851735;border-top:1px solid #851735}
@@ -1877,6 +1881,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-7 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-7 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #DBD9D9;}
 .campl-theme-7 .campl-table-bordered th{border-left: 1px solid #DBD9D9;}
+.campl-theme-7 .campl-message-box {background-color: #dbd9d9;border-color: 2f2f2f;}
 
 /* local navigation */
 .campl-theme-7 .campl-local-navigation {background:#5F5F5F;border-bottom:1px solid #404040;border-top:1px solid #404040}
@@ -1937,6 +1942,7 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-8 .campl-table-striped tbody tr:nth-child(odd) td,
 .campl-theme-8 .campl-table-striped tbody tr:nth-child(odd) th { background-color: #dfdfac;}
 .campl-theme-8 .campl-table-bordered th{border-left: 1px solid #dfdfac;}
+.campl-theme-8 .campl-message-box {background-color: #dfdfac;border-color: #4e6c16;}
 
 /* local navigation */
 .campl-theme-8 .campl-local-navigation {background:#404F24;border-bottom:1px solid #ABB400;border-top:1px solid #ABB400}
@@ -2010,6 +2016,8 @@ th.campl-alt{background:#fff;color:#28828a}
 .campl-theme-9 #falcon-local-footer .campl-footer-navigation {
     background: url("../images/interface/bg-footer-navigation-grey.png") repeat-y scroll 100% 0 rgba(0, 0, 0, 0);}
 .campl-theme-9 #falcon-local-footer .campl-footer-navigation.last{background:none}
+.campl-theme-9 .campl-message-box {background-color: #d2dde7;border-color: #134374;}
+
 /* local navigation */
 .campl-theme-9 .campl-local-navigation {background:#5f5f5f;border-bottom:1px solid #404040;border-top:1px solid #404040}
 .campl-theme-9 .campl-local-navigation a{background:#5f5f5f;border-right:1px solid #404040;border-bottom:1px solid #404040;border-top:1px solid #404040;}
