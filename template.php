@@ -436,6 +436,11 @@ function cambridge_theme_image($variables) {
   // Make sure class is added to all images.
   $variables['attributes']['class'][] = 'campl-scale-with-grid';
 
+  // We should always output the alt attribute even if its not set
+  if (!isset($variables['alt'])) {
+    $variables['alt'] = "";
+  }
+
   return theme_image($variables);
 }
 
