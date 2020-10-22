@@ -1372,3 +1372,40 @@ function cambridge_theme_aggregator_block_item($variables) {
 
   return $output;
 }
+
+/**
+ * Theme functions for Current search block.
+ */
+
+function cambridge_theme_current_search_deactivate_widget($variables) {
+  return '<span class="facetapi-deactivate">[X]</span>';
+}
+
+function cambridge_theme_current_search_keys($variables) {
+
+  $url = arg();
+  $cp = check_plain(current_path());
+
+  $link_text =  check_plain($variables['keys']);
+
+  // Theme function variables fro accessible markup.
+  // @see http://drupal.org/node/1316580
+  $accessible_vars = array(
+    'text' => $link_text,
+    'active' => TRUE,
+  );
+
+  // Builds link, passes through t() which gives us the ability to change the
+  // position of the widget on a per-language basis.
+  $replacements = array(
+    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
+    '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
+  );
+
+  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
+  $variables['path'] = $cp;
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['title'] = 'search text';
+  $link_text = '<span class="facetapi-link-text">' . $link_text . '</span>';
+  return theme_link($variables) . $link_text;
+}
