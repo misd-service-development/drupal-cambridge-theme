@@ -1377,6 +1377,40 @@ function cambridge_theme_aggregator_block_item($variables) {
  * Theme functions for Current search block.
  */
 
+/**
+ * Returns HTML for an active facet item.
+ *
+ * @param $variables
+ *   An associative array containing the keys 'text', 'path', and 'options'. See
+ *   the l() function for information about these variables.
+ *
+ * @ingroup themeable
+ */
+function ice_cool_current_search_link_active($variables) {
+  // Sanitizes the link text if necessary.
+  $sanitize = empty($variables['options']['html']);
+  $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
+  $link_text = '<span class="facetapi-link-text">' . $link_text . '</span>';
+
+  // Theme function variables fro accessible markup.
+  // @see http://drupal.org/node/1316580
+  $accessible_vars = array(
+    'text' => $variables['text'],
+    'active' => TRUE,
+  );
+
+  // Builds link, passes through t() which gives us the ability to change the
+  // position of the widget on a per-language basis.
+  $replacements = array(
+    '!current_search_deactivate_widget' => theme('current_search_deactivate_widget', $variables),
+    '!current_search_accessible_markup' => theme('current_search_accessible_markup', $accessible_vars),
+  );
+  $variables['text'] = t('!current_search_deactivate_widget !current_search_accessible_markup', $replacements);
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['class'][] = 'active';
+  return l($variables['text'], $variables['path'], $variables['options']) . $link_text;
+}
+
 function cambridge_theme_current_search_deactivate_widget($variables) {
   return '<span class="facetapi-deactivate">[X]</span>';
 }
@@ -1398,11 +1432,11 @@ function cambridge_theme_current_search_keys($variables) {
   // Builds link, passes through t() which gives us the ability to change the
   // position of the widget on a per-language basis.
   $replacements = array(
-    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
-    '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
+    '!current_search_deactivate_widget' => theme('current_search_deactivate_widget', $variables),
+    '!current_search_accessible_markup' => theme('current_search_accessible_markup', $accessible_vars),
   );
 
-  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
+  $variables['text'] = t('!current_search_deactivate_widget !current_search_accessible_markup', $replacements);
   $variables['path'] = $cp;
   $variables['options']['html'] = TRUE;
   $variables['options']['attributes']['title'] = 'search text';
