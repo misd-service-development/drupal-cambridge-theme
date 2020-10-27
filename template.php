@@ -1386,7 +1386,7 @@ function cambridge_theme_aggregator_block_item($variables) {
  *
  * @ingroup themeable
  */
-function ice_cool_current_search_link_active($variables) {
+function cambridge_theme_current_search_link_active($variables) {
   // Sanitizes the link text if necessary.
   $sanitize = empty($variables['options']['html']);
   $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
