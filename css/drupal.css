@@ -219,3 +219,79 @@ color: #551A8B;
   font-style: italic;
   font-size: 14px;
 }
+
+/* Support for faceted search */
+.current-search-item-active-items a {
+    display:inline-block;
+    background-color: #0c5963;
+    border: 1px solid black;
+    font-size: 15px;
+    line-height: 24px;
+    vertical-align: middle;
+    color: white;
+    padding: 1px 0 2px 0;
+}
+
+/* NB this is the active class rather than state! */
+.current-search-item-active-items a.active {
+    color: white;
+}
+
+.current-search-item-active-items a:hover {
+    background-color: black;
+}
+
+.campl-theme-1 .current-search-item-active-items a {
+    background-color: #004e8f;
+}
+
+.campl-theme-2 .current-search-item-active-items a {
+    background-color: #0c5963;
+}
+
+.campl-theme-3 .current-search-item-active-items a {
+    background-color: #6a2068;
+}
+
+.campl-theme-4 .current-search-item-active-items a {
+    background-color: #355918;
+}
+
+.campl-theme-5 .current-search-item-active-items a {
+    background-color: #ab3901;
+}
+
+.campl-theme-6 .current-search-item-active-items a {
+    background-color: #a51137;
+}
+
+.campl-theme-7 .current-search-item-active-items a {
+    background-color: #5F5F5F;
+}
+
+.campl-theme-8 .current-search-item-active-items a {
+    background-color: #404f24;
+}
+
+.campl-theme-9 .current-search-item-active-items a {
+    background-color: #5f5f5f;
+}
+
+.facetapi-deactivate {
+  color: white;
+  padding-left: 0.3em;
+}
+
+ul.facetapi-facetapi-checkbox-links li {
+  list-style-type: none;
+  list-style-image: none;
+  margin-left: 0;
+}
+
+.current-search-item .facetapi-link-text {
+  padding-right: 0.5em;
+}
+
+ul.facetapi-facetapi-checkbox-links input.facetapi-checkbox {
+  margin-right: 0.5em !important;
+}
