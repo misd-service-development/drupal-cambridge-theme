@@ -3,6 +3,14 @@ Changelog
 
 Note: the theme contains the University's house style assets (CSS, images, JavaScript). For the sake of completeness, all updates to these are also listed below.
 
+7.x-1.19
+
+* Added a template file to allow Shorthand content to work without the need to add templates to the Drupal module, which is against best practice. 
+
+7.x-1.18
+
+* The main purpose of this release is to update the footer links to match the new version as seen in the "Experimental Home Page" on www.cam.ac.uk.
+
 7.x-1.11
 
 Latest release of the theme, primarily to resolve some existing accessibility issues with Project Light. 
