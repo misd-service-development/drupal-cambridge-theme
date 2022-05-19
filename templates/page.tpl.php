@@ -18,7 +18,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 <div class="campl-row campl-global-header">
   <div class="campl-wrap clearfix">
     <div class="campl-header-container campl-column8" id="global-header-controls">
-      <a href="http://www.cam.ac.uk" class="campl-main-logo">
+      <a href="https://www.cam.ac.uk" class="campl-main-logo">
         <img alt="University of Cambridge" src="<?php print $base_theme_path; ?>/images/interface/main-logo-small.png"/>
       </a>
 
@@ -30,7 +30,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <a href="#about-the-university">About the University</a>
         </li>
         <li>
-          <a href="http://www.cam.ac.uk/research?ucam-ref=global-header" class="campl-no-drawer">Research at Cambridge</a>
+          <a href="https://www.cam.ac.uk/research?ucam-ref=global-header" class="campl-no-drawer">Research at Cambridge</a>
         </li>
       </ul>
     </div>
@@ -117,7 +117,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
     <div class="campl-column12 campl-global-navigation-mobile-list campl-global-navigation-list">
       <div class="campl-global-navigation-outer clearfix" id="study-with-us">
         <ul class="campl-unstyled-list campl-global-navigation-header-container ">
-          <li><a href="http://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-header">Study at Cambridge</a></li>
+          <li><a href="https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-header">Study at Cambridge</a></li>
         </ul>
         <div class="campl-column4">
           <ul
@@ -184,7 +184,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
       <div class="campl-global-navigation-outer clearfix" id="about-the-university">
         <ul class="campl-global-navigation-header-container campl-unstyled-list">
-          <li><a href="http://www.cam.ac.uk/about-the-university?ucam-ref=global-header">About the University</a></li>
+          <li><a href="https://www.cam.ac.uk/about-the-university?ucam-ref=global-header">About the University</a></li>
         </ul>
         <div class="campl-column4">
           <ul class="campl-global-navigation-container campl-unstyled-list">
@@ -533,10 +533,10 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             <a href="https://www.jobs.cam.ac.uk?ucam-ref=global-footer">Jobs</a>
           </li>
           <li>
-            <a href="http://map.cam.ac.uk/?ucam-ref=global-footer">Map</a>
+            <a href="https://map.cam.ac.uk/?ucam-ref=global-footer">Map</a>
           </li>
           <li>
-            <a href="http://www.cam.ac.uk/about-the-university/visiting-the-university?ucam-ref=global-footer">Visiting the University</a>
+            <a href="https://www.cam.ac.uk/about-the-university/visiting-the-university?ucam-ref=global-footer">Visiting the University</a>
           </li>
         </ul>
       </div>
