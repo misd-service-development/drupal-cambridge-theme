@@ -18,7 +18,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 <div class="campl-row campl-global-header">
   <div class="campl-wrap clearfix">
     <div class="campl-header-container campl-column8" id="global-header-controls">
-      <a href="http://www.cam.ac.uk" class="campl-main-logo">
+      <a href="https://www.cam.ac.uk" class="campl-main-logo">
         <img alt="University of Cambridge" src="<?php print $base_theme_path; ?>/images/interface/main-logo-small.png"/>
       </a>
 
@@ -30,7 +30,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <a href="#about-the-university">About the University</a>
         </li>
         <li>
-          <a href="http://www.cam.ac.uk/research" class="campl-no-drawer">Research at Cambridge</a>
+          <a href="https://www.cam.ac.uk/research?ucam-ref=global-header" class="campl-no-drawer">Research at Cambridge</a>
         </li>
       </ul>
     </div>
@@ -117,28 +117,25 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
     <div class="campl-column12 campl-global-navigation-mobile-list campl-global-navigation-list">
       <div class="campl-global-navigation-outer clearfix" id="study-with-us">
         <ul class="campl-unstyled-list campl-global-navigation-header-container ">
-          <li><a href="http://www.cam.ac.uk/study-at-cambridge">Study at Cambridge</a></li>
+          <li><a href="https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-header">Study at Cambridge</a></li>
         </ul>
         <div class="campl-column4">
           <ul
             class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
             <li>
-              <a href="http://www.study.cam.ac.uk/undergraduate/">Undergraduate</a>
+              <a href="https://www.undergraduate.study.cam.ac.uk/?ucam-ref=global-header">Undergraduate</a>
               <ul class="campl-global-navigation-tertiary campl-unstyled-list">
                 <li>
-                  <a href="http://www.study.cam.ac.uk/undergraduate/courses/">Courses</a>
+                  <a href="https://www.undergraduate.study.cam.ac.uk/courses?ucam-ref=global-header">Undergraduate courses</a>
                 </li>
                 <li>
-                  <a href="http://www.study.cam.ac.uk/undergraduate/apply/">Applying</a>
+                  <a href="https://www.undergraduate.study.cam.ac.uk/applying?ucam-ref=global-header">Applying</a>
                 </li>
                 <li>
-                  <a href="http://www.study.cam.ac.uk/undergraduate/events/">Events and open days</a>
+                  <a href="https://www.undergraduate.study.cam.ac.uk/events?ucam-ref=global-header">Events and open days</a>
                 </li>
                 <li>
-                  <a href="http://www.study.cam.ac.uk/undergraduate/finance/">Fees and finance</a>
-                </li>
-                <li>
-                  <a href="http://www.becambridge.com/">Student blogs and videos</a>
+                  <a href="https://www.undergraduate.study.cam.ac.uk/finance?ucam-ref=global-header">Fees and finance</a>
                 </li>
               </ul>
             </li>
@@ -148,20 +145,20 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <ul
             class="campl-global-navigation-container campl-unstyled-list campl-global-navigation-secondary-with-children">
             <li>
-              <a href="https://www.postgraduate.study.cam.ac.uk">Postgraduate</a>
+              <a href="https://www.postgraduate.study.cam.ac.uk/?ucam-ref=global-header">Postgraduate</a>
               <ul class="campl-global-navigation-tertiary campl-unstyled-list">
                 <li>
-                  <a href="https://www.postgraduate.study.cam.ac.uk/why-cambridge">Why Cambridge</a>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/courses?ucam-ref=global-header">Postgraduate courses</a>
                 </li>
                 <li>
-                  <a href="https://www.postgraduate.study.cam.ac.uk/courses">Course directory</a>
-                </li>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/application-process/how-do-i-apply?ucam-ref=global-header">How to apply</a>
+		</li>
                 <li>
-                  <a href="https://www.postgraduate.study.cam.ac.uk/application-process/how-do-i-apply">How to apply</a></li>
-                <li><a href="https://www.postgraduate.study.cam.ac.uk/finance/fees">Fees</a></li>
-                <li><a href="https://www.postgraduate.study.cam.ac.uk/funding">Funding</a></li>
-                <li><a href="https://www.postgraduate.study.cam.ac.uk/find-out-more/applicant-frequently-asked-questions">Frequently asked
-                    questions</a></li>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/events?ucam-ref=global-header">Postgraduate events</a>
+                </li>		      
+                <li>
+		  <a href="https://www.postgraduate.study.cam.ac.uk/funding?ucam-ref=global-header">Fees and funding</a>
+		</li>
               </ul>
             </li>
           </ul>
@@ -169,17 +166,17 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
         <div class="campl-column4">
           <ul class="campl-global-navigation-container campl-unstyled-list last">
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/international-cambridge/studying-at-cambridge">International
+              <a href="https://www.internationalstudents.cam.ac.uk/?ucam-ref=global-header">International
                 students</a>
             </li>
             <li>
-              <a href="http://www.ice.cam.ac.uk">Continuing education</a>
+              <a href="https://www.ice.cam.ac.uk/?ucam-ref=global-header">Continuing education</a>
             </li>
             <li>
-              <a href="http://www.admin.cam.ac.uk/offices/education/epe/">Executive and professional education</a>
+              <a href="https://www.epe.admin.cam.ac.uk/?ucam-ref=global-header">Executive and professional education</a>
             </li>
             <li>
-              <a href="http://www.educ.cam.ac.uk">Courses in education</a>
+              <a href="https://www.educ.cam.ac.uk/?ucam-ref=global-header">Courses in education</a>
             </li>
           </ul>
         </div>
@@ -187,63 +184,57 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
       <div class="campl-global-navigation-outer clearfix" id="about-the-university">
         <ul class="campl-global-navigation-header-container campl-unstyled-list">
-          <li><a href="http://www.cam.ac.uk/about-the-university">About the University</a></li>
+          <li><a href="https://www.cam.ac.uk/about-the-university?ucam-ref=global-header">About the University</a></li>
         </ul>
         <div class="campl-column4">
           <ul class="campl-global-navigation-container campl-unstyled-list">
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work">How the
+              <a href="https://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work?ucam-ref=global-header">How the
                 University and Colleges work</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/history">History</a>
+              <a href="https://www.cam.ac.uk/about-the-university/term-dates-and-calendars?ucam-ref=global-header">Term dates and calendars</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/visiting-the-university">Visiting the University</a>
+              <a href="https://www.cam.ac.uk/about-the-university/history?ucam-ref=global-header">History</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/term-dates-and-calendars">Term dates and calendars</a>
+              <a href="https://map.cam.ac.uk/?ucam-ref=global-header">Map</a>
             </li>
-            <li class="last">
-              <a href="http://map.cam.ac.uk">Map</a>
+            <li>
+              <a href="https://www.cam.ac.uk/about-the-university/visiting-the-university?ucam-ref=global-header">Visiting the University</a>
             </li>
           </ul>
         </div>
         <div class="campl-column4">
           <ul class="campl-global-navigation-container campl-unstyled-list">
             <li>
-              <a href="http://www.cam.ac.uk/for-media">For media</a>
+              <a href="https://www.cam.ac.uk/about-the-university/annual-reports?ucam-ref=global-header">Annual reports</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/video-and-audio">Video and audio</a>
+              <a href="https://www.equality.admin.cam.ac.uk/?ucam-ref=global-header">Equality and diversity</a>
             </li>
             <li>
-              <a href="http://webservices.admin.cam.ac.uk/faesearch/map.cgi">Find an expert</a>
+              <a href="https://www.cam.ac.uk/news?ucam-ref=global-header">News</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/about-the-university/publications">Publications</a>
-            </li>
-            <li class="last">
-              <a href="http://www.cam.ac.uk/about-the-university/international-cambridge">International Cambridge</a>
+              <a href="https://www.cam.ac.uk/a-global-university?ucam-ref=global-header">A global university</a>
             </li>
           </ul>
         </div>
         <div class="campl-column4">
           <ul class="campl-global-navigation-container campl-unstyled-list">
             <li>
-              <a href="http://www.cam.ac.uk/news">News</a>
+              <a href="https://www.admin.cam.ac.uk/whatson/?ucam-ref=global-header">Events</a>
             </li>
             <li>
-              <a href="http://www.admin.cam.ac.uk/whatson">Events</a>
+              <a href="https://www.cam.ac.uk/public-engagement?ucam-ref=global-header">Public engagement</a>
             </li>
             <li>
-              <a href="http://www.cam.ac.uk/public-engagement">Public engagement</a>
+              <a href="https://www.jobs.cam.ac.uk/">Jobs</a>
             </li>
             <li>
-              <a href="http://www.jobs.cam.ac.uk">Jobs</a>
-            </li>
-            <li class="last">
-              <a href="http://www.philanthropy.cam.ac.uk">Giving to Cambridge</a>
+              <a href="https://www.philanthropy.cam.ac.uk/?ucam-ref=global-header">Give to Cambridge</a>
             </li>
           </ul>
         </div>
@@ -258,28 +249,34 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
     <ul class="campl-unstyled-list campl-quicklinks-list campl-global-navigation-container ">
       <li>
-        <a href="http://www.cam.ac.uk/for-staff">For staff</a>
+        <a href="https://www.cam.ac.uk/for-staff?ucam-ref=global-quick-links">For staff</a>
       </li>
       <li>
-        <a href="http://www.admin.cam.ac.uk/students/gateway">For current students</a>
+        <a href="https://www.cambridgestudents.cam.ac.uk/?ucam-ref=global-quick-links">For Cambridge students</a>
       </li>
       <li>
-        <a href="http://www.alumni.cam.ac.uk">For alumni</a>
+        <a href="https://www.alumni.cam.ac.uk/?ucam-ref=global-quick-links">For alumni</a>
+      </li>
+	  <li>
+        <a href="https://www.research-operations.admin.cam.ac.uk/?ucam-ref=global-quick-links">For our researchers</a>
       </li>
       <li>
-        <a href="http://www.cam.ac.uk/for-business">For business</a>
+        <a href="https://www.cam.ac.uk/business-and-enterprise?ucam-ref=global-quick-links">Business and enterprise</a>
       </li>
       <li>
-        <a href="http://www.cam.ac.uk/colleges-and-departments">Colleges &amp; departments</a>
+        <a href="https://www.cam.ac.uk/colleges-and-departments?ucam-ref=global-quick-links">Colleges &amp; departments</a>
+      </li>
+	  <li>
+        <a href="https://www.cam.ac.uk/email-and-phone-search?ucam-ref=global-quick-links">Email &amp; phone search</a>
       </li>
       <li>
-        <a href="http://www.cam.ac.uk/libraries-and-facilities">Libraries &amp; facilities</a>
+        <a href="https://www.philanthropy.cam.ac.uk/?ucam-ref=global-quick-links">Give to Cambridge</a>
       </li>
       <li>
-        <a href="http://www.cam.ac.uk/museums-and-collections">Museums &amp; collections</a>
+        <a href="https://www.libraries.cam.ac.uk/?ucam-ref=global-quick-links">Libraries</a>
       </li>
-      <li class="last">
-        <a href="http://www.cam.ac.uk/email-and-phone-search">Email &amp; phone search</a>
+      <li>
+        <a href="https://www.museums.cam.ac.uk/?ucam-ref=global-quick-links">Museums &amp; collections</a>
       </li>
     </ul>
   </div>
@@ -491,7 +488,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             <a href="https://www.cam.ac.uk/about-this-site/terms-and-conditions?ucam-ref=global-footer">Terms and conditions</a>
           </li>
 		  <li>
-            <a href="https://www.cam.ac.uk/university-a-z">University A-Z</a>
+            <a href="https://www.cam.ac.uk/university-a-z?ucam-ref=global-footer">University A-Z</a>
           </li>
         </ul>
       </div>
@@ -503,7 +500,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
           <h3><a href="https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-footer">Study at Cambridge</a></h3>
           <ul class="campl-unstyled-list">
             <li>
-              <a href="https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-footer">Undergraduate</a>
+              <a href="https://www.undergraduate.study.cam.ac.uk/?ucam-ref=global-footer">Undergraduate</a>
             </li>
             <li>
               <a href="https://www.postgraduate.study.cam.ac.uk?ucam-ref=global-footer">Postgraduate</a>
@@ -523,7 +520,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
     </div>
     <div class="campl-column3 campl-footer-navigation">
       <div class="campl-content-container campl-navigation-list">
-        <h3><a href="https://www.cam.ac.uk/about-the-university">About the University</a></h3>
+        <h3><a href="https://www.cam.ac.uk/about-the-university?ucam-ref=global-footer">About the University</a></h3>
         <ul class="campl-unstyled-list campl-page-children">
           <li>
             <a href="https://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work?ucam-ref=global-footer">How the University
@@ -536,17 +533,17 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             <a href="https://www.jobs.cam.ac.uk?ucam-ref=global-footer">Jobs</a>
           </li>
           <li>
-            <a href="http://map.cam.ac.uk/?ucam-ref=global-footer">Map</a>
+            <a href="https://map.cam.ac.uk/?ucam-ref=global-footer">Map</a>
           </li>
           <li>
-            <a href="http://www.cam.ac.uk/about-the-university/visiting-the-university?ucam-ref=global-footer">Visiting the University</a>
+            <a href="https://www.cam.ac.uk/about-the-university/visiting-the-university?ucam-ref=global-footer">Visiting the University</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="campl-column3 campl-footer-navigation last">
       <div class="campl-content-container campl-navigation-list">
-        <h3><a href="https://www.cam.ac.uk/research">Research at Cambridge</a></h3>
+        <h3><a href="https://www.cam.ac.uk/research?ucam-ref=global-footer">Research at Cambridge</a></h3>
         <ul class="campl-unstyled-list">
           <li>
             <a href="https://www.cam.ac.uk/research/news?ucam-ref=global-footer">Research news</a>
