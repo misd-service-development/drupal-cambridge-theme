@@ -148,14 +148,17 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
               <a href="https://www.postgraduate.study.cam.ac.uk/?ucam-ref=global-header">Postgraduate</a>
               <ul class="campl-global-navigation-tertiary campl-unstyled-list">
                 <li>
-                  <a href="https://www.postgraduate.study.cam.ac.uk/why-cambridge?ucam-ref=global-header">Why Cambridge?</a>
-                </li>
-                <li>
                   <a href="https://www.postgraduate.study.cam.ac.uk/courses?ucam-ref=global-header">Postgraduate courses</a>
                 </li>
                 <li>
-                  <a href="https://www.postgraduate.study.cam.ac.uk/application-process/how-do-i-apply?ucam-ref=global-header">How to apply</a></li>
-                <li><a href="https://www.postgraduate.study.cam.ac.uk/funding?ucam-ref=global-header">Fees and funding</a></li>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/application-process/how-do-i-apply?ucam-ref=global-header">How to apply</a>
+		</li>
+                <li>
+                  <a href="https://www.postgraduate.study.cam.ac.uk/events?ucam-ref=global-header">Postgraduate events</a>
+                </li>		      
+                <li>
+		  <a href="https://www.postgraduate.study.cam.ac.uk/funding?ucam-ref=global-header">Fees and funding</a>
+		</li>
               </ul>
             </li>
           </ul>
