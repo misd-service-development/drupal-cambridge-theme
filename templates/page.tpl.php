@@ -530,7 +530,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             <a href="https://www.philanthropy.cam.ac.uk/give-now?ucam-ref=global-footer">Give to Cambridge</a>
           </li>
 		  <li>
-            <a href="https://www.jobs.cam.ac.uk?ucam-ref=global-footer">Jobs</a>
+            <a href="https://www.jobs.cam.ac.uk">Jobs</a>
           </li>
           <li>
             <a href="https://map.cam.ac.uk/?ucam-ref=global-footer">Map</a>
