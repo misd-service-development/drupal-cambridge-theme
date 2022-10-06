@@ -498,7 +498,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
         <div class="link-list">
           <h3><a href="https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-footer">Study at Cambridge</a></h3>
-          <ul class="campl-unstyled-list">
+          <ul class="campl-unstyled-list campl-page-children">
             <li>
               <a href="https://www.undergraduate.study.cam.ac.uk/?ucam-ref=global-footer">Undergraduate</a>
             </li>
@@ -544,7 +544,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
     <div class="campl-column3 campl-footer-navigation last">
       <div class="campl-content-container campl-navigation-list">
         <h3><a href="https://www.cam.ac.uk/research?ucam-ref=global-footer">Research at Cambridge</a></h3>
-        <ul class="campl-unstyled-list">
+        <ul class="campl-unstyled-list campl-page-children">
           <li>
             <a href="https://www.cam.ac.uk/research/news?ucam-ref=global-footer">Research news</a>
           </li>
