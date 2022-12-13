@@ -494,6 +494,11 @@ projectlight.localNav=(function(){
 			}
 		});
 
+  /*
+   * Two functions to replicate the hover menu functionality for keyboard
+   * users. This function removes the hover class, while the next one adds
+   * it to the relevant menu item.
+   */
   $topListItems.keyup(
       function(){
         if(!projectlight.mobileLayout){
@@ -509,45 +514,34 @@ projectlight.localNav=(function(){
         }
       });
 
-  // $topListItems.keyup(
-  //     function(){
-  //       if(!projectlight.mobileLayout){
-  //         $last_menu_item = $topListItems.last();
-  //         console.log('last menu item:', $last_menu_item);
-  //         $last_menu_item_last_child = $($last_menu_item).find(':last-child');
-  //         console.log('last menu item last child:', $last_menu_item_last_child);
-  //         $active_item = $navigation.find(".campl-hover");
-  //         console.log('active item:', $active_item);
-  //         var classList = $($active_item).attr("class");
-  //         console.log('class list for active item is:', classList);
-  //         if ($last_menu_item_last_child == $active_item) {
-  //           console.log("last menu item last child is the same as active item");
-  //           $($activeItem).removeClass("campl-hover");
-  //         }
-  //
-  //         $($last_menu_item)
-  //           .focusout(function() {
-  //             $(this).removeClass("campl-hover")
-  //           })
-  //
-  //       }
-  //     });
-
+    /*
+     * Function to handle the scenario of keyboard navigation and the last
+     * menu item having Children. The code above does not handle this
+     * sceenario so some extra code is required.
+     *
+     * Visually this is not the best as the menu flickers (selector removed
+     * and then very quickly re-applied). Could be improved but a gigantic
+     * step forward for the moment.
+     *
+     * Some additional code left in commented out for possible use for
+     * future enhancements.
+     */
     $topListItems.keyup(
       function(){
         if(!projectlight.mobileLayout){
           $last_menu_item = $topListItems.last();
-          console.log('last menu item:', $last_menu_item);
-          $last_menu_item_last_child = $($last_menu_item).find(':last-child');
-          console.log('last menu item last child:', $last_menu_item_last_child);
-          $active_item = $navigation.find(".campl-hover");
-          console.log('active item:', $active_item);
-          var classList = $($active_item).attr("class");
-          console.log('class list for active item is:', classList);
-          if ($last_menu_item_last_child == $active_item) {
-            console.log("last menu item last child is the same as active item");
-            $($activeItem).removeClass("campl-hover");
-          }
+
+          // console.log('last menu item:', $last_menu_item);
+          // $last_menu_item_last_child = $($last_menu_item).find(':last-child');
+          // console.log('last menu item last child:', $last_menu_item_last_child);
+          // $active_item = $navigation.find(".campl-hover");
+          // console.log('active item:', $active_item);
+          // var classList = $($active_item).attr("class");
+          // console.log('class list for active item is:', classList);
+          // if ($last_menu_item_last_child == $active_item) {
+          //   console.log("last menu item last child is the same as active item");
+          //   $($activeItem).removeClass("campl-hover");
+          // }
 
           if($($last_menu_item).children()) {
 
@@ -557,7 +551,6 @@ projectlight.localNav=(function(){
               });
 
           }
-
 
         }
       });
