@@ -145,7 +145,8 @@ p { margin:0 0 10px 0}
 
 /* Semibold	"myriad-pro"	600	normal */
 h2, h3, h4, h5, h6, .campl-global-navigation, .campl-global-navigation-header-container, .campl-global-navigation-container, .campl-local-footer h3, .campl-global-footer h3,
-.campl-teaser-title, .campl-listing-title, .campl-vertical-breadcrumb, .campl-btn{font-family:"myriad-pro-n6", "myriad-pro", myriad, verdana, arial, sans-serif;font-weight:600;font-style:normal}
+/*.campl-teaser-title, .campl-listing-title, .campl-vertical-breadcrumb, .campl-btn{font-family:"myriad-pro-n6", "myriad-pro", myriad, verdana, arial, sans-serif;font-weight:600;font-style:normal}*/
+.campl-teaser-title, .campl-listing-title, .campl-vertical-breadcrumb, .campl-btn{font-family:"myriad-pro", myriad, verdana, arial, sans-serif;font-weight:600;font-style:normal}
 
 /* Regular 	"myriad-pro"  	400 normal*/
 .campl-branding-title, .campl-topic, .campl-global-navigation-tertiary, .campl-local-navigation, .campl-vertical-breadcrumb-navigation{font-family:"myriad-pro-n4", "myriad-pro", myriad, verdana, arial, sans-serif;font-weight:400;color:#888888}
@@ -408,7 +409,7 @@ input[type="checkbox"]:focus {outline: thin dotted #333;outline: 5px auto -webki
 
 /* radio buttons and checkboxes */
 input[type="radio"],
-input[type="checkbox"] {margin: 3px 0;/line-height: normal;cursor: pointer;box-sizing: border-box; padding: 0; }
+input[type="checkbox"] {margin: 3px 0;line-height: normal;cursor: pointer;box-sizing: border-box; padding: 0; }
 .lt-ie8 input[type="checkbox"] { vertical-align: baseline;margin-top: 0;width: 13px;height: 13px; }
 
 .campl-radio,.campl-checkbox {min-height: 18px;padding-left: 18px;}
@@ -602,12 +603,15 @@ body{margin:0;padding:0; background:#000;width:100%;}
 .campl-search-input{background-color: #FFFFFF;border: 0; display: inline-block; -moz-box-sizing: border-box;width: 100%;position: relative;margin-bottom: 0; height: 42px;min-height:42px;}
 .lt-ie8 .campl-search-input{margin-left: 0;}
 .campl-search-input input{border:0;padding:10px 8px 8px;vertical-align: middle;width:75%;float:left;margin-bottom:0}
+.campl-search-input input::placeholder{color: #ffffff;opacity: 1}; /* Chrome, Firefox, Opera, Safari 10.1+ */
+.campl-search-input input:-ms-input-placeholder{color: #ffffff}; /* IE 10 / 11 */
+.campl-search-input input::-ms-input-placeholder{color: #ffffff}; /* Edge */
 .campl-search-input input.campl-search-submit{width:42px;padding:0;float:right;height:43px;-webkit-border-radius: 0;margin-right:0;float:right;margin-right:-1px}
 
 /* Header search */
 .campl-site-search .campl-search-input{height: 32px;min-height:32px;background-color: #343434;}
 .campl-site-search .campl-search-input input{width:65%;padding:7px 0 7px 8px;background-color: #343434;color:#fff}
-.campl-site-search .campl-search-input input.campl-search-submit{width:32px;height:32px;padding:0;}
+.campl-site-search .campl-search-input input.campl-search-submit{width:32px;height:32px;padding:0;float:right;}
 
 
 /* global quick links */
@@ -660,11 +664,12 @@ body{margin:0;padding:0; background:#000;width:100%;}
 /* Global Navigation */
 .campl-global-navigation{border-left:1px solid #2e2e2e;margin-right:15px;float:left}
 .campl-home-link-container{display:none}
-.campl-global-navigation li a{padding:25px 20px;border-right:1px solid #2e2e2e;display:block;word-wrap: break-word;}
+.campl-global-navigation li a{padding:25px 20px;border-right:1px solid #2e2e2e;display:block;word-wrap: break-word;font-weight:600;}
 .lt-ie9 .campl-global-navigation li a{padding:25px 10px}
 .campl-global-navigation li a:focus, .campl-global-navigation li a:hover, .campl-global-navigation li a:active,
-.campl-global-navigation li.campl-selected a{border-left:1px solid #737373;border-right:1px solid #737373;margin-left:-1px;background:#171717;position:relative;z-index:7;}
-.campl-global-navigation li.campl-selected a{margin-bottom:-1px;padding-bottom:26px}
+.campl-global-navigation li.campl-selected a{border-left:1px solid #737373;border-right:1px solid #737373;margin-left:-1px;background:#171717;position:relative;z-index:7;border-bottom: 4px solid #ffffff;color:#ffffff;font-weight: 600;padding:25px 20px 21px 20px;}
+/* .campl-global-navigation li.campl-selected a{margin-bottom:-1px;padding-bottom:26px} */
+.campl-global-navigation li.campl-selected a{margin-bottom:0px;padding-bottom:21px}
 
 .js .campl-global-navigation-drawer, .js .campl-global-navigation-outer{display:none}
 .js .campl-drawer-open, .js .campl-navigation-open{display:block}
