@@ -1118,7 +1118,8 @@ caption{background:#fff;padding:5px 0}
 @media only screen and (max-width: 1150px){
 
 	.campl-site-search {padding-right:15px}
-	.campl-global-navigation li a{padding:25px 10px}
+	.campl-global-navigation li a{padding:25px 10px;}
+  .campl-global-navigation li a:focus, .campl-global-navigation li a:hover, .campl-global-navigation li a:active, .campl-global-navigation li.campl-selected a{padding:25px 10px 21px 10px;}
 
 	.campl-pagination a, .campl-elipsis{padding: 8px 15px;line-height: 20px;}
 
