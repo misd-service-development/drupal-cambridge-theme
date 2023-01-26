@@ -135,7 +135,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
                   <a href="https://www.undergraduate.study.cam.ac.uk/events?ucam-ref=global-header">Events and open days</a>
                 </li>
                 <li>
-                  <a href="https://www.undergraduate.study.cam.ac.uk/finance?ucam-ref=global-header">Fees and finance</a>
+                  <a href="https://www.undergraduate.study.cam.ac.uk/fees-and-finance?ucam-ref=global-header">Fees and finance</a>
                 </li>
               </ul>
             </li>
@@ -157,7 +157,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
                   <a href="https://www.postgraduate.study.cam.ac.uk/events?ucam-ref=global-header">Postgraduate events</a>
                 </li>		      
                 <li>
-		  <a href="https://www.postgraduate.study.cam.ac.uk/funding?ucam-ref=global-header">Fees and funding</a>
+		  <a href="https://www.postgraduate.study.cam.ac.uk/funding-overview?ucam-ref=global-header">Fees and funding</a>
 		</li>
               </ul>
             </li>
@@ -249,7 +249,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 
     <ul class="campl-unstyled-list campl-quicklinks-list campl-global-navigation-container ">
       <li>
-        <a href="https://www.cam.ac.uk/for-staff?ucam-ref=global-quick-links">For staff</a>
+        <a href="https://www.staff.admin.cam.ac.uk/?ucam-ref=global-quick-links">For staff</a>
       </li>
       <li>
         <a href="https://www.cambridgestudents.cam.ac.uk/?ucam-ref=global-quick-links">For Cambridge students</a>
@@ -482,7 +482,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
 		    <a href="https://www.cam.ac.uk/about-this-site/privacy-policy?ucam-ref=global-footer">Privacy policy and cookies</a>
 		  </li>
 		  <li>
-		    <a href="https://www.registrarysoffice.admin.cam.ac.uk/governance-and-strategy/anti-slavery-and-anti-trafficking?ucam-ref=global-footer">Statement on Modern Slavery</a>
+		    <a href="https://www.governanceandcompliance.admin.cam.ac.uk/governance-and-strategy/anti-slavery-and-anti-trafficking?ucam-ref=global-footer">Statement on Modern Slavery</a>
 		  </li>
           <li>
             <a href="https://www.cam.ac.uk/about-this-site/terms-and-conditions?ucam-ref=global-footer">Terms and conditions</a>
@@ -555,7 +555,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
             <a href="https://www.cam.ac.uk/public-engagement?ucam-ref=global-footer">Public engagement</a>
           </li>
           <li>
-            <a href="https://www.cam.ac.uk/research/spotlight-on?ucam-ref=global-footer">Spotlight on...</a>
+            <a href="https://www.cam.ac.uk/research/spotlights-on?ucam-ref=global-footer">Spotlight on...</a>
           </li>
         </ul>
       </div>
