@@ -173,7 +173,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
               <a href="https://www.ice.cam.ac.uk/?ucam-ref=global-header">Continuing education</a>
             </li>
             <li>
-              <a href="https://www.epe.admin.cam.ac.uk/?ucam-ref=global-header">Executive and professional education</a>
+              <a href="https://www.cam.ac.uk/study-at-cambridge/executive-and-professional-education/?ucam-ref=global-header">Executive and professional education</a>
             </li>
             <li>
               <a href="https://www.educ.cam.ac.uk/?ucam-ref=global-header">Courses in education</a>
@@ -509,7 +509,7 @@ $has_partnerships = isset($page['partnerships']) && count($page['partnerships'])
               <a href="https://www.ice.cam.ac.uk/?ucam-ref=global-footer">Continuing education</a>
             </li>
             <li>
-              <a href="https://www.epe.admin.cam.ac.uk/?ucam-ref=global-footer">Executive and professional education</a>
+              <a href="https://www.cam.ac.uk/study-at-cambridge/executive-and-professional-education/?ucam-ref=global-footer">Executive and professional education</a>
             </li>
             <li>
               <a href="https://www.educ.cam.ac.uk/?ucam-ref=global-footer">Courses in education</a>
