@@ -65,7 +65,31 @@ function cambridge_theme_preprocess_maintenance_page(&$variables) {
  * Implements template_preprocess_html().
  */
 function cambridge_theme_preprocess_html(&$variables) {
-  $variables['classes_array'][] = 'campl-theme-' . theme_get_setting('colour_scheme');
+  $colour_scheme = theme_get_setting('colour_scheme');
+
+  $variables['classes_array'][] = 'campl-theme-' . $colour_scheme;
+
+  $theme_color[1] = '#003e74'; # blue
+  $theme_color[2] = '#106470'; # turquoise
+  $theme_color[3] = '#422e5d'; # purple
+  $theme_color[4] = '#304220'; # green
+  $theme_color[5] = '#c44101'; # orange
+  $theme_color[6] = '#851735'; # red
+  $theme_color[7] = '#404040'; # grey
+
+  if(isset($theme_color[$colour_scheme])) {
+    drupal_add_html_head(
+      array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'theme-color',
+          'content' => $theme_color[$colour_scheme],
+        ),
+      ),
+      'theme-color'
+    );
+  }
 
   drupal_add_html_head(
     array(
